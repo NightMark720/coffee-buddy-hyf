@@ -56,7 +56,7 @@
   </tr>
 </table>
 
-> 截帧取自各章成片（Ch.8 取自 `boards/stills/`）；Ch.2 尚未导出成片，因此暂无截帧。
+> 截帧由各章 composition 在对应时间点渲染（当前为 MiSans 字体版本）；Ch.2 尚未导出成片，因此暂无截帧。
 
 ## 分章说明
 
@@ -198,10 +198,22 @@ ffprobe -v error -show_entries stream=codec_name,codec_type,width,height,avg_fra
 
 ### 字体与版式
 
-- 正文 **SF Pro**、标题 **Inter**，均为项目内本地字体（`assets/fonts/`）；布局在 `document.fonts.ready` 之后按实际 `offsetHeight` 测量。
+- 正文 **MiSans**、标题 **Inter**，均为项目内本地字体（`assets/fonts/`）；布局在 `document.fonts.ready` 之后按实际 `offsetHeight` 测量。
+- MiSans 按字重拆成 6 个文件（Light 300 / Regular 400 / Medium 500 / Semibold 600 / Bold 700 / Heavy 900），每个都做了字符子集化（拉丁字母 + 标点 + 常用符号，约 56 KB），`@font-face` 逐档声明 `font-weight`。
 - 源码以 **393 × 698.666667** 的 APP 逻辑画布排版，整体按 `1080 / 393 = 2.748091603` 等比放大；数值都是逻辑像素，不要二次缩放。
 - 聊天视口 `top:128px; left:14px; right:14px; bottom:108px`；聊天行总宽 365px = 36px 头像 + 12px 间距 + **317px** 卡片；不带头像的满宽卡 353px（左右各内缩 6px）。
 - 主卡圆角 20px，主要按钮高 42px / 圆角 22px，麦克风与波形共用 44px 槽位。
+
+### 字体替换记录（2026-11-17）
+
+全仓库把正文 **SF Pro 换成 MiSans**，标题字体 Inter 不变。
+
+- 7 个字体目录（6 章 + 交接包 `reference-ch6`）同步替换，`SF-Pro-ch1.woff2` 已全部删除，仓库不再分发 SF Pro。
+- `@font-face` 由单个可变字体改为 6 档静态字重，文件逐档子集化。
+- 版式核对：按同一时间点重拍对比，Ch.1 / 4 / 6 / 7 的换行、卡高、间距与替换前一致。
+- Ch.8 有一处需要收紧：MiSans 略宽，配方页 `low-pressure pre-infusion → 9 bar` 原本单行、替换后折成两行。把 `.data-row` 标签列 83px → 76px、数值加 `letter-spacing:-.12px` 后恢复单行。
+- 已知字体差异：MiSans 不含 `⇧`(U+21E7) 与 `⌫`(U+232B)，四个假键盘里的这两个键帽改由系统符号字体回退渲染，形状略有不同，不影响可读性。
+- 上述为**抽样**核对（每章 1 个时间点 + Ch.8 定点复查），不等于 CLI 的全帧布局校验；正式导出前建议再跑一次 `check --samples 25 --at-transitions`。
 
 ### 头像
 
@@ -248,7 +260,9 @@ ffprobe -v error -show_entries stream=codec_name,codec_type,width,height,avg_fra
 ## 素材与授权
 
 - **设计来源**：Figma 文件 *Yeema Design Tokens*（file `an1HkDGtEQctMpe3MwNcsb`，Page 1）。关键节点：`537:1071` Home Ready、`537:1074` talk/texting、`537:3337` 任务状态卡、`715:4937` 机器状态 / workbench。
-- **字体**：`SF-Pro-ch1.woff2`、`Inter-ch1.woff2` 等为本地字体文件。Inter 为 SIL OFL 1.1；**SF Pro 是 Apple 的授权字体**，公开分发前请自行确认许可范围，或替换为可再分发的等宽/无衬线替代字体后重新排版。
+- **字体**：正文 **MiSans**（小米出品，官方许可允许免费商用，但不得单独售卖字体文件）、标题 **Inter**（SIL OFL 1.1），都以本地文件形式随项目提供。仓库已不含 SF Pro：它是 Apple 的授权字体，不适合公开分发。
+- 若某章需要改回 SF Pro，把 `assets/fonts/` 里的 MiSans 换成 SF Pro 并恢复对应 `@font-face` 即可；注意那样就不能公开发布该字体文件。
+- 交接包里的 `ASSET-MANIFEST.json` 记录的是原交付时的素材哈希，其中两条字体记录（`SF-Pro-ch1.woff2`）已随本次替换失效，其余素材不受影响。
 - **音效**：来源、加工记录与哈希见各项目 `assets/sfx/CREDITS.md` 与 `sources.json`。研磨、萃取、排渣、复位、水流、蒸汽均为**示意素材，不是 Yeema 真机录音**。
 - **品牌素材**：Coffee Buddy / Yeema / Yeema One 的头像、图标、文案与视觉资产归权利人所有。本仓库是制作存档；**对外发布、商用或转授权请先取得相应授权**（`coffee-buddy-handoff/README.md` 第 8 节有同样的提醒）。
 
