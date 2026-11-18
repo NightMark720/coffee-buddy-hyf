@@ -208,7 +208,7 @@ ffprobe -v error -show_entries stream=codec_name,codec_type,width,height,avg_fra
 
 全仓库把正文 **SF Pro 换成 MiSans**，标题字体 Inter 不变。
 
-- 7 个字体目录（6 章 + 交接包 `reference-ch6`）同步替换，`SF-Pro-ch1.woff2` 已全部删除，仓库不再分发 SF Pro。
+- 7 个字体目录（6 章 + 交接包 `reference-ch6`）同步替换；`SF-Pro-ch1.woff2` 与两处未被引用的整包 `SF-Pro.ttf` 共 9 个文件、约 18 MB 已删除，仓库不再分发 SF Pro。
 - `@font-face` 由单个可变字体改为 6 档静态字重，文件逐档子集化。
 - 版式核对：按同一时间点重拍对比，Ch.1 / 4 / 6 / 7 的换行、卡高、间距与替换前一致。
 - Ch.8 有一处需要收紧：MiSans 略宽，配方页 `low-pressure pre-infusion → 9 bar` 原本单行、替换后折成两行。把 `.data-row` 标签列 83px → 76px、数值加 `letter-spacing:-.12px` 后恢复单行。
