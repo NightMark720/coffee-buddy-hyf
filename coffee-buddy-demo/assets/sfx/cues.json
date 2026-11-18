@@ -1,0 +1,353 @@
+[
+  {
+    "id": "sfx-mic",
+    "asset": "assets/sfx/tap.wav",
+    "start": 2.2,
+    "duration": 0.18,
+    "volume": 0.22,
+    "label": "Mic press",
+    "track": 1
+  },
+  {
+    "id": "sfx-listening-1",
+    "asset": "assets/sfx/listening.wav",
+    "start": 2.5,
+    "duration": 0.32,
+    "volume": 0.1,
+    "label": "Listening ripple 1",
+    "track": 1
+  },
+  {
+    "id": "sfx-listening-2",
+    "asset": "assets/sfx/listening.wav",
+    "start": 3.2,
+    "duration": 0.32,
+    "volume": 0.1,
+    "label": "Listening ripple 2",
+    "track": 1
+  },
+  {
+    "id": "sfx-listening-3",
+    "asset": "assets/sfx/listening.wav",
+    "start": 3.9,
+    "duration": 0.32,
+    "volume": 0.1,
+    "label": "Listening ripple 3",
+    "track": 1
+  },
+  {
+    "id": "sfx-voice-send",
+    "asset": "assets/sfx/pop.wav",
+    "start": 5.3,
+    "duration": 0.3,
+    "volume": 0.18,
+    "label": "Send voice message",
+    "track": 2
+  },
+  {
+    "id": "sfx-home-slide",
+    "asset": "assets/sfx/swipe.wav",
+    "start": 5.3,
+    "duration": 0.379979,
+    "volume": 0.13,
+    "label": "Home to conversation",
+    "track": 1
+  },
+  {
+    "id": "sfx-taste-drop-1",
+    "asset": "assets/sfx/drop-high.wav",
+    "start": 5.9,
+    "duration": 0.38,
+    "volume": 0.16,
+    "label": "Taste drop 1",
+    "track": 1
+  },
+  {
+    "id": "sfx-taste-drop-2",
+    "asset": "assets/sfx/drop-mid.wav",
+    "start": 6.25,
+    "duration": 0.38,
+    "volume": 0.16,
+    "label": "Taste drop 2",
+    "track": 2
+  },
+  {
+    "id": "sfx-taste-drop-3",
+    "asset": "assets/sfx/drop-low.wav",
+    "start": 6.6,
+    "duration": 0.38,
+    "volume": 0.16,
+    "label": "Taste drop 3",
+    "track": 1
+  },
+  {
+    "id": "sfx-understanding",
+    "asset": "assets/sfx/tap.wav",
+    "start": 7.1,
+    "duration": 0.18,
+    "volume": 0.1,
+    "label": "Taste understood",
+    "track": 1
+  },
+  {
+    "id": "sfx-taste-tag-1",
+    "asset": "assets/sfx/pop.wav",
+    "start": 7.38,
+    "duration": 0.3,
+    "volume": 0.12,
+    "label": "Taste tag 1",
+    "track": 1
+  },
+  {
+    "id": "sfx-taste-tag-2",
+    "asset": "assets/sfx/pop.wav",
+    "start": 7.5,
+    "duration": 0.3,
+    "volume": 0.12,
+    "label": "Taste tag 2",
+    "track": 2
+  },
+  {
+    "id": "sfx-taste-tag-3",
+    "asset": "assets/sfx/pop.wav",
+    "start": 7.62,
+    "duration": 0.3,
+    "volume": 0.12,
+    "label": "Taste tag 3",
+    "track": 3
+  },
+  {
+    "id": "sfx-recommendation",
+    "asset": "assets/sfx/tap.wav",
+    "start": 9.0,
+    "duration": 0.18,
+    "volume": 0.16,
+    "label": "Recommendation card settles",
+    "track": 1
+  },
+  {
+    "id": "sfx-keyboard-open",
+    "asset": "assets/sfx/swipe.wav",
+    "start": 10.5,
+    "duration": 0.379979,
+    "volume": 0.11,
+    "label": "Keyboard opens",
+    "track": 1
+  },
+  {
+    "id": "sfx-key-1",
+    "asset": "assets/sfx/key.wav",
+    "start": 10.83,
+    "duration": 0.072,
+    "volume": 0.1,
+    "label": "Type a",
+    "track": 2
+  },
+  {
+    "id": "sfx-key-2",
+    "asset": "assets/sfx/key.wav",
+    "start": 10.896667,
+    "duration": 0.072,
+    "volume": 0.075,
+    "label": "Type space",
+    "track": 1
+  },
+  {
+    "id": "sfx-key-3",
+    "asset": "assets/sfx/key.wav",
+    "start": 10.963333,
+    "duration": 0.072,
+    "volume": 0.1,
+    "label": "Type b",
+    "track": 2
+  },
+  {
+    "id": "sfx-key-4",
+    "asset": "assets/sfx/key.wav",
+    "start": 11.03,
+    "duration": 0.072,
+    "volume": 0.1,
+    "label": "Type i",
+    "track": 1
+  },
+  {
+    "id": "sfx-key-5",
+    "asset": "assets/sfx/key.wav",
+    "start": 11.096667,
+    "duration": 0.072,
+    "volume": 0.1,
+    "label": "Type t",
+    "track": 2
+  },
+  {
+    "id": "sfx-key-6",
+    "asset": "assets/sfx/key.wav",
+    "start": 11.163333,
+    "duration": 0.072,
+    "volume": 0.075,
+    "label": "Type space",
+    "track": 1
+  },
+  {
+    "id": "sfx-key-7",
+    "asset": "assets/sfx/key.wav",
+    "start": 11.23,
+    "duration": 0.072,
+    "volume": 0.1,
+    "label": "Type c",
+    "track": 2
+  },
+  {
+    "id": "sfx-key-8",
+    "asset": "assets/sfx/key.wav",
+    "start": 11.296667,
+    "duration": 0.072,
+    "volume": 0.1,
+    "label": "Type o",
+    "track": 1
+  },
+  {
+    "id": "sfx-key-9",
+    "asset": "assets/sfx/key.wav",
+    "start": 11.363333,
+    "duration": 0.072,
+    "volume": 0.1,
+    "label": "Type o",
+    "track": 2
+  },
+  {
+    "id": "sfx-key-10",
+    "asset": "assets/sfx/key.wav",
+    "start": 11.43,
+    "duration": 0.072,
+    "volume": 0.1,
+    "label": "Type l",
+    "track": 1
+  },
+  {
+    "id": "sfx-key-11",
+    "asset": "assets/sfx/key.wav",
+    "start": 11.496667,
+    "duration": 0.072,
+    "volume": 0.1,
+    "label": "Type e",
+    "track": 2
+  },
+  {
+    "id": "sfx-key-12",
+    "asset": "assets/sfx/key.wav",
+    "start": 11.563333,
+    "duration": 0.072,
+    "volume": 0.1,
+    "label": "Type r",
+    "track": 1
+  },
+  {
+    "id": "sfx-text-send",
+    "asset": "assets/sfx/pop.wav",
+    "start": 11.8,
+    "duration": 0.3,
+    "volume": 0.18,
+    "label": "Send a bit cooler",
+    "track": 2
+  },
+  {
+    "id": "sfx-keyboard-close",
+    "asset": "assets/sfx/swipe.wav",
+    "start": 11.8,
+    "duration": 0.379979,
+    "volume": 0.09,
+    "label": "Keyboard closes",
+    "track": 1
+  },
+  {
+    "id": "sfx-temperature",
+    "asset": "assets/sfx/parameter.wav",
+    "start": 12.55,
+    "duration": 1.299979,
+    "volume": 0.22,
+    "label": "88\u00b0C update",
+    "track": 1
+  },
+  {
+    "id": "sfx-drink-confirm",
+    "asset": "assets/sfx/tap.wav",
+    "start": 14.2,
+    "duration": 0.18,
+    "volume": 0.22,
+    "label": "Confirm drink",
+    "track": 1
+  },
+  {
+    "id": "sfx-cup-confirm",
+    "asset": "assets/sfx/tap.wav",
+    "start": 16.2,
+    "duration": 0.18,
+    "volume": 0.23,
+    "label": "Confirm cup in place",
+    "track": 1
+  },
+  {
+    "id": "sfx-grinding",
+    "asset": "assets/sfx/grinding-demo.wav",
+    "start": 16.6,
+    "duration": 0.9,
+    "volume": 0.18,
+    "label": "Grinding \u2014 demo texture",
+    "track": 1
+  },
+  {
+    "id": "sfx-extraction",
+    "asset": "assets/sfx/extraction-demo.wav",
+    "start": 17.5,
+    "duration": 1.9,
+    "volume": 0.26,
+    "label": "Extraction \u2014 demo texture",
+    "track": 1
+  },
+  {
+    "id": "sfx-disposing",
+    "asset": "assets/sfx/dispose-demo.wav",
+    "start": 19.4,
+    "duration": 0.48,
+    "volume": 0.18,
+    "label": "Disposing \u2014 demo texture",
+    "track": 1
+  },
+  {
+    "id": "sfx-reset",
+    "asset": "assets/sfx/reset-demo.wav",
+    "start": 20.0,
+    "duration": 0.6,
+    "volume": 0.11,
+    "label": "Resetting \u2014 demo texture",
+    "track": 1
+  },
+  {
+    "id": "sfx-complete",
+    "asset": "assets/sfx/complete.wav",
+    "start": 20.6,
+    "duration": 1.88,
+    "volume": 0.28,
+    "label": "Coffee ready",
+    "track": 1
+  },
+  {
+    "id": "sfx-feedback-save",
+    "asset": "assets/sfx/tap.wav",
+    "start": 22.0,
+    "duration": 0.18,
+    "volume": 0.13,
+    "label": "Save Just right",
+    "track": 2
+  },
+  {
+    "id": "sfx-steam",
+    "asset": "assets/sfx/steam-demo.wav",
+    "start": 24.0,
+    "duration": 0.68,
+    "volume": 0.07,
+    "label": "Steam \u2014 demo texture",
+    "track": 1
+  }
+]

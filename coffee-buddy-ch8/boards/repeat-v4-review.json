@@ -1,0 +1,274 @@
+{
+  "chapter": 8,
+  "revision": 4,
+  "stage": "dynamic-preview-awaiting-user-approval",
+  "change": "Complete 4-second second brew, followed by a 1.4-second final Done hold.",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds": 34.4,
+    "frames": 1032
+  },
+  "second_brew_stages": [
+    {
+      "start": 29,
+      "end": 29.9,
+      "name": "Grinding"
+    },
+    {
+      "start": 29.9,
+      "end": 31.7,
+      "name": "Extraction / milk"
+    },
+    {
+      "start": 31.7,
+      "end": 32.3,
+      "name": "Disposing"
+    },
+    {
+      "start": 32.3,
+      "end": 33,
+      "name": "Resetting"
+    },
+    {
+      "start": 33,
+      "end": 34.4,
+      "name": "Done / final hold"
+    }
+  ],
+  "checks": {
+    "lint": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    },
+    "runtime": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    },
+    "layout": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    },
+    "contrast": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    }
+  },
+  "layout_samples": 554,
+  "seek_and_stages": {
+    "stages": [
+      {
+        "time": 29.4,
+        "name": "grinding",
+        "status": "Brewing",
+        "nodes": [
+          {
+            "text": "1",
+            "color": "rgb(255, 126, 46)"
+          },
+          {
+            "text": "2",
+            "color": "rgb(245, 243, 238)"
+          },
+          {
+            "text": "3",
+            "color": "rgb(245, 243, 238)"
+          }
+        ],
+        "labels": [
+          "Grinding",
+          "Extraction",
+          "Disposing"
+        ],
+        "milkOpacity": "0",
+        "stopPresent": true,
+        "cardFullyVisible": true,
+        "card": {
+          "x": 170.38168334960938,
+          "y": 516.6412353515625,
+          "width": 871.14501953125,
+          "height": 744.73291015625
+        }
+      },
+      {
+        "time": 30.8,
+        "name": "extraction",
+        "status": "Brewing",
+        "nodes": [
+          {
+            "text": "✓",
+            "color": "rgb(23, 23, 21)"
+          },
+          {
+            "text": "2",
+            "color": "rgb(255, 126, 46)"
+          },
+          {
+            "text": "3",
+            "color": "rgb(245, 243, 238)"
+          }
+        ],
+        "labels": [
+          "Grinding",
+          "Extraction",
+          "Disposing"
+        ],
+        "milkOpacity": "1",
+        "stopPresent": true,
+        "cardFullyVisible": true,
+        "card": {
+          "x": 170.38168334960938,
+          "y": 516.6412353515625,
+          "width": 871.14501953125,
+          "height": 744.73291015625
+        }
+      },
+      {
+        "time": 32,
+        "name": "disposing",
+        "status": "Brewing",
+        "nodes": [
+          {
+            "text": "✓",
+            "color": "rgb(23, 23, 21)"
+          },
+          {
+            "text": "✓",
+            "color": "rgb(23, 23, 21)"
+          },
+          {
+            "text": "3",
+            "color": "rgb(255, 126, 46)"
+          }
+        ],
+        "labels": [
+          "Grinding",
+          "Extraction",
+          "Disposing"
+        ],
+        "milkOpacity": "0",
+        "stopPresent": true,
+        "cardFullyVisible": true,
+        "card": {
+          "x": 170.38168334960938,
+          "y": 516.6412353515625,
+          "width": 871.14501953125,
+          "height": 744.73291015625
+        }
+      },
+      {
+        "time": 32.6,
+        "name": "resetting",
+        "status": "Resetting",
+        "nodes": [
+          {
+            "text": "✓",
+            "color": "rgb(23, 23, 21)"
+          },
+          {
+            "text": "✓",
+            "color": "rgb(23, 23, 21)"
+          },
+          {
+            "text": "3",
+            "color": "rgb(255, 126, 46)"
+          }
+        ],
+        "labels": [
+          "Grinding",
+          "Extraction",
+          "Resetting"
+        ],
+        "milkOpacity": "0",
+        "stopPresent": true,
+        "cardFullyVisible": true,
+        "card": {
+          "x": 170.38168334960938,
+          "y": 516.6412353515625,
+          "width": 871.14501953125,
+          "height": 744.73291015625
+        }
+      },
+      {
+        "time": 33.7,
+        "name": "done",
+        "status": "Done",
+        "nodes": [],
+        "labels": [],
+        "milkOpacity": null,
+        "stopPresent": false,
+        "cardFullyVisible": true,
+        "card": {
+          "x": 170.38168334960938,
+          "y": 516.6412353515625,
+          "width": 871.14501953125,
+          "height": 412.2137451171875
+        }
+      },
+      {
+        "time": 34.366666667,
+        "name": "end",
+        "status": "Done",
+        "nodes": [],
+        "labels": [],
+        "milkOpacity": null,
+        "stopPresent": false,
+        "cardFullyVisible": true,
+        "card": {
+          "x": 170.38168334960938,
+          "y": 516.6412353515625,
+          "width": 871.14501953125,
+          "height": 412.2137451171875
+        }
+      }
+    ],
+    "audit": {
+      "duration": 34.4,
+      "fps": 30,
+      "frames": 1032,
+      "reverseFrames": 1032,
+      "randomRestarts": 20,
+      "differenceCount": 0,
+      "differences": [],
+      "audioWithinDuration": true,
+      "secondBrewAudio": [
+        {
+          "src": "assets/sfx/extraction-demo.wav",
+          "start": 29.9,
+          "duration": 1.65,
+          "volume": 0.09
+        },
+        {
+          "src": "assets/sfx/steam-demo.wav",
+          "start": 30.05,
+          "duration": 0.68,
+          "volume": 0.07
+        },
+        {
+          "src": "assets/sfx/rinse-illustrative.wav",
+          "start": 31.7,
+          "duration": 1.15,
+          "volume": 0.08
+        },
+        {
+          "src": "assets/sfx/brew-complete.wav",
+          "start": 33,
+          "duration": 0.4,
+          "volume": 0.13
+        }
+      ]
+    }
+  },
+  "earlier_motion_unchanged": true,
+  "earlier_audio_unchanged": true,
+  "mp4_exported": false
+}

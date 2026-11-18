@@ -1,0 +1,38 @@
+{
+  "cli_version": "0.8.180",
+  "ok": true,
+  "checks": {
+    "lint": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    },
+    "runtime": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    },
+    "layout": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 7
+    },
+    "motion": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0,
+      "enabled": false
+    },
+    "contrast": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    }
+  },
+  "notes": "7 layout info findings are transient scroll occlusion candidates; settled frames and transition sheets were reviewed. No errors or warnings. Motion assertions were disabled; the motion section is not evidence of an assertion audit. Separate full-frame overlap and seek checks are recorded in ch6-layout-audit.json."
+}

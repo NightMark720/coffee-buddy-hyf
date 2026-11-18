@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Coffee Buddy | Ch.4 关键画面 v1</title>
+  <style>
+    @font-face{font-family:'SF Pro';src:url('assets/fonts/SF-Pro-ch1.woff2') format('woff2');font-weight:100 900;font-display:block}
+    @font-face{font-family:Inter;src:url('assets/fonts/Inter-ch1.woff2') format('woff2');font-weight:100 900;font-display:block}
+    :root{--bg:#fcfbf9;--card:#f5f3ee;--line:#e7e3da;--ink:#171715;--muted:#6f706a;--orange:#ff7e2e;--care:#9a6700;--green:#2f7d5b}
+    *{box-sizing:border-box;letter-spacing:0}html{background:#f1f3f2}body{margin:0;color:var(--ink);font-family:'SF Pro',Arial,sans-serif}h1,h2,h3,p,figure{margin:0}
+    .sheet{max-width:1300px;margin:0 auto;padding:32px 28px 40px}.sheet-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;border-bottom:1px solid #d7dcda;padding-bottom:22px;margin-bottom:24px}.kicker{font-size:12px;color:var(--green);margin-bottom:9px;font-weight:650}.sheet h1{font-family:Inter,'SF Pro',sans-serif;font-size:32px;line-height:40px;font-weight:650}.version{color:#76827a;font-size:18px;font-weight:400}.dek{font-size:14px;line-height:22px;color:#616862;margin-top:8px}.spec{font-size:12px;line-height:21px;text-align:right;color:#616862;flex:0 0 auto}
+    .frame-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px}.frame{min-width:0;scroll-margin-top:20px}.preview{width:100%;aspect-ratio:9/16;overflow:hidden;position:relative;container-type:inline-size;background:var(--bg);outline:1px solid #d9ddda}.screen{position:absolute;width:393px;height:698.666667px;transform:scale(calc(100cqw / 393px));transform-origin:0 0;background:var(--bg);overflow:hidden}
+    .statusbar{position:absolute;top:24px;left:54px;right:36px;height:21px;display:flex;align-items:center;justify-content:space-between;font-size:18px;font-weight:600}.statusbar img{width:80px;height:20px;object-fit:contain}.profile{position:absolute;top:60px;right:18px;width:48px;height:48px}.avatar{width:36px;height:36px;flex:0 0 36px;display:block}.home-indicator{position:absolute;width:144px;height:5px;left:124.5px;bottom:9px;border-radius:999px;background:var(--ink);z-index:8}
+    .chat{position:absolute;left:14px;right:14px;top:128px;bottom:108px;overflow:hidden}.greeting{padding:0 6px;font-family:Inter,sans-serif;font-size:32px;line-height:40px;font-weight:600}.greeting span{display:block}.greeting .question{max-width:353px}
+    .exception{width:353px;margin:20px auto 0;padding:18px;border:1px solid #f1bd95;border-radius:20px;background:var(--card)}.exception-heading{display:flex;align-items:center;gap:10px}.attention{width:22px;height:22px;flex:0 0 22px;border:1.5px solid var(--orange);border-radius:50%;color:var(--care);font-size:14px;line-height:19px;font-weight:600;text-align:center}.exception h2{font-family:Inter,sans-serif;font-size:20px;line-height:24px;font-weight:600}.exception p{font-size:15px;line-height:22px;color:var(--muted);margin-top:10px}.exception-action{height:42px;border-radius:23px;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:14px;line-height:20px;font-weight:600;margin-top:16px}
+    .composer{position:absolute;bottom:44px;left:14px;right:14px;height:58px;border-radius:26px;border:1px solid var(--line);background:#fffffff5;box-shadow:0 8px 28px #28241c1f;display:flex;align-items:center;gap:10px;padding:6px 6px 6px 17px;z-index:3}.composer p{flex:1;min-width:0;font-size:12px;line-height:18px;color:var(--muted)}.microphone{width:44px;height:44px;flex:0 0 44px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center}.microphone img{width:19px;height:19px}
+    .typing .chat{bottom:300px}.typing .exception{margin-top:20px}.typing .composer{bottom:211px;height:82px;align-items:flex-end;padding-top:14px;padding-bottom:14px}.typing .composer p{font-size:15px;line-height:22px;color:var(--ink);align-self:center}.caret{display:inline-block;width:1px;height:16px;background:var(--orange);vertical-align:-2px;margin-left:2px}.send{width:44px;height:44px;flex:0 0 44px;background:var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center}.send svg{width:22px;height:22px;color:var(--bg)}
+    .keyboard{position:absolute;left:0;right:0;bottom:0;height:202px;padding:13px 5px 24px;background:#d5d7dc;border-top:1px solid #c8c9cf}.key-row{display:flex;gap:5px;justify-content:center;margin-bottom:7px}.key{height:31px;flex:1;max-width:34px;border-radius:5px;background:#fff;box-shadow:0 1px 0 #8b8d94;font-size:20px;display:flex;align-items:center;justify-content:center}.key-row.inset{padding:0 17px}.key.special{background:#b9bdc6;max-width:46px;flex:1.4;font-size:15px}.key.space{max-width:none;flex:5.6;font-size:13px}.key.return{max-width:none;flex:2;font-size:13px;background:#b9bdc6}.typing .home-indicator{bottom:9px}
+    .user-row{display:flex;align-items:flex-end;justify-content:flex-end;gap:12px}.bubble{max-width:305px;min-width:0;padding:12px 14px;border-radius:20px 20px 6px 20px;background:var(--ink);color:white;font-size:15px;line-height:22px}.assistant-row{display:flex;gap:12px;align-items:flex-start;margin-top:16px}.assistant-bubble{padding:11px 13px;background:white;border:1px solid var(--line);border-radius:20px 20px 20px 6px;max-width:317px;font-size:15px;line-height:22px}.understanding{background:var(--card);font-size:14px;line-height:20px}.assistant-row.first{margin-top:0}
+    .fleet{width:353px;margin:16px auto 0;padding:17px 17px 10px;border:1px solid var(--line);border-radius:20px;background:var(--card)}.fleet-head{display:flex;align-items:center;justify-content:space-between;gap:10px;height:24px;margin-bottom:9px}.fleet h2{font-family:Inter,sans-serif;font-size:20px;line-height:24px;font-weight:600}.online{display:flex;align-items:center;gap:5px;color:var(--green);font-size:12px;line-height:18px;white-space:nowrap}.online i{width:6px;height:6px;background:var(--green);border-radius:50%}.machine-row{height:64px;display:flex;align-items:center;gap:14px;border-top:1px solid var(--line)}.machine-row.scheduled{height:86px}.machine-copy{flex:1;min-width:0}.machine-name{font-size:17px;line-height:22px;font-weight:600}.machine-state{font-size:13px;line-height:18px;margin-top:1px;color:var(--green)}.machine-state.care,.machine-state.working{color:var(--care)}.appointment{display:inline-flex;margin-top:5px;padding:2px 8px;font-size:11px;line-height:16px;border:1px solid #e2c28e;border-radius:999px;color:var(--care);background:#fff8ed;white-space:nowrap}
+    .status-ring{position:relative;display:flex;align-items:center;justify-content:center;width:40px;height:40px;flex:0 0 40px;border:2px solid var(--green);border-radius:50%;color:var(--green)}.status-ring.ready:after{content:'';width:7px;height:7px;border-radius:50%;background:var(--green)}.status-ring.care{border-color:var(--orange);color:var(--care)}.status-ring.care:after{content:'!';font-size:18px;line-height:20px;font-weight:600}.status-ring.brewing{border:0}.brewing svg{width:40px;height:40px;transform:rotate(-90deg)}.brewing .track{stroke:#e7e3da}.brewing .progress{stroke:var(--orange);stroke-linecap:round;stroke-dasharray:70.12 113.1}.brewing:after{content:'';position:absolute;inset:16px;border-radius:50%;background:var(--orange)}.status-ring.done svg{width:21px;height:21px}.status-ring.cleaning{border-color:var(--orange);overflow:hidden;background:#fffaf4}.liquid{position:absolute;left:0;right:0;bottom:0;height:24px;background:#ffca9e}.liquid:before{content:'';position:absolute;left:-6px;right:-6px;height:8px;top:-4px;border-radius:50%;background:#ffca9e;transform:rotate(-6deg)}.water-bubble{position:absolute;width:5px;height:5px;border:1px solid #fff8ef;border-radius:50%;background:#ffffff50;left:8px;bottom:7px}.water-bubble:nth-of-type(2){left:22px;bottom:13px;width:4px;height:4px}.water-bubble:nth-of-type(3){left:16px;bottom:21px;width:3px;height:3px}.final-chat .fleet{margin-top:0}.summary{margin-top:16px}
+    .frame-label{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-top:13px;font-size:14px;line-height:21px;font-weight:650}.frame-time{font-size:12px;font-weight:400;color:#68736b;white-space:nowrap}.frame-note{font-size:12px;line-height:19px;color:#68736b;margin-top:5px}.sheet-footer{margin-top:30px;border-top:1px solid #d7dcda;padding-top:17px;display:grid;grid-template-columns:1.25fr 1fr;gap:32px;font-size:12px;line-height:20px;color:#68736b}.sheet-footer strong{color:var(--ink);font-weight:600}.swatches{display:flex;gap:8px;margin-top:8px}.swatches i{display:block;width:20px;height:20px;border:1px solid #d7dcda;border-radius:3px}
+    @media(max-width:1000px){.frame-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sheet-head{align-items:flex-start}.sheet h1{font-size:28px;line-height:36px}}
+    @media(max-width:620px){.sheet{padding:23px 18px 28px}.sheet-head{display:block;padding-bottom:18px}.spec{text-align:left;margin-top:12px}.frame-grid{grid-template-columns:1fr;gap:26px}.sheet h1{font-size:25px;line-height:32px}.sheet-footer{grid-template-columns:1fr;gap:15px}}
+  </style>
+</head>
+<body>
+<main class="sheet">
+  <header class="sheet-head"><div><p class="kicker">COFFEE BUDDY × YEEMA ONE · CH.4</p><h1>One app, one fleet <span class="version">v1</span></h1><p class="dek">关键画面预览：一句对话，安排两项维护，看清四台机器。</p></div><p class="spec">1080 × 1920 · 22 秒 · 30 fps<br>6 个关键时刻 · 静态画面审核</p></header>
+  <section class="frame-grid" aria-label="Ch.4 key frames">
+    <figure class="frame" id="frame-01">
+      <div class="preview"><div class="screen">
+        <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar">
+        <div class="chat"><h2 class="greeting"><span>Hi, Alex</span><span class="question">What would you like today?</span></h2>
+          <section class="exception"><div class="exception-heading"><span class="attention" aria-hidden="true">!</span><h2>Lobby-2 needs descaling</h2></div><p>Water hardness has reached the cleaning threshold.</p><div class="exception-action">View machine</div></section>
+        </div>
+        <div class="composer"><p>What would you like? Tell Yeema</p><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home-indicator"></div>
+      </div></div>
+      <figcaption><div class="frame-label"><span>01 · 机器主动报告</span><span class="frame-time">2.7 秒</span></div><p class="frame-note">异常卡先进入会话，橙色边框轻呼吸。卡内只保留 View machine 一个操作。</p></figcaption>
+    </figure>
+    <figure class="frame" id="frame-02">
+      <div class="preview"><div class="screen typing">
+        <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar">
+        <div class="chat"><section class="exception"><div class="exception-heading"><span class="attention" aria-hidden="true">!</span><h2>Lobby-2 needs descaling</h2></div><p>Water hardness has reached the cleaning threshold.</p><div class="exception-action">View machine</div></section></div>
+        <div class="composer"><p>Descale Lobby-2 at 2 AM, and deep clean Lobby-1 now.<span class="caret"></span></p><div class="send" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="keyboard" aria-label="On-screen keyboard"><div class="key-row"><span class="key">q</span><span class="key">w</span><span class="key">e</span><span class="key">r</span><span class="key">t</span><span class="key">y</span><span class="key">u</span><span class="key">i</span><span class="key">o</span><span class="key">p</span></div><div class="key-row inset"><span class="key">a</span><span class="key">s</span><span class="key">d</span><span class="key">f</span><span class="key">g</span><span class="key">h</span><span class="key">j</span><span class="key">k</span><span class="key">l</span></div><div class="key-row"><span class="key special">⇧</span><span class="key">z</span><span class="key">x</span><span class="key">c</span><span class="key">v</span><span class="key">b</span><span class="key">n</span><span class="key">m</span><span class="key special">⌫</span></div><div class="key-row"><span class="key special">123</span><span class="key space">space</span><span class="key return">return</span></div></div><div class="home-indicator"></div>
+      </div></div>
+      <figcaption><div class="frame-label"><span>02 · 一句安排两项维护</span><span class="frame-time">5.5 秒</span></div><p class="frame-note">问候随键盘上滚，异常卡保持可见。指令同时明确“现在清洁”和“凌晨除垢”。</p></figcaption>
+    </figure>
+    <figure class="frame" id="frame-03">
+      <div class="preview"><div class="screen">
+        <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar">
+        <div class="chat"><div class="user-row"><div class="bubble">Descale Lobby-2 at 2 AM, and deep clean Lobby-1 now.</div><img class="avatar" src="assets/avatars/user-cup-chat.svg" alt="User"></div><div class="assistant-row"><img class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><div class="assistant-bubble understanding">Deep cleaning Lobby-1 now ·<br>Descaling Lobby-2 at 02:00</div></div></div>
+        <div class="composer"><p>What would you like? Tell Yeema</p><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home-indicator"></div>
+      </div></div>
+      <figcaption><div class="frame-label"><span>03 · 核对机器与时间</span><span class="frame-time">8.5 秒</span></div><p class="frame-note">三滴解析结束后，理解 pill 落定。两个任务保持在同一块中，方便快速核对。</p></figcaption>
+    </figure>
+    <figure class="frame" id="frame-04">
+      <div class="preview"><div class="screen">
+        <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar">
+        <div class="chat"><div class="assistant-row first"><img class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><div class="assistant-bubble understanding">Deep cleaning Lobby-1 now ·<br>Descaling Lobby-2 at 02:00</div></div>
+          <section class="fleet"><header class="fleet-head"><h2>Your machines</h2><span class="online"><i></i>4 online</span></header>
+            <div class="machine-row" data-machine="Lobby-1"><span class="status-ring ready" aria-label="Ready"></span><div class="machine-copy"><h3 class="machine-name">Lobby-1</h3><p class="machine-state">Ready</p></div></div>
+            <div class="machine-row" data-machine="Lobby-2"><span class="status-ring care" aria-label="Needs care"></span><div class="machine-copy"><h3 class="machine-name">Lobby-2</h3><p class="machine-state care">Needs care</p></div></div>
+            <div class="machine-row" data-machine="Lobby-3"><span class="status-ring brewing" aria-label="Brewing, 62 percent"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle class="track" cx="20" cy="20" r="18" stroke-width="2"/><circle class="progress" cx="20" cy="20" r="18" stroke-width="2"/></svg></span><div class="machine-copy"><h3 class="machine-name">Lobby-3</h3><p class="machine-state working">Brewing · 62%</p></div></div>
+            <div class="machine-row" data-machine="Pantry"><span class="status-ring ready" aria-label="Ready"></span><div class="machine-copy"><h3 class="machine-name">Pantry</h3><p class="machine-state">Ready</p></div></div>
+          </section>
+        </div>
+        <div class="composer"><p>What would you like? Tell Yeema</p><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home-indicator"></div>
+      </div></div>
+      <figcaption><div class="frame-label"><span>04 · 四机状态一屏尽览</span><span class="frame-time">11.7 秒</span></div><p class="frame-note">四行错开 0.25 秒落定。4 online 表示连接在线，各行单独显示工作和维护状态。</p></figcaption>
+    </figure>
+    <figure class="frame" id="frame-05">
+      <div class="preview"><div class="screen">
+        <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar">
+        <div class="chat"><div class="assistant-row first"><img class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><div class="assistant-bubble understanding">Deep cleaning Lobby-1 now ·<br>Descaling Lobby-2 at 02:00</div></div>
+          <section class="fleet"><header class="fleet-head"><h2>Your machines</h2><span class="online"><i></i>4 online</span></header>
+            <div class="machine-row" data-machine="Lobby-1"><span class="status-ring cleaning" aria-label="Deep cleaning"><span class="liquid"></span><i class="water-bubble"></i><i class="water-bubble"></i><i class="water-bubble"></i></span><div class="machine-copy"><h3 class="machine-name">Lobby-1</h3><p class="machine-state working">Deep cleaning</p></div></div>
+            <div class="machine-row scheduled" data-machine="Lobby-2"><span class="status-ring care" aria-label="Needs care"></span><div class="machine-copy"><h3 class="machine-name">Lobby-2</h3><p class="machine-state care">Needs care</p><span class="appointment">Descale · 02:00</span></div></div>
+            <div class="machine-row" data-machine="Lobby-3"><span class="status-ring brewing" aria-label="Brewing, 62 percent"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle class="track" cx="20" cy="20" r="18" stroke-width="2"/><circle class="progress" cx="20" cy="20" r="18" stroke-width="2"/></svg></span><div class="machine-copy"><h3 class="machine-name">Lobby-3</h3><p class="machine-state working">Brewing · 62%</p></div></div>
+            <div class="machine-row" data-machine="Pantry"><span class="status-ring ready" aria-label="Ready"></span><div class="machine-copy"><h3 class="machine-name">Pantry</h3><p class="machine-state">Ready</p></div></div>
+          </section>
+        </div>
+        <div class="composer"><p>What would you like? Tell Yeema</p><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home-indicator"></div>
+      </div></div>
+      <figcaption><div class="frame-label"><span>05 · 立即执行与凌晨预约</span><span class="frame-time">14.6 秒</span></div><p class="frame-note">清洁液体与气泡只在 Lobby-1 状态环内运动；Lobby-2 挂预约标签，Lobby-3 持续出杯。</p></figcaption>
+    </figure>
+    <figure class="frame" id="frame-06">
+      <div class="preview"><div class="screen">
+        <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar">
+        <div class="chat final-chat">
+          <section class="fleet"><header class="fleet-head"><h2>Your machines</h2><span class="online"><i></i>4 online</span></header>
+            <div class="machine-row" data-machine="Lobby-1"><span class="status-ring ready" aria-label="Ready"></span><div class="machine-copy"><h3 class="machine-name">Lobby-1</h3><p class="machine-state">Ready</p></div></div>
+            <div class="machine-row scheduled" data-machine="Lobby-2"><span class="status-ring care" aria-label="Needs care"></span><div class="machine-copy"><h3 class="machine-name">Lobby-2</h3><p class="machine-state care">Needs care</p><span class="appointment">Descale · 02:00</span></div></div>
+            <div class="machine-row" data-machine="Lobby-3"><span class="status-ring done" aria-label="Done"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="machine-copy"><h3 class="machine-name">Lobby-3</h3><p class="machine-state">Done</p></div></div>
+            <div class="machine-row" data-machine="Pantry"><span class="status-ring ready" aria-label="Ready"></span><div class="machine-copy"><h3 class="machine-name">Pantry</h3><p class="machine-state">Ready</p></div></div>
+          </section>
+          <div class="assistant-row summary"><img class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><div class="assistant-bubble">Done — Lobby-1 deep cleaned. Lobby-2 descales at 2 AM.</div></div>
+        </div>
+        <div class="composer"><p>What would you like? Tell Yeema</p><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home-indicator"></div>
+      </div></div>
+      <figcaption><div class="frame-label"><span>06 · 完成结果与待办分明</span><span class="frame-time">21.2 秒</span></div><p class="frame-note">Lobby-1、Lobby-3 转绿；Lobby-2 保留橙色提醒与预约。完整列表和汇总静止停留。</p></figcaption>
+    </figure>
+  </section>
+  <footer class="sheet-footer"><div><strong>一个持续的会话</strong><p>机器报告 → 用户指令 → 理解 pill → 四机列表 → 独立执行状态 → 汇总。旧消息随新内容上滚，全程留在 APP 聊天区。</p></div><div><strong>视觉与审核范围</strong><p>沿用 Figma 字体、卡片颜色与圆角，以及系列咖啡豆／咖啡杯头像。四机列表为新增扩展；此页是静态审核，动效、音效与视频导出在下一阶段。</p><div class="swatches"><i style="background:#fcfbf9"></i><i style="background:#f5f3ee"></i><i style="background:#171715"></i><i style="background:#ff7e2e"></i><i style="background:#2f7d5b"></i></div></div></footer>
+</main>
+</body>
+</html>

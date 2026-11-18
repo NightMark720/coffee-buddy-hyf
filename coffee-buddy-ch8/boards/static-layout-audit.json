@@ -1,0 +1,13 @@
+{
+  "stage": "static-keyframe-review",
+  "duration_seconds": 30.4,
+  "fps": 30,
+  "planned_frames": 912,
+  "keyframes": 15,
+  "layout_findings": [],
+  "fonts_loaded": true,
+  "images_loaded": true,
+  "animation_transition_seek_checks": "pending after keyframe approval",
+  "export": "not requested at this gate",
+  "copied_asset_hash_mismatches": []
+}

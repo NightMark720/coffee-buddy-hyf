@@ -1,0 +1,210 @@
+{
+  "chapter": 8,
+  "approved_revision": 5,
+  "export_version": 1,
+  "stage": "exported-and-verified",
+  "date": "2026-10-20",
+  "user_export_approval": "没问题，可以导出了",
+  "output_file": "coffee-buddy-ch8-final-v1.mp4",
+  "bytes": 3525693,
+  "sha256": "3e46960a17bcabec343abeba53b4571e45666b8ed2ede0f62bb37dd9c9775d82",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds": 34.4,
+    "frames": 1032,
+    "container": "mp4",
+    "video_codec": "H.264 High",
+    "pixel_format": "yuv420p",
+    "audio_codec": "AAC LC",
+    "audio_sample_rate": 48000,
+    "audio_channels": 2
+  },
+  "render": {
+    "hyperframes_version": "0.8.180",
+    "requested_quality": "delivery",
+    "capture": "screenshot",
+    "gpu": "hardware",
+    "render_exit_code": 0
+  },
+  "approved_source_unchanged": true,
+  "approved_source_sha256": {
+    "index.html": "2d2d5f0f5541325fd56156cf051e86178606368473103f08b94e1b27ba57c235",
+    "ui.js": "208bf7681873b301446b350ee9c75292df9950aa0babaf1ba735b16d42cd093f",
+    "ui.css": "0ab13a9db71869e3b61b0a71ef323172f3c63b0efb53a3f8f1fba6a5f452587e",
+    "motion.js": "45b56411776fef9dd415f233f27e5e5dbc8a6e4f7875c5a38c2c15adf2e44ae1",
+    "motion.css": "2b4e7896b9f1f6cb8179eda3aa32d427bde4c4a0a6059b43aef970cb8537e3ba"
+  },
+  "verification": {
+    "full_decode_passed": true,
+    "decode_errors": 0,
+    "encoded_frames_visually_reviewed": 25,
+    "visual_review_passed": true,
+    "reviewed_frames": [
+      {
+        "name": "opening",
+        "frame": 30,
+        "time_seconds": 1.0
+      },
+      {
+        "name": "transition-10.52",
+        "frame": 316,
+        "time_seconds": 10.533333333333333
+      },
+      {
+        "name": "first-grinding",
+        "frame": 324,
+        "time_seconds": 10.8
+      },
+      {
+        "name": "first-extraction",
+        "frame": 369,
+        "time_seconds": 12.3
+      },
+      {
+        "name": "first-resetting",
+        "frame": 423,
+        "time_seconds": 14.1
+      },
+      {
+        "name": "transition-14.53",
+        "frame": 436,
+        "time_seconds": 14.533333333333333
+      },
+      {
+        "name": "rating-initial",
+        "frame": 458,
+        "time_seconds": 15.266666666666667
+      },
+      {
+        "name": "rating-selected",
+        "frame": 474,
+        "time_seconds": 15.8
+      },
+      {
+        "name": "transition-16.19",
+        "frame": 486,
+        "time_seconds": 16.2
+      },
+      {
+        "name": "naming",
+        "frame": 513,
+        "time_seconds": 17.1
+      },
+      {
+        "name": "saved",
+        "frame": 570,
+        "time_seconds": 19.0
+      },
+      {
+        "name": "transition-19.99",
+        "frame": 600,
+        "time_seconds": 20.0
+      },
+      {
+        "name": "transition-20.4",
+        "frame": 612,
+        "time_seconds": 20.4
+      },
+      {
+        "name": "library",
+        "frame": 654,
+        "time_seconds": 21.8
+      },
+      {
+        "name": "recipe",
+        "frame": 756,
+        "time_seconds": 25.2
+      },
+      {
+        "name": "transition-26.9",
+        "frame": 807,
+        "time_seconds": 26.9
+      },
+      {
+        "name": "transition-27.5",
+        "frame": 825,
+        "time_seconds": 27.5
+      },
+      {
+        "name": "transition-29.08",
+        "frame": 872,
+        "time_seconds": 29.066666666666666
+      },
+      {
+        "name": "repeat-grinding",
+        "frame": 882,
+        "time_seconds": 29.4
+      },
+      {
+        "name": "repeat-extraction",
+        "frame": 924,
+        "time_seconds": 30.8
+      },
+      {
+        "name": "repeat-disposing",
+        "frame": 960,
+        "time_seconds": 32.0
+      },
+      {
+        "name": "repeat-resetting",
+        "frame": 978,
+        "time_seconds": 32.6
+      },
+      {
+        "name": "transition-33.08",
+        "frame": 992,
+        "time_seconds": 33.06666666666667
+      },
+      {
+        "name": "repeat-done",
+        "frame": 1011,
+        "time_seconds": 33.7
+      },
+      {
+        "name": "end",
+        "frame": 1031,
+        "time_seconds": 34.36666666666667
+      }
+    ],
+    "audio_present": true,
+    "audio_mean_dbfs": -47.2,
+    "audio_peak_dbfs": -23.8,
+    "audio_clipping_detected": false
+  },
+  "preview_validation": {
+    "layout_samples": 558,
+    "checks": {
+      "lint": {
+        "ok": true,
+        "errorCount": 0,
+        "warningCount": 0,
+        "infoCount": 0
+      },
+      "runtime": {
+        "ok": true,
+        "errorCount": 0,
+        "warningCount": 0,
+        "infoCount": 0
+      },
+      "layout": {
+        "ok": true,
+        "errorCount": 0,
+        "warningCount": 0,
+        "infoCount": 0
+      },
+      "contrast": {
+        "ok": true,
+        "errorCount": 0,
+        "warningCount": 0,
+        "infoCount": 0
+      }
+    },
+    "forward_frames": 1032,
+    "reverse_frames": 1032,
+    "random_restart_seeks": 20,
+    "state_differences": 0
+  },
+  "older_chapters_and_preview_outputs_preserved": true
+}

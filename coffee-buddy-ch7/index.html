@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>Coffee Buddy — Ch.7: Invented on the spot</title><script src="assets/gsap.min.js"></script><style>
+@font-face{font-family:'SF Pro';src:url('assets/fonts/SF-Pro-ch1.woff2') format('woff2');font-weight:100 900;font-display:block}@font-face{font-family:Inter;src:url('assets/fonts/Inter-ch1.woff2') format('woff2');font-weight:100 900;font-display:block}
+:root{--bg:#fcfbf9;--card:#f5f3ee;--line:#e7e3da;--ink:#171715;--muted:#6f706a;--orange:#ff7e2e;--green:#2f7d5b}*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:var(--bg)}body{font-family:'SF Pro',sans-serif;color:var(--ink)}h1,h2,p{margin:0}button{font:inherit;border:0;color:inherit;padding:0}#root{width:1080px;height:1920px;overflow:hidden;position:relative;background:var(--bg)}.app{position:relative;width:393px;height:698.666667px;transform:scale(2.748091603);transform-origin:0 0;overflow:hidden;background:var(--bg)}
+.statusbar{height:49px;padding:23px 35px 0 54px;display:flex;justify-content:space-between;font-size:17px;font-weight:600;position:relative;z-index:9}.statusbar img{width:81px;height:18px}.app-header{height:69px;padding:11px 18px 10px;display:flex;justify-content:flex-end;align-items:center;position:relative;z-index:9;background:var(--bg)}.profile{width:48px;height:48px}.home{position:absolute;inset:118px 0 100px;padding:0 12px;display:flex;flex-direction:column;gap:12px;z-index:2}.greeting{padding:0 8px 11px;min-height:136px}h1{font-size:38px;line-height:1.08;letter-spacing:-1.1px;font-weight:700;max-width:353px}.hi,.question{display:block}.hi{min-height:42px}.quick-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px 28px 16px;display:flex;flex-direction:column;gap:10px;min-height:211px}.eyebrow{font-family:Inter,sans-serif;font-size:10px;line-height:14px;letter-spacing:.4px;color:var(--muted);font-weight:500}.quick-card h2{font-family:Inter,sans-serif;font-size:27px;line-height:32px;letter-spacing:-.65px;font-weight:600}.quick-card p{font-size:12.5px;line-height:18px}.drink-options{display:flex;gap:9px;margin:1px -1px 0}.drink-options span{display:flex;align-items:center;justify-content:center;flex:1;height:30px;border-radius:20px;background:var(--orange);font-size:11px;font-weight:500;white-space:nowrap}.quick-actions{display:flex;gap:12px;margin-top:2px}.quick-actions button{height:38px;flex:1;border-radius:20px;background:#d9d4c9;font-size:12px}.quick-actions .primary{background:var(--ink);color:var(--card)}.home-info{display:grid;grid-template-columns:1fr 1fr;gap:24px}.mini-card{height:100px;border:1px solid var(--line);background:var(--card);border-radius:20px;padding:12px 16px;display:flex;flex-direction:column;justify-content:space-between;min-width:0;box-shadow:0 2px 4px #28241c0a}.mini-card h2{font-family:Inter,sans-serif;font-size:17px;line-height:22px;font-weight:600;letter-spacing:-.3px}.mini-card p{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ready{font-size:12px;color:var(--green);display:flex;gap:7px;align-items:center}.ready img{width:8px;height:8px}.mini-card .change{color:var(--ink)}.mini-card .bean-name{font-size:12px;color:var(--ink)}
+.ripple-layer{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;mix-blend-mode:multiply}.listening-ring{position:absolute;width:44px;height:44px;right:21px;bottom:50px;border-radius:50%;border:1px solid #c9c3b5;background:#e7e3da26}.chat-view{position:absolute;top:130px;left:14px;right:14px;bottom:108px;z-index:4;overflow:hidden}.chat-flow{width:365px;display:flex;flex-direction:column;gap:16px;padding-bottom:16px}.user-row{width:100%;display:flex;align-items:flex-end;justify-content:flex-end;gap:12px}.avatar{width:36px;height:36px;flex:0 0 36px}.bubble{border-radius:20px 20px 6px 20px;padding:12px 14px;font-size:15px;line-height:22px;max-width:305px;background:var(--ink);color:white}#voice-row{height:74px;flex:0 0 74px}.voice-bubble{width:305px;min-height:72px;display:flex;align-items:center;border:1px solid var(--line);background:white;color:var(--ink);box-shadow:0 6px 18px #28241c0a}.assistant-block{height:105px;flex:0 0 105px;position:relative}.assistant-row{display:flex;gap:12px;align-items:flex-start;width:100%}.assistant-bubble{border-radius:20px 20px 20px 6px;background:white;border:1px solid var(--line);padding:11px 13px;font-size:15px;line-height:22px;max-width:317px}.reading{position:absolute;inset:0;padding-left:48px;display:flex;flex-direction:column;gap:13px;font-size:13px;color:var(--muted)}.droplets{display:flex;gap:12px;height:30px;align-items:center;padding-left:8px}.drop{height:18px;width:13px;background:#d9d4c9;border-radius:60% 60% 60% 15%;display:block}.understanding{width:100%;display:flex;flex-direction:column;gap:10px}.taste-tags{display:flex;gap:7px;padding-left:48px}.taste-tag{display:block;position:relative;border-radius:999px;border:1px solid var(--line);padding:5px 8px;font-size:9.5px;color:var(--muted);white-space:nowrap}.aroma{position:absolute;left:50%;top:-3px;width:2px;height:6px;border-radius:100%;background:#d9d4c9}
+.match-card{background:var(--ink);color:var(--bg);border-radius:20px;padding:20px 22px;position:relative;width:353px;height:205px;flex:0 0 205px;overflow:hidden;margin:0 auto}.match-card .eyebrow{color:#b0b0a9}.match-title{font-family:Inter,sans-serif;font-size:27px;line-height:31px;letter-spacing:-.9px;font-weight:600;max-width:225px;margin-top:10px;position:relative;z-index:2}.match-desc{color:#ccc9c1;font-size:11px;line-height:17px;max-width:200px;margin-top:13px;position:relative;z-index:2}.bean-disc{position:absolute;right:-4px;top:15px;width:142px;height:142px;border-radius:50%;background:#292823;display:flex;align-items:center;justify-content:center}.bean-disc img{width:54px;height:54px}.match-chips{display:flex;gap:7px;position:absolute;left:22px;bottom:20px;right:15px;flex-wrap:wrap}.match-chips span{font-size:9px;line-height:13px;display:block;padding:5px 8px;border:1px solid #45443f;border-radius:999px;color:#d8d5cb}.match-chips #temp-chip{border-color:var(--orange);color:#ffc695}#cooler-row{height:52px;flex:0 0 52px}.adjusted{height:78px;flex:0 0 78px;align-items:center}.adjusted .assistant-bubble{max-width:276px}.confirm-row{height:44px;flex:0 0 44px;display:flex;justify-content:flex-end;padding-right:48px}.confirm{border:1px solid var(--line);padding:0 15px;height:44px;white-space:nowrap;font-size:13px;display:flex;align-items:center;justify-content:center;border-radius:999px;background:white}
+.task-card{position:relative;width:353px;height:304px;flex:0 0 304px;margin:0 auto;border-radius:20px;border:1px solid var(--line);background:var(--card);padding:18px;overflow:hidden}.task-head{height:43px;display:flex;justify-content:space-between;align-items:flex-start;gap:9px}.task-title{font-size:17px;line-height:23px;font-weight:700;letter-spacing:-.43px}.task-machine{font-size:10px;line-height:14px;color:var(--muted)}.task-status{font-size:10px;font-weight:600;border:1px solid #e7b18c;border-radius:999px;padding:5px 8px;background:#fff2e9;display:flex;gap:6px;align-items:center;white-space:nowrap}.status-dot{width:5px;height:5px;display:block;background:var(--orange);border-radius:50%}.cup-body{position:absolute;inset:80px 18px 18px;display:flex;flex-direction:column;justify-content:center;gap:12px}.cup-body h2{font-size:22px;line-height:28px;letter-spacing:-.4px;max-width:280px}.cup-body p{font-size:13px;line-height:19px;color:var(--muted)}.orange-cta{height:46px;border-radius:23px;background:var(--orange);font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:8px;flex:0 0 46px;width:100%}.brew-body{position:absolute;inset:80px 18px 18px;display:flex;flex-direction:column;justify-content:space-between;gap:14px}.steps{display:flex;justify-content:space-between;position:relative;min-height:95px}.step-line{position:absolute;left:31px;right:31px;top:16px;height:1px;background:#c1c1ba}.step{position:relative;display:flex;flex-direction:column;align-items:center;gap:18px;width:62px}.step-node{width:32px;height:32px;border:1px solid var(--line);background:var(--card);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#999a94;position:relative}.step-check{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:white;font-size:15px}.step-name{font-size:11px;font-weight:700;color:var(--muted);white-space:nowrap}.node-pulse{position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--orange)}.liquid-track{height:3px;border-radius:999px;background:#e7e3da;position:relative;overflow:hidden;flex:0 0 3px;margin-bottom:2px}.liquid-flow{display:block;height:3px;width:92px;border-radius:999px;background:var(--orange)}.stop-button{border:1px solid var(--line);height:46px;border-radius:23px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;gap:8px;flex:0 0 46px}.stop-button img{width:14px;height:14px}.done-check{width:28px;height:28px;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;position:absolute;right:18px;top:53px;border-radius:50%;font-size:17px}.done-body{position:absolute;inset:91px 18px 18px;display:flex;flex-direction:column;gap:14px}.feedback-options{display:grid;grid-template-columns:1fr 1fr;gap:9px}.feedback-options button{height:35px;border:1px solid var(--line);background:var(--bg);border-radius:18px;font-size:12px}.feedback-actions{display:flex;gap:10px}.feedback-actions button{height:41px;border-radius:21px;font-size:13px;flex:1;border:1px solid var(--line)}#just-right{background:var(--ink);color:white;border-color:var(--ink)}.saved{font-size:11px;line-height:17px;color:var(--green);width:100%;min-height:17px;text-align:center}.steam{position:absolute;width:1px;height:14px;border-radius:50%;background:#b9b9ae;top:56px;left:44px}
+.composer{position:absolute;left:14px;right:14px;bottom:44px;min-height:56px;padding:6px 6px 6px 15px;display:flex;align-items:center;border-radius:26px;border:1px solid var(--line);background:#fffffff5;box-shadow:0 8px 28px #28241c1f;z-index:12}.composer-copy{flex:1;min-width:0;font-size:12px;line-height:18px;position:relative;height:42px;display:flex;align-items:center;padding:0 2px}.placeholder{color:#60615c}.typing-text{position:absolute;inset:0;display:flex;align-items:center;padding:0 2px;font-size:15px}.caret{display:inline-block;width:1px;height:17px;background:var(--orange);margin-left:2px}.microphone{width:44px;height:44px;flex:0 0 44px;border-radius:22px;background:var(--orange);display:flex;align-items:center;justify-content:center;position:relative}.microphone img{width:19px;height:19px}.send-glyph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:500}.mic-halo{position:absolute;inset:-4px;border:1px solid var(--orange);border-radius:50%}.waveform{position:absolute;inset:0 0 0 2px;display:flex;align-items:center;gap:4px;padding:0 3px}.wave-bar{display:block;width:3px;height:20px;border-radius:2px;background:#d9d4c9;transform-origin:center}.keyboard{position:absolute;inset:auto 0 0;height:213px;padding:9px 4px 25px;background:#d4d7dd;display:flex;flex-direction:column;gap:9px;z-index:11;box-shadow:0 -1px 0 #c8cbd1}.key-row{display:flex;justify-content:center;gap:6px}.key{height:35px;width:32.5px;background:white;border-radius:5px;box-shadow:0 1px 0 #92959b;font-size:20px;display:flex;align-items:center;justify-content:center}.key.special{background:#adb3bd;font-size:16px;width:43px}.key.space{width:180px;font-size:14px}.key.return{width:85px;font-size:14px}.home-indicator{position:absolute;width:144px;height:5px;left:124.5px;bottom:9px;border-radius:999px;background:var(--ink);z-index:13}
+
+html,body{width:100%;height:100%}#root{width:100%;height:100%}.clip{position:absolute;inset:0}.app{width:393px;height:698.666667px}.app-header{z-index:9}.home{z-index:2}.chat-view{z-index:3}.chat-flow{position:relative;height:900px;display:block;padding:0}.user-row{position:absolute;top:0;height:90px;align-items:flex-end}.bubble{width:305px;height:90px}.ingredient{font-weight:650;white-space:nowrap;color:#ffd399}.assistant-row.creation{position:absolute;top:106px;height:104px}.creation .assistant-bubble{height:104px;width:317px}.creation .assistant-bubble p+p{margin-top:6px}.created-name{font-weight:600}.inventing{position:absolute;top:106px;left:48px;width:317px;height:104px;display:flex;flex-direction:column;gap:10px;font-size:13px;color:var(--muted);padding-top:5px}.inventing .droplets{height:30px}.spark{position:absolute;left:100px;top:9px;width:28px;height:28px;display:flex;align-items:center;justify-content:center}.spark i{position:absolute;width:3px;height:9px;border-radius:2px;background:var(--orange)}
+.recipe{position:absolute;left:6px;top:226px;width:353px;height:210px;border-radius:20px;background:var(--ink);color:var(--bg);padding:19px 22px;overflow:hidden}.recipe .eyebrow{color:#b6b7ae}.recipe-title{font-family:Inter,sans-serif;font-size:24px;line-height:28px;letter-spacing:-.5px;font-weight:600;max-width:205px;margin-top:10px}.recipe-desc{font-size:11px;line-height:16px;color:#d1cfc7;max-width:205px;margin-top:10px}.weather{position:absolute;right:20px;top:19px;font-size:9px;line-height:14px;color:#bcbeb5}.icon-slot{position:absolute;right:18px;top:60px;width:92px;height:92px;border-radius:50%;background:#292823;display:flex;align-items:center;justify-content:center}.slot-outline{width:64px;height:70px;border:1.2px dashed #7c7b70;border-radius:15px 15px 23px 23px}.chips{position:absolute;bottom:19px;left:22px;right:15px;display:flex;gap:7px}.chips span{font-size:9px;line-height:13px;padding:5px 8px;border:1px solid #45443f;border-radius:999px;color:#d8d5cb;white-space:nowrap}.chips .cold{border-color:#c8dde5;color:#c8dde5}.compact .recipe{height:182px}.compact .recipe-title{font-size:23px;line-height:27px;margin-top:8px}.compact .recipe-desc{font-size:10px;line-height:15px;margin-top:6px}.compact .icon-slot{top:45px}.compact .chips{bottom:14px}
+.make-row{position:absolute;top:452px;right:48px;height:44px}.make-chip{height:44px;padding:0 17px;font-size:13px;line-height:18px;border:1px solid var(--line);border-radius:999px;background:white}.task-card{position:absolute;top:512px;left:6px;margin:0;width:353px;height:253px}.task-title{max-width:225px}.task-head{height:43px}.cup-body{inset:80px 18px 18px;gap:9px;justify-content:flex-start}.cup-body h2{font-size:22px;line-height:27px}.cup-body p{font-size:12px;line-height:18px}.orange-cta{margin-top:auto;height:43px;flex:0 0 43px}.brew-body{inset:80px 18px 18px;gap:12px}.steps{min-height:76px}.step{gap:15px;width:82px}.step-name{font-size:11px}.stop-button{height:39px;flex:0 0 39px}.done-body{inset:62px 18px 12px;gap:10px}.feedback-options{gap:8px}.feedback-options button{height:28px;font-size:11px}.feedback-actions{gap:10px}.feedback-actions button{height:34px;font-size:12px}.saved{font-size:11px;line-height:16px;min-height:16px}.compact .task-card{height:206px}.done-check{top:18px;right:19px;width:12px;height:12px;background:none;color:var(--green);font-size:11px;pointer-events:none}.status-dot{flex:0 0 5px}.compact .task-status{padding-right:21px}.closing{position:absolute;top:644px;height:67px}.closing .assistant-bubble{font-size:13px;line-height:19px;width:317px;height:67px;padding:10px 12px}
+.composer{height:58px;min-height:58px}.composer-copy{height:44px}.typing-text{font-size:12px;line-height:16px;padding-right:8px;display:block;padding-top:0}.typing-text span{white-space:pre-wrap}.composer.typing{height:88px;align-items:center;border-radius:26px}.composer.typing .composer-copy{height:66px}.keyboard{height:213px}.dimmer{position:absolute;inset:0;background:rgba(23,23,21,.15);z-index:14;pointer-events:none}.cup-motion{position:absolute;left:76.5px;top:348px;width:240px;height:264px;z-index:16;transform-origin:0 0}.cup-motion svg{width:100%;height:100%;display:block}.cup-wobble{width:100%;height:100%}.pour-jet{position:absolute;left:112px;top:18px;width:5px;height:92px;background:#e7bb68;border-radius:3px;transform-origin:50% 0}.word-token{position:absolute;z-index:17;display:block;font-size:15px;line-height:22px;font-weight:650;color:#ffd399;white-space:nowrap}.tonic-word{left:65px;top:164px}.orange-word{left:92px;top:186px}.name-shimmer{position:absolute;inset:0;pointer-events:none;overflow:hidden}.shimmer-light{position:absolute;inset:0;width:40%;background:linear-gradient(90deg,transparent,rgba(255,211,153,.18),transparent)}.tap-mark{position:absolute;width:38px;height:38px;border:1.5px solid #ff7e2e;border-radius:50%;pointer-events:none;z-index:20}.tap-make{left:270px;top:456px}.tap-cup{left:177px;top:565px}.tap-save{left:92px;top:479px}.condensation-sheen{position:absolute;left:67px;top:96px;width:5px;height:132px;border-radius:3px;background:white;opacity:.35}
+
+/* Ch.7 layout polish: final conversation fits above the fixed composer. */
+.bubble{font-weight:400}.creation .assistant-bubble{font-size:14px;line-height:20px}
+.closing,.closing .assistant-bubble{height:58px}.closing .assistant-bubble{font-size:12px;line-height:19px}
+.done-body{gap:8px}.feedback-options{gap:6px}.feedback-options button{height:24px}
+.feedback-actions button{height:32px}.task-status{min-width:60px;justify-content:center;color:#7d4119}
+.step-node{color:#696b64}.ready,.saved{color:#2f7d5b}.change{color:#696b64}
+.shimmer-sweep-target .shimmer-mask{position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,transparent 0%,transparent calc(var(--shimmer-pos,-20%) - 10%),rgba(255,211,153,.16) var(--shimmer-pos,-20%),transparent calc(var(--shimmer-pos,-20%) + 10%),transparent 100%);mix-blend-mode:screen}
+.recipe-title{font-size:23px;line-height:27px;margin-top:8px}.recipe-desc{font-size:10px;line-height:15px;margin-top:6px}</style></head><body><div data-hf-id="hf-q3nm" id="root" data-composition-id="main" data-duration="24" data-width="1080" data-height="1920" data-fps="30"><div data-hf-id="hf-h4fk" id="app" class="app">
+<div data-hf-id="hf-sz55" class="statusbar"><span data-hf-id="hf-zwmt">9:41</span><img data-hf-id="hf-e3f2" src="assets/figma/ios-status.png" alt=""></div>
+<div data-hf-id="hf-cl9d" class="app-header"><img data-hf-id="hf-y255" class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar"></div>
+<main data-hf-id="hf-cry7" class="home" id="home" data-layout-allow-overflow=""><div data-hf-id="hf-fvth" class="greeting"><h1 data-hf-id="hf-m3fm"><span data-hf-id="hf-htac" class="hi" id="hi">Hi, Alex</span><span data-hf-id="hf-0khi" class="question">What would you like today?</span></h1></div><section data-hf-id="hf-sm9k" class="quick-card"><div data-hf-id="hf-p59h" class="eyebrow">TODAY'S PICK</div><h2 data-hf-id="hf-rv16">Floral Americano</h2><p data-hf-id="hf-rpd2">Light and bright — matches your week.</p><div data-hf-id="hf-upqv" class="drink-options"><span data-hf-id="hf-d61x">Latte</span><span data-hf-id="hf-h7fm">Cappuccino</span><span data-hf-id="hf-zijd">Cold brew</span></div><div data-hf-id="hf-hunr" class="quick-actions"><button data-hf-id="hf-eu7c" class="primary">Quick brew</button><button data-hf-id="hf-kner">All drinks</button></div></section><div data-hf-id="hf-x67m" class="home-info"><section data-hf-id="hf-kn68" class="mini-card"><h2 data-hf-id="hf-pcum">Machine status</h2><p data-hf-id="hf-37fy">Yeema One</p><span data-hf-id="hf-fv9t" class="ready"><img data-hf-id="hf-ytj6" src="assets/figma/ee49b.svg" alt="">Ready</span><p data-hf-id="hf-znpp">Ready to brew</p></section><section data-hf-id="hf-r960" class="mini-card"><h2 data-hf-id="hf-f8iq">Current bean</h2><p data-hf-id="hf-jkl1" class="bean-name">Ethiopia Yirgacheffe</p><p data-hf-id="hf-celf" class="change">Change bean</p></section></div></main>
+<div data-hf-id="hf-nqj1" class="chat-view" data-layout-allow-overflow=""><div data-hf-id="hf-a9vv" class="chat-flow" id="chat-flow" data-layout-allow-overflow="">
+  <div data-hf-id="hf-ilgi" class="user-row" id="user-row"><div data-hf-id="hf-2zin" class="bubble">It's a hot afternoon. I have <span data-hf-id="hf-t1nb" class="ingredient" id="ingredient-tonic">tonic water</span> and an <span data-hf-id="hf-fhok" class="ingredient" id="ingredient-orange">orange</span> — surprise me.</div><img data-hf-id="hf-1z63" class="avatar" src="assets/avatars/user-cup-chat.svg" alt="User"></div>
+  <div data-hf-id="hf-cizy" class="inventing" id="inventing"><div data-hf-id="hf-zvi9" class="droplets"><i data-hf-id="hf-0i6b" class="drop"></i><i data-hf-id="hf-q937" class="drop"></i><i data-hf-id="hf-pus6" class="drop"></i></div><div data-hf-id="hf-h6cr" class="spark" id="spark" data-layout-ignore=""><i data-hf-id="hf-wt6k"></i><i data-hf-id="hf-zeb8"></i><i data-hf-id="hf-y7e5"></i><i data-hf-id="hf-ylp6"></i><i data-hf-id="hf-0l8b"></i></div><p data-hf-id="hf-1aca">Yeema is inventing something</p></div>
+  <div data-hf-id="hf-fvez" class="assistant-row creation" id="creation"><img data-hf-id="hf-bnbt" class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><div data-hf-id="hf-5rx3" class="assistant-bubble"><p data-hf-id="hf-t10y" id="created-line">Created for you: Espresso Tonic No.3</p><p data-hf-id="hf-iqtk" id="profile-line">Your bright profile, cut with citrus. Served at 5°C.</p></div></div>
+  <section data-hf-id="hf-ru86" class="recipe" id="recipe"><p data-hf-id="hf-i64p" class="eyebrow">CREATED FOR ALEX</p><span data-hf-id="hf-ujrl" class="weather" id="weather">32°C · Sunny</span><h2 data-hf-id="hf-0am3" class="recipe-title">Espresso Tonic No.3</h2><p data-hf-id="hf-vwyx" class="recipe-desc">Bright espresso over tonic, finished with orange. Cold at 5°C.</p><div data-hf-id="hf-a6dq" class="icon-slot" id="icon-slot"><div data-hf-id="hf-9k52" class="slot-outline" id="slot-outline"></div></div><div data-hf-id="hf-exrd" class="chips"><span data-hf-id="hf-rno9">Espresso</span><span data-hf-id="hf-i27i">Tonic</span><span data-hf-id="hf-ew7r">Orange</span><span data-hf-id="hf-4z7z" class="cold">5°C</span></div><div data-hf-id="hf-3zns" class="name-shimmer shimmer-sweep-target" data-layout-ignore=""><i data-hf-id="hf-w01e" class="shimmer-mask"></i></div></section>
+  <div data-hf-id="hf-ek6q" class="make-row" id="make-row"><button data-hf-id="hf-p9it" class="make-chip" id="make-it">Make it →</button></div>
+  <section data-hf-id="hf-l1ue" class="task-card" id="task-card"><div data-hf-id="hf-v7ae" class="task-head"><div data-hf-id="hf-yeow"><h2 data-hf-id="hf-vlq8" class="task-title">Espresso Tonic No.3</h2><p data-hf-id="hf-lxoz" class="task-machine">Yeema One</p></div><span data-hf-id="hf-wp7v" class="task-status" id="task-status"><i data-hf-id="hf-8nh2" class="status-dot" id="status-dot"></i><span data-hf-id="hf-l303" id="status-text">Ready</span></span></div>
+    <div data-hf-id="hf-ay6i" class="cup-body" id="cup-body"><h2 data-hf-id="hf-092x">Place your cup under the spout</h2><p data-hf-id="hf-s5cz">Espresso only. Add tonic and orange yourself.</p><button data-hf-id="hf-karn" class="orange-cta" id="cup-cta">Cup is in place</button></div>
+    <div data-hf-id="hf-v3d4" class="brew-body" id="brew-body"><div data-hf-id="hf-70xd" class="steps"><div data-hf-id="hf-n0vx" class="step-line"></div>
+      <div data-hf-id="hf-uqbq" class="step"><div data-hf-id="hf-44xv" class="step-node" id="node-1"><span data-hf-id="hf-95ae" class="step-number">1</span><span data-hf-id="hf-27pd" class="step-check">✓</span></div><span data-hf-id="hf-5q5i" class="step-name" id="name-1">Grinding</span></div>
+      <div data-hf-id="hf-jlje" class="step"><div data-hf-id="hf-t9g8" class="step-node" id="node-2"><span data-hf-id="hf-9jlf" class="step-number">2</span><span data-hf-id="hf-op79" class="step-check">✓</span></div><span data-hf-id="hf-ho0y" class="step-name" id="name-2">Extraction</span></div>
+      <div data-hf-id="hf-jzuf" class="step"><div data-hf-id="hf-w8pt" class="step-node" id="node-3"><span data-hf-id="hf-9xwg" class="step-number">3</span><span data-hf-id="hf-pw4c" class="step-check">✓</span></div><span data-hf-id="hf-kw4o" class="step-name" id="name-3">Disposing</span></div>
+    </div><div data-hf-id="hf-17de" class="liquid-track"><i data-hf-id="hf-l9z1" class="liquid-flow"></i></div><button data-hf-id="hf-gbqa" class="stop-button"><img data-hf-id="hf-y63q" src="assets/figma/stop-icon.svg" alt="">Stop</button></div>
+    <div data-hf-id="hf-wtiw" class="done-body" id="done-body"><div data-hf-id="hf-1f0o" class="feedback-options"><button data-hf-id="hf-6io2">Too sour</button><button data-hf-id="hf-axph">Too bitter</button><button data-hf-id="hf-3fts">Too strong</button><button data-hf-id="hf-ce9v">Too weak</button></div><div data-hf-id="hf-y7wn" class="feedback-actions"><button data-hf-id="hf-v7tt" id="just-right">Just right</button><button data-hf-id="hf-6ltx">Later</button></div><p data-hf-id="hf-m2ze" class="saved" id="saved">Saved to your creations.</p></div>
+  </section>
+  <div data-hf-id="hf-digd" class="assistant-row closing" id="closing"><img data-hf-id="hf-trxp" class="avatar" src="assets/avatars/coffee-buddy-bean-followup.svg" alt="Coffee Buddy"><div data-hf-id="hf-x3sv" class="assistant-bubble" id="closing-line">No.3 is yours. Ask for it by name — or invent the next one.</div></div>
+</div></div>
+<div data-hf-id="hf-8c6q" class="composer" id="composer"><div data-hf-id="hf-5mj0" class="composer-copy"><span data-hf-id="hf-o72r" class="placeholder" id="placeholder">What would you like? Tell Yeema</span><div data-hf-id="hf-cl9s" class="typing-text" id="typing-text"><span data-hf-id="hf-yclq" id="typed-value"></span><i data-hf-id="hf-ukwc" class="caret" id="caret"></i></div></div><button data-hf-id="hf-ygcj" class="microphone" id="microphone"><img data-hf-id="hf-mcwc" id="mic-icon" src="assets/figma/13c65.svg" alt="Microphone"><span data-hf-id="hf-f0tm" class="send-glyph" id="send-glyph">↑</span></button></div>
+<div data-hf-id="hf-a8tn" class="keyboard" id="keyboard" data-layout-ignore=""><div data-hf-id="hf-n7ge" class="key-row" id="keys-1"></div><div data-hf-id="hf-j9cd" class="key-row" id="keys-2"></div><div data-hf-id="hf-08za" class="key-row"><span data-hf-id="hf-u80k" class="key special">⇧</span><span data-hf-id="hf-764w" class="key">z</span><span data-hf-id="hf-6diu" class="key">x</span><span data-hf-id="hf-9ya3" class="key">c</span><span data-hf-id="hf-2egk" class="key">v</span><span data-hf-id="hf-acl4" class="key">b</span><span data-hf-id="hf-bxt8" class="key">n</span><span data-hf-id="hf-aqw5" class="key">m</span><span data-hf-id="hf-v240" class="key special">⌫</span></div><div data-hf-id="hf-0dzu" class="key-row"><span data-hf-id="hf-zuid" class="key special">123</span><span data-hf-id="hf-bphv" class="key special">☺</span><span data-hf-id="hf-d4qi" class="key space">space</span><span data-hf-id="hf-mwqy" class="key return">return</span></div></div>
+<div data-hf-id="hf-78cx" class="home-indicator"></div><div data-hf-id="hf-kmbv" class="dimmer" id="dimmer" data-layout-ignore=""></div>
+<div data-hf-id="hf-4x4z" class="word-token tonic-word" id="tonic-word" data-layout-ignore="">tonic water</div><div data-hf-id="hf-p579" class="word-token orange-word" id="orange-word" data-layout-ignore="">orange</div>
+<div data-hf-id="hf-0sub" class="cup-motion" id="cup-motion" data-layout-ignore=""><div data-hf-id="hf-ren6" class="cup-wobble" id="cup-wobble"><svg data-hf-id="hf-f46h" id="drink-svg" xmlns="http://www.w3.org/2000/svg" width="300" height="330" viewBox="0 0 300 330" fill="none">
+  <defs data-hf-id="hf-mh0t">
+    <clippath data-hf-id="hf-r8s0" id="glass-inside"><path data-hf-id="hf-b8jz" d="M70 83h160l-14 198a20 20 0 0 1-20 19h-92a20 20 0 0 1-20-19L70 83Z" /></clippath>
+  </defs>
+  <ellipse data-hf-id="hf-whdf" cx="150" cy="307" rx="74" ry="7" fill="#171715" opacity=".06" />
+  <path data-hf-id="hf-9y8w" id="glass-wall" d="M65 80h170l-15 204a24 24 0 0 1-24 22h-92a24 24 0 0 1-24-22L65 80Z" fill="#DAE8EC" fill-opacity=".28" stroke="#9DB9C1" stroke-width="2.5" />
+  <g data-hf-id="hf-6l3y" clip-path="url(#glass-inside)">
+    <g data-hf-id="hf-77i8" id="tonic-fill"><path data-hf-id="hf-yz8v" id="tonic" d="M66 157h168v147H66z" fill="#E7BB68" />
+    </g><g data-hf-id="hf-iajn" id="espresso-fill"><path data-hf-id="hf-n6nl" id="espresso" d="M66 121h168v51H66z" fill="#704032" />
+    <path data-hf-id="hf-aan3" d="M66 163h168v11H66z" fill="#AA7050" />
+    <ellipse data-hf-id="hf-fmku" cx="150" cy="121" rx="84" ry="13" fill="#C29366" />
+    <ellipse data-hf-id="hf-n13c" cx="150" cy="126" rx="81" ry="9" fill="#704032" />
+    </g><path data-hf-id="hf-4wzf" d="M92 180v103a11 11 0 0 0 10 9" stroke="#FFF8E1" stroke-opacity=".76" stroke-width="5" stroke-linecap="round" />
+    <path data-hf-id="hf-lyia" d="M207 191l-6 86" stroke="#FFF8E1" stroke-opacity=".42" stroke-width="3" stroke-linecap="round" />
+    <g data-hf-id="hf-2jea" id="bubbles" stroke="#FFF8E1" stroke-width="1.5">
+      <circle data-hf-id="hf-jozf" cx="115" cy="218" r="3" /><circle data-hf-id="hf-46wk" cx="141" cy="264" r="4" /><circle data-hf-id="hf-h9gb" cx="177" cy="207" r="3" /><circle data-hf-id="hf-395k" cx="190" cy="249" r="2.5" /><circle data-hf-id="hf-erqq" cx="159" cy="232" r="2" /><circle data-hf-id="hf-57be" cx="123" cy="286" r="2" />
+    </g>
+    <g data-hf-id="hf-0i7s" fill="#FFF8E1" opacity=".88"><circle data-hf-id="hf-osp1" cx="134" cy="191" r="1.5" /><circle data-hf-id="hf-vqk3" cx="166" cy="280" r="1.5" /><circle data-hf-id="hf-ug7i" cx="187" cy="226" r="1.5" /><circle data-hf-id="hf-ofb7" cx="108" cy="254" r="1.2" /></g>
+  </g>
+  <g data-hf-id="hf-ntw8" id="orange-motion"><g data-hf-id="hf-fh1z" id="orange-slice" transform="rotate(18 223 95)">
+    <circle data-hf-id="hf-knlw" cx="223" cy="95" r="43" fill="#FF7E2E" />
+    <circle data-hf-id="hf-ln8h" cx="223" cy="95" r="37" fill="#FFBE6A" stroke="#FFF4D4" stroke-width="3" />
+    <path data-hf-id="hf-zk09" d="M223 61v68M189 95h68M199 71l48 48M199 119l48-48" stroke="#FFF4D4" stroke-width="2.5" stroke-linecap="round" />
+    <circle data-hf-id="hf-yzjl" cx="223" cy="95" r="5" fill="#FFF4D4" />
+  </g>
+  </g><path data-hf-id="hf-jwh7" d="M65 80h170" stroke="#BCD0D5" stroke-width="3" stroke-linecap="round" />
+  <path data-hf-id="hf-58tp" d="M70 85h129" stroke="white" stroke-opacity=".9" stroke-width="2" stroke-linecap="round" />
+  <g data-hf-id="hf-0c4p" id="condensation" fill="#9DB9C1" opacity=".6">
+    <ellipse data-hf-id="hf-tzix" cx="78" cy="132" rx="2.2" ry="3.5" /><ellipse data-hf-id="hf-o2cp" cx="224" cy="194" rx="2" ry="3" /><ellipse data-hf-id="hf-0wq8" cx="86" cy="237" rx="2.4" ry="4" /><ellipse data-hf-id="hf-0syi" cx="213" cy="264" rx="1.8" ry="2.7" />
+  </g>
+</svg>
+</div><div data-hf-id="hf-dp76" class="pour-jet" id="pour-jet"></div><div data-hf-id="hf-mlk6" class="condensation-sheen" id="condensation-sheen"></div></div>
+<i data-hf-id="hf-kq5e" class="tap-mark tap-make" id="tap-make" data-layout-ignore=""></i><i data-hf-id="hf-zbxw" class="tap-mark tap-cup" id="tap-cup" data-layout-ignore=""></i><i data-hf-id="hf-4ft2" class="tap-mark tap-save" id="tap-save" data-layout-ignore=""></i>
+</div><audio data-hf-id="hf-xwql" id="sfx-keyboard-open" src="assets/sfx/swipe.wav" preload="auto" data-start="1.2" data-duration="0.38" data-media-start="0" data-volume="0.11" data-track-index="1" data-audio-group="sfx" data-label="Keyboard opens"></audio>
+<audio data-hf-id="hf-c30r" id="sfx-typing" src="assets/sfx/typing-ch7.wav" preload="auto" data-start="1.35" data-duration="2.45" data-media-start="0" data-volume="0.09" data-track-index="2" data-audio-group="sfx" data-label="48 keyboard taps"></audio>
+<audio data-hf-id="hf-h13k" id="sfx-send" src="assets/sfx/pop.wav" preload="auto" data-start="3.8" data-duration="0.3" data-media-start="0" data-volume="0.18" data-track-index="3" data-audio-group="sfx" data-label="Send the creative request"></audio>
+<audio data-hf-id="hf-wvpq" id="sfx-keyboard-close" src="assets/sfx/swipe.wav" preload="auto" data-start="3.8" data-duration="0.38" data-media-start="0" data-volume="0.09" data-track-index="1" data-audio-group="sfx" data-label="Keyboard closes"></audio>
+<audio data-hf-id="hf-4psq" id="sfx-drop-1" src="assets/sfx/drop-high.wav" preload="auto" data-start="4.4" data-duration="0.38" data-media-start="0" data-volume="0.16" data-track-index="1" data-audio-group="sfx" data-label="Inventing drop 1"></audio>
+<audio data-hf-id="hf-kxhj" id="sfx-drop-2" src="assets/sfx/drop-mid.wav" preload="auto" data-start="4.75" data-duration="0.38" data-media-start="0" data-volume="0.16" data-track-index="2" data-audio-group="sfx" data-label="Inventing drop 2"></audio>
+<audio data-hf-id="hf-kc71" id="sfx-drop-3" src="assets/sfx/drop-low.wav" preload="auto" data-start="5.1000000000000005" data-duration="0.38" data-media-start="0" data-volume="0.16" data-track-index="1" data-audio-group="sfx" data-label="Inventing drop 3"></audio>
+<audio data-hf-id="hf-34ja" id="sfx-creation-spark" src="assets/sfx/parameter.wav" preload="auto" data-start="5.65" data-duration="0.55" data-media-start="0.25" data-volume="0.18" data-track-index="1" data-audio-group="sfx" data-label="Creation overtone"></audio>
+<audio data-hf-id="hf-2sls" id="sfx-recipe-settle" src="assets/sfx/tap.wav" preload="auto" data-start="8" data-duration="0.18" data-media-start="0" data-volume="0.16" data-track-index="1" data-audio-group="sfx" data-label="Recipe settles"></audio>
+<audio data-hf-id="hf-7qbr" id="sfx-fizz" src="assets/sfx/steam-demo.wav" preload="auto" data-start="9.25" data-duration="0.68" data-media-start="0" data-volume="0.12" data-track-index="3" data-audio-group="sfx" data-label="Cold tonic fizz"></audio>
+<audio data-hf-id="hf-04td" id="sfx-pour" src="assets/sfx/extraction-demo.wav" preload="auto" data-start="9.7" data-duration="0.75" data-media-start="0.5" data-volume="0.18" data-track-index="1" data-audio-group="sfx" data-label="Tonic pours into the recipe glass"></audio>
+<audio data-hf-id="hf-z6o8" id="sfx-espresso-layer" src="assets/sfx/extraction-demo.wav" preload="auto" data-start="10.3" data-duration="0.7" data-media-start="0.2" data-volume="0.13" data-track-index="2" data-audio-group="sfx" data-label="Espresso layer forms"></audio>
+<audio data-hf-id="hf-f1wq" id="sfx-orange-drop" src="assets/sfx/drop-high.wav" preload="auto" data-start="11.28" data-duration="0.38" data-media-start="0" data-volume="0.2" data-track-index="1" data-audio-group="sfx" data-label="Orange lands"></audio>
+<audio data-hf-id="hf-zfw9" id="sfx-condensation" src="assets/sfx/key.wav" preload="auto" data-start="11.6" data-duration="0.072" data-media-start="0" data-volume="0.11" data-track-index="2" data-audio-group="sfx" data-label="Condensation tick"></audio>
+<audio data-hf-id="hf-dp8n" id="sfx-cup-dock" src="assets/sfx/swipe.wav" preload="auto" data-start="11.72" data-duration="0.38" data-media-start="0" data-volume="0.15" data-track-index="1" data-audio-group="sfx" data-label="Cup returns to recipe slot"></audio>
+<audio data-hf-id="hf-3aqz" id="sfx-make-it" src="assets/sfx/tap.wav" preload="auto" data-start="13.2" data-duration="0.18" data-media-start="0" data-volume="0.22" data-track-index="1" data-audio-group="sfx" data-label="Confirm drink"></audio>
+<audio data-hf-id="hf-55tc" id="sfx-cup-in-place" src="assets/sfx/tap.wav" preload="auto" data-start="14.8" data-duration="0.18" data-media-start="0" data-volume="0.23" data-track-index="1" data-audio-group="sfx" data-label="Confirm cup under spout"></audio>
+<audio data-hf-id="hf-et7v" id="sfx-grinding" src="assets/sfx/grinding-demo.wav" preload="auto" data-start="15.4" data-duration="0.9" data-media-start="0" data-volume="0.18" data-track-index="1" data-audio-group="sfx" data-label="Grinding — demo texture"></audio>
+<audio data-hf-id="hf-41in" id="sfx-extraction" src="assets/sfx/extraction-demo.wav" preload="auto" data-start="16.3" data-duration="1.8" data-media-start="0" data-volume="0.26" data-track-index="1" data-audio-group="sfx" data-label="Extraction — demo texture"></audio>
+<audio data-hf-id="hf-rct9" id="sfx-disposing" src="assets/sfx/dispose-demo.wav" preload="auto" data-start="18.1" data-duration="0.48" data-media-start="0" data-volume="0.18" data-track-index="1" data-audio-group="sfx" data-label="Disposing — demo texture"></audio>
+<audio data-hf-id="hf-300q" id="sfx-reset" src="assets/sfx/reset-demo.wav" preload="auto" data-start="18.7" data-duration="0.6" data-media-start="0" data-volume="0.11" data-track-index="1" data-audio-group="sfx" data-label="Resetting — demo texture"></audio>
+<audio data-hf-id="hf-j9kf" id="sfx-complete" src="assets/sfx/complete.wav" preload="auto" data-start="19.4" data-duration="1.88" data-media-start="0" data-volume="0.28" data-track-index="1" data-audio-group="sfx" data-label="Coffee ready"></audio>
+<audio data-hf-id="hf-lhcg" id="sfx-save" src="assets/sfx/tap.wav" preload="auto" data-start="20.4" data-duration="0.18" data-media-start="0" data-volume="0.13" data-track-index="2" data-audio-group="sfx" data-label="Save Just right"></audio></div><script>
+/* Ch.7: one continuous, seek-safe conversation, one shared glass. */
+(async () => {
+  for (const [id, letters] of [['keys-1','qwertyuiop'], ['keys-2','asdfghjkl']]) {
+    for (const letter of letters) {
+      const key = document.createElement('span');
+      key.className = 'key'; key.textContent = letter;
+      document.getElementById(id).appendChild(key);
+    }
+  }
+  await document.fonts.ready;
+  const $ = id => document.getElementById(id);
+  const rect = $('app').getBoundingClientRect(), ratio = rect.width / 393;
+  const box = el => {
+    const b = el.getBoundingClientRect();
+    return {x:(b.left-rect.left)/ratio, y:(b.top-rect.top)/ratio, w:b.width/ratio, h:b.height/ratio};
+  };
+  // Measure only during setup. Flying words begin on their original glyphs.
+  for (const [source,token] of [['ingredient-tonic','tonic-word'],['ingredient-orange','orange-word']]) {
+    const b = box($(source)); $(token).style.left=b.x+'px'; $(token).style.top=b.y+'px';
+  }
+  const tonic=box($('tonic-word')), orange=box($('orange-word'));
+  const make=box($('make-it')), cup=box($('cup-cta')), save=box($('just-right'));
+  for(const [id,x,y] of [
+    ['tap-make',make.x+make.w/2,make.y+make.h/2-66],
+    ['tap-cup',cup.x+cup.w/2,cup.y+cup.h/2-306],
+    ['tap-save',save.x+save.w/2,458],
+  ]) {$(id).style.left=x-19+'px';$(id).style.top=y-19+'px';}
+
+  const tl=gsap.timeline({paused:true,defaults:{ease:'power2.out'}});
+  gsap.set('#user-row,#inventing,#creation,#recipe,#make-row,#task-card,#brew-body,#done-body,#saved,#closing,#typing-text,#send-glyph,#dimmer,#cup-motion,#tonic-word,#orange-word,#pour-jet,#condensation-sheen,.tap-mark,.step-check,#spark,.drop',{opacity:0});
+  gsap.set('#keyboard',{y:220});
+  gsap.set('.drop',{rotation:-40});
+  gsap.set('#tonic-fill,#espresso-fill',{scaleY:0,transformOrigin:'50% 100%'});
+  gsap.set('#orange-motion',{opacity:0,y:-130,rotation:-28,svgOrigin:'223 95'});
+  gsap.set('#condensation,#bubbles',{opacity:0});
+  gsap.set('#cup-motion',{x:0,y:0,scale:1,transformOrigin:'0 0'});
+  gsap.set('#pour-jet',{scaleY:0});
+  const prompt="It's a hot afternoon. I have tonic water and an orange — surprise me.";
+  const created='Created for you: Espresso Tonic No.3';
+  const profile='Your bright profile, cut with citrus. Served at 5°C.';
+  const closing='No.3 is yours. Ask for it by name — or invent the next one.';
+  const state={t:0};
+  const typeAt=(text,t,start,duration)=>text.slice(0,Math.floor(text.length*Math.max(0,Math.min(1,(t-start)/duration))+.001));
+  const update=()=>{
+    const t=state.t;
+    $('typed-value').textContent=typeAt(prompt,t,1.35,2.35);
+    $('created-line').textContent=typeAt(created,t,6.2,.68);
+    $('profile-line').textContent=typeAt(profile,t,6.95,.96);
+    $('closing-line').textContent=typeAt(closing,t,21,1.4);
+    $('caret').style.opacity=t>=1.2&&t<3.8&&Math.floor(t*4)%2===0?'1':'0';
+    $('composer').classList.toggle('typing',t>=1.2&&t<3.8);
+    $('status-text').textContent=t>=19.4?'Done':t>=18.7?'Resetting':t>=15.4?'Brewing':'Ready';
+    $('task-card').dataset.state=t>=19.4?'done':t>=18.7?'resetting':t>=15.4?'brewing':'cup-confirm';
+  };
+  tl.to(state,{t:24,duration:24,ease:'none',onUpdate:update},0);
+  tl.addLabel('context',0).addLabel('invent',4.4).addLabel('create',6.2).addLabel('ingredients',9.2)
+    .addLabel('confirm',13.8).addLabel('espresso',15.4).addLabel('save',19.4).addLabel('hold',22.4);
+  // Home Ready → natural-language input.
+  tl.fromTo('.greeting',{opacity:0,y:10},{opacity:1,y:0,duration:.5,immediateRender:false},.05);
+  tl.to('#keyboard',{y:0,duration:.3},1.2);
+  tl.to('#composer',{y:-177,duration:.3},1.2);
+  tl.to('#placeholder,#mic-icon',{opacity:0,duration:.12},1.2);
+  tl.to('#typing-text,#send-glyph',{opacity:1,duration:.15},1.3);
+  tl.to('.quick-card,.home-info',{opacity:0,duration:.1},1.1);
+  const keys=[...document.querySelectorAll('.key')];
+  [...prompt].forEach((letter,i)=>{
+    const key=keys.find(k=>k.textContent===(letter===' '?'space':letter.toLowerCase()));
+    if(key){const at=1.35+i*2.35/prompt.length;
+      tl.to(key,{backgroundColor:'#adb3bd',duration:.012},at);
+      tl.to(key,{backgroundColor:'#ffffff',duration:.01},at+.014);}
+  });
+  tl.to('#microphone',{scale:.9,duration:.08},3.8);
+  tl.to('#microphone',{scale:1,duration:.15},3.88);
+  tl.to('#home',{x:393,opacity:0,duration:.12,ease:'power3.inOut'},3.8);
+  tl.fromTo('#user-row',{y:100,opacity:0},{y:0,opacity:1,duration:.42,ease:'power3.out',immediateRender:false},3.95);
+  tl.to('#keyboard',{y:220,duration:.3,ease:'power2.in'},3.8);
+  tl.to('#composer',{y:0,duration:.3},3.8);
+  tl.to('#typing-text,#send-glyph',{opacity:0,duration:.12},3.8);
+  tl.to('#placeholder,#mic-icon',{opacity:1,duration:.2},3.9);
+  // Three drops and a finite invention spark.
+  tl.to('#inventing',{opacity:1,duration:.2},4.4);
+  document.querySelectorAll('.drop').forEach((drop,i)=>{
+    tl.fromTo(drop,{y:-14,scale:.65,opacity:0},{y:0,scale:1,opacity:1,duration:.3,ease:'back.out(1.3)',immediateRender:false},4.4+i*.35);
+  });
+  tl.to('#spark',{opacity:1,duration:.05},5.65);
+  document.querySelectorAll('#spark i').forEach((ray,i)=>{
+    const angle=i*Math.PI*2/5;
+    tl.fromTo(ray,{x:0,y:0,scaleY:.4,rotation:i*72,opacity:1},{x:Math.sin(angle)*15,y:-Math.cos(angle)*15,
+      scaleY:1,opacity:0,duration:.4,immediateRender:false},5.65);
+  });
+  tl.to('#inventing',{opacity:0,duration:.16},6.1);
+  tl.fromTo('#creation',{y:7,opacity:0},{y:0,opacity:1,duration:.3,immediateRender:false},6.2);
+  tl.fromTo('#recipe',{y:12,opacity:0},{y:0,opacity:1,duration:.36,immediateRender:false},8);
+  // Ingredient words become the layered cup, then dock into the exact slot.
+  tl.to('#dimmer',{opacity:1,duration:.22},9.2);
+  tl.to('#tonic-word,#orange-word',{opacity:1,duration:.05},9.2);
+  tl.to('#ingredient-tonic,#ingredient-orange',{opacity:0,duration:.05},9.2);
+  tl.to('#user-row,#creation',{opacity:0,duration:.16},9.25);
+  tl.to('#chat-flow',{y:-226,duration:.48,ease:'power3.inOut'},9.25);
+  tl.fromTo('#cup-motion',{y:14,opacity:0},{y:0,opacity:1,duration:.32,immediateRender:false},9.3);
+  tl.to('#tonic-word',{x:158-tonic.x,y:386-tonic.y,scale:.85,duration:.48,ease:'power2.inOut'},9.2);
+  tl.to('#tonic-word',{y:424-tonic.y,scale:.55,opacity:0,duration:.18,ease:'power2.in'},9.68);
+  tl.to('#orange-word',{x:255-orange.x,y:317-orange.y,duration:.55,ease:'power2.inOut'},9.2);
+  tl.to('#pour-jet',{opacity:.65,scaleY:1,duration:.15},9.7);
+  tl.to('#tonic-fill',{scaleY:1,duration:.65,ease:'power1.inOut'},9.7);
+  tl.to('#bubbles',{opacity:.8,duration:.35},9.85);
+  tl.to('#pour-jet',{backgroundColor:'#704032',duration:.15},10.3);
+  tl.to('#espresso-fill',{scaleY:1,duration:.62,ease:'power1.inOut'},10.3);
+  tl.to('#pour-jet',{scaleY:0,opacity:0,duration:.16},10.82);
+  tl.to('#orange-word',{x:244-orange.x,y:385-orange.y,scale:.65,opacity:0,duration:.24,ease:'power2.in'},10.95);
+  tl.to('#orange-motion',{opacity:1,y:0,rotation:0,duration:.45,ease:'power2.inOut'},11.04);
+  tl.to('#cup-wobble',{rotation:-.8,transformOrigin:'50% 92%',duration:.12},11.28);
+  tl.to('#cup-wobble',{rotation:0,duration:.22,ease:'sine.inOut'},11.4);
+  tl.to('#condensation',{opacity:.6,duration:.18},11.55);
+  tl.to('#slot-outline',{opacity:0,duration:.2},11.72);
+  tl.to('#cup-motion',{x:188.5,y:-160.4,scale:88/240,duration:.55,ease:'power3.inOut'},11.72);
+  tl.to('#dimmer',{opacity:0,duration:.2},12.4);
+  tl.to('#creation',{opacity:1,duration:.2},12.4);
+  tl.to('#ingredient-tonic,#ingredient-orange',{opacity:1,duration:.15},12.4);
+  tl.to('#chat-flow',{y:-66,duration:.36,ease:'power3.inOut'},12.4);
+  tl.to('#cup-motion',{y:-.4,duration:.36,ease:'power3.inOut'},12.4);
+  tl.fromTo('#make-row',{y:7,opacity:0},{y:0,opacity:1,duration:.28,immediateRender:false},12.75);
+  // Registry shimmer-sweep: one subtle pass, no ambient looping.
+  tl.fromTo('.shimmer-sweep-target',{'--shimmer-pos':'-20%'},{'--shimmer-pos':'120%',duration:.65,ease:'power2.inOut',immediateRender:false},12.5);
+  const tap=(button,mark,at)=>{
+    tl.to(button,{scale:.96,duration:.08},at);tl.to(button,{scale:1,duration:.14},at+.08);
+    tl.fromTo(mark,{opacity:.65,scale:.65},{opacity:0,scale:1.35,duration:.36,immediateRender:false},at);
+  };
+  tap('#make-it','#tap-make',13.2);
+  tl.to('#make-it',{backgroundColor:'#171715',color:'#fcfbf9',duration:.18},13.28);
+  tl.to('#make-row,#creation',{opacity:0,duration:.16},13.8);
+  tl.to('#chat-flow',{y:-226,duration:.36,ease:'power3.inOut'},13.8);
+  tl.to('#cup-motion',{y:-160.4,duration:.36,ease:'power3.inOut'},13.8);
+  tl.to('#recipe',{height:194,duration:.3},13.8);
+  tl.fromTo('#task-card',{y:-66,opacity:0},{y:-80,opacity:1,duration:.34,immediateRender:false},13.8);
+  tap('#cup-cta','#tap-cup',14.8);
+  // One task card: espresso execution, not automatic cocktail assembly.
+  tl.to('#cup-body',{opacity:0,duration:.15},15.4);
+  tl.fromTo('#brew-body',{y:4,opacity:0},{y:0,opacity:1,duration:.18,immediateRender:false},15.4);
+  for(const stage of [{id:1,start:15.4,end:16.3},{id:2,start:16.3,end:18.1},{id:3,start:18.1,end:18.7}]){
+    tl.to('#node-'+stage.id,{backgroundColor:'#ff7e2e',borderColor:'#ff7e2e',color:'#171715',duration:.12},stage.start);
+    tl.to('#name-'+stage.id,{color:'#171715',duration:.12},stage.start);
+    tl.to('#node-'+stage.id,{backgroundColor:'#171715',borderColor:'#171715',duration:.12},stage.end);
+    tl.to('#node-'+stage.id+' .step-number',{opacity:0,duration:.06},stage.end);
+    tl.to('#node-'+stage.id+' .step-check',{opacity:1,duration:.06},stage.end+.06);
+  }
+  tl.fromTo('.liquid-flow',{x:-92},{x:315,duration:.96,repeat:3,ease:'none',immediateRender:false},15.4);
+  tl.to('#brew-body',{opacity:.55,duration:.18},18.7);
+  tl.to('#brew-body',{opacity:0,duration:.16},19.4);
+  tl.to('#task-status',{backgroundColor:'#e9f2ec',borderColor:'#a5c9b6',color:'#2e7a59',duration:.2},19.4);
+  tl.to('#status-dot',{backgroundColor:'#2f7d5b',duration:.2},19.4);
+  // Final stack fits above the fixed composer; preserve the same glass.
+  tl.to('#recipe',{height:176,duration:.3},19.4);
+  tl.to('.chips',{y:7,duration:.3},19.4);
+  tl.to('#icon-slot',{y:-15,duration:.3},19.4);
+  tl.to('#cup-motion',{y:-175.4,duration:.3},19.4);
+  tl.to('#task-card',{height:192,y:-98,duration:.3},19.4);
+  tl.set('#closing',{y:-26},0);
+  tl.fromTo('#done-body',{y:5,opacity:0},{y:0,opacity:1,duration:.28,immediateRender:false},19.5);
+  tap('#just-right','#tap-save',20.4);
+  tl.to('#just-right',{backgroundColor:'#2f7d5b',borderColor:'#2f7d5b',duration:.16},20.48);
+  tl.to('#saved',{opacity:1,duration:.22},20.55);
+  tl.to('#closing',{opacity:1,duration:.2},21);
+  document.querySelectorAll('#bubbles circle').forEach((bubble,i)=>{
+    const cycle=1.65+i*.08, at=9.8+i*.1;
+    tl.fromTo(bubble,{y:12,opacity:0},{y:-15,opacity:.8,duration:cycle,repeat:Math.max(0,Math.floor((24-at)/cycle)-1),ease:'sine.inOut',immediateRender:false},at);
+  });
+  tl.fromTo('#condensation-sheen',{x:-12,opacity:0},{x:18,opacity:.35,duration:.4,immediateRender:false},22.4);
+  tl.to('#condensation-sheen',{x:30,opacity:0,duration:.3},22.8);
+  tl.seek(0);update();
+  window.__timelines=window.__timelines||{};
+  window.__timelines.main=tl;
+})();
+
+</script></body></html>

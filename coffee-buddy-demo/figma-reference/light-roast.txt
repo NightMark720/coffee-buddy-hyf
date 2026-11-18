@@ -1,0 +1,173 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/52974b0b-5c30-4ee7-8848-026a7b7450e2";
+const imgIcon = `${assetPathPrefix}/13c65.svg`;
+const imgFrame12 = `${assetPathPrefix}/38340.svg`;
+const imgVector = `${assetPathPrefix}/ad71d.svg`;
+const imgIconBeensLightRoast = `${assetPathPrefix}/b97da.svg`;
+const imgVector1 = `${assetPathPrefix}/81d6a.svg`;
+const imgFrame85 = `${assetPathPrefix}/a05e4.svg`;
+
+export default function CoffeeCompanionPageLightRoast() {
+  return (
+    <div className="content-stretch flex flex-col gap-[22px] items-start px-[20px] py-[83px] relative size-full" data-node-id="747:3546" data-name="coffee companion page/light roast">
+      <div className="absolute bg-[#ebe9e4] h-[852px] left-0 top-0 w-[393px]" data-node-id="I747:3546;746:3324" data-name="01 Home/Agent Talk Base">
+        <div className="absolute content-stretch flex h-[852px] items-start justify-center left-0 right-0 top-0" data-node-id="I747:3546;746:3324;34:28" style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 393 852' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(0 -79.864 -79.864 0 275.1 102.24)'><stop stop-color='rgba(247,244,237,1)' offset='0'/><stop stop-color='rgba(247,244,237,0)' offset='0.34'/></radialGradient></defs></svg>\"), linear-gradient(90deg, rgb(234, 232, 227) 0%, rgb(234, 232, 227) 100%)" }} data-name="Body">
+          <div className="bg-[#0d0d0c] content-stretch flex flex-col h-[852px] items-start min-h-[600px] relative shrink-0 w-[393px]" data-node-id="I747:3546;746:3324;34:29" data-name="Container">
+            <div className="bg-[#fcfbf9] h-[852px] overflow-clip relative shrink-0 w-full" data-node-id="I747:3546;746:3324;34:30" data-name="Container">
+              <div className="absolute bg-[#fcfbf9] content-stretch flex flex-col h-[852px] items-start left-0 overflow-clip top-0 w-[393px]" data-node-id="I747:3546;746:3324;34:31" data-name="Main Content">
+                <CodeConnectSnippet data-node-id="I747:3546;746:3324;34:118" data-name="Status bar - iPhone">
+                  {/* iOS and iPadOS 26 component */}
+                  <StatusBarIPhone textTime="9:41" time="9:41" />
+                </CodeConnectSnippet>
+                <div className="content-stretch flex items-center justify-between min-h-[59px] pb-[4px] pt-[11px] px-[20px] relative shrink-0 w-full" data-node-id="I747:3546;746:3324;34:32" data-name="Header">
+                  <div className="relative shrink-0 size-[44px]" data-node-id="I747:3546;746:3324;34:33" data-name="Text" />
+                </div>
+                <div className="content-stretch flex flex-col h-[696px] items-start overflow-clip pb-[32px] px-[20px] relative shrink-0 w-full" data-node-id="I747:3546;746:3324;34:38" data-name="Container">
+                  <div className="content-stretch flex flex-col h-[87px] items-start pt-[13px] relative shrink-0 w-[353px]" data-node-id="I747:3546;746:3324;34:39" data-name="Heading 1" />
+                </div>
+                <CodeConnectSnippet data-node-id="I747:3546;746:3324;34:128" data-name="Home Indicator">
+                  {/* iOS and iPadOS 26 component
+Docs:
+  https://developer.apple.com/design/human-interface-guidelines/going-full-screen */}
+                  <HomeIndicator booleanShowHomeIndicator={true} showHomeIndicator={true} variantDevice="iPhone" device="iPhone" variantOrientation="Portrait" orientation="Portrait" />
+                </CodeConnectSnippet>
+                <div className="absolute backdrop-blur-[16px] bg-[rgba(255,255,255,0.96)] border border-[#e7e3da] border-solid content-stretch flex items-center left-[14px] min-h-[56px] pl-[15px] pr-[6px] py-[6px] rounded-[26px] shadow-[0px_8px_28px_0px_rgba(40,36,28,0.12)] top-[743px] w-[365px]" data-node-id="I747:3546;746:3324;34:111" data-name="Form">
+                  <div className="content-stretch flex flex-[294_0_0] flex-col h-[42px] items-start justify-center min-w-px overflow-clip px-[2px] py-px relative" data-node-id="I747:3546;746:3324;34:112" data-name="Text Input - 告诉 Yeema 想喝什么">
+                    <p className="[word-break:break-word] font-['SF_Pro:Regular'] font-normal leading-[normal] relative shrink-0 text-[#999a94] text-[12px] w-full" data-node-id="I747:3546;746:3324;34:113" style={{ fontVariationSettings: '"wdth" 100' }}>
+                      有什么需要调整的？告诉Yeema
+                    </p>
+                  </div>
+                  <div className="bg-[#ff7e2e] content-stretch flex items-center justify-center px-[6px] py-px relative rounded-[22px] shrink-0 size-[44px]" data-node-id="I747:3546;746:3324;34:114" data-name="Button - 开始语音输入">
+                    <div className="relative shrink-0 size-[19px]" data-node-id="I747:3546;746:3324;34:115" data-name="Icon">
+                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcon} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="-translate-x-1/2 -translate-y-1/2 absolute h-[68px] left-[calc(50%+154.5px)] top-[calc(50%-330px)] w-[84px]" data-node-id="I747:3546;746:3324;203:762">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFrame12} />
+        </div>
+      </div>
+      <div className="content-stretch flex items-center justify-between relative shrink-0 w-[232px]" data-node-id="I747:3546;747:3395">
+        <div className="h-[10px] relative shrink-0 w-[5px]" data-node-id="I747:3546;747:3362" data-name="Vector">
+          <div className="absolute inset-[-7.5%_-15%]">
+            <img alt="" className="block max-w-none size-full" src={imgVector} />
+          </div>
+        </div>
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[28px] not-italic relative shrink-0 text-[22px] text-black whitespace-nowrap" data-node-id="I747:3546;747:3356">
+          当前咖啡豆
+        </p>
+      </div>
+      <div className="bg-[#171715] content-stretch flex flex-col h-[252px] items-start min-h-[252px] overflow-clip px-[22px] py-[24px] relative rounded-[24px] shrink-0 w-full" data-node-id="I747:3546;747:3364" data-name="Component/Beens Card">
+        <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="I747:3546;747:3364;1:678" data-name="Text">
+          <p className="[word-break:break-word] font-['SF_Pro:Medium'] font-medium leading-[16px] relative shrink-0 text-[11px] text-[rgba(255,255,255,0.5)] tracking-[0.2845px] whitespace-nowrap" data-node-id="I747:3546;747:3364;1:679" style={{ fontVariationSettings: '"wdth" 100' }}>
+            CURRENT BEAN
+          </p>
+        </div>
+        <div className="content-stretch flex flex-col items-start pt-[13px] relative shrink-0 w-full" data-node-id="I747:3546;747:3364;1:702" data-name="Placeholder for Heading 1:margin">
+          <div className="h-[61px] relative shrink-0 w-[309px]" data-node-id="I747:3546;747:3364;1:681" data-name="Placeholder for Heading 1" />
+        </div>
+        <div className="content-stretch flex flex-col h-[25px] items-start pt-[12px] relative shrink-0 w-[309px]" data-node-id="I747:3546;747:3364;1:682" data-name="Paragraph">
+          <p className="[word-break:break-word] font-['SF_Pro:Regular'] font-normal leading-[normal] relative shrink-0 text-[11px] text-[rgba(255,255,255,0.62)] tracking-[0.0645px] whitespace-nowrap" data-node-id="I747:3546;747:3364;1:683" style={{ fontVariationSettings: '"wdth" 100' }}>
+            埃塞俄比亚 水洗 浅烘焙
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[7px] h-[54px] items-start pt-[26px] relative shrink-0 w-[309px]" data-node-id="I747:3546;747:3364;1:685" data-name="Container">
+          <div className="border border-[rgba(255,255,255,0.17)] border-solid content-stretch flex flex-col h-full items-start px-[10px] py-[6px] relative rounded-[999px] shrink-0" data-node-id="I747:3546;747:3364;1:686" data-name="Text">
+            <p className="[word-break:break-word] font-['SF_Pro:Regular'] font-normal leading-[normal] relative shrink-0 text-[10px] text-[rgba(255,255,255,0.8)] tracking-[0.1172px] whitespace-nowrap" data-node-id="I747:3546;747:3364;1:687" style={{ fontVariationSettings: '"wdth" 100' }}>
+              柑橘
+            </p>
+          </div>
+          <div className="border border-[rgba(255,255,255,0.17)] border-solid content-stretch flex flex-col h-full items-start px-[10px] py-[6px] relative rounded-[999px] shrink-0" data-node-id="I747:3546;747:3364;1:689" data-name="Text">
+            <p className="[word-break:break-word] font-['SF_Pro:Regular'] font-normal leading-[normal] relative shrink-0 text-[10px] text-[rgba(255,255,255,0.8)] tracking-[0.1172px] whitespace-nowrap" data-node-id="I747:3546;747:3364;1:690" style={{ fontVariationSettings: '"wdth" 100' }}>
+              白花
+            </p>
+          </div>
+          <div className="border border-[rgba(255,255,255,0.17)] border-solid content-stretch flex flex-col h-full items-start px-[10px] py-[6px] relative rounded-[999px] shrink-0" data-node-id="I747:3546;747:3364;1:692" data-name="Text">
+            <p className="[word-break:break-word] font-['SF_Pro:Regular'] font-normal leading-[normal] relative shrink-0 text-[10px] text-[rgba(255,255,255,0.8)] tracking-[0.1172px] whitespace-nowrap" data-node-id="I747:3546;747:3364;1:693" style={{ fontVariationSettings: '"wdth" 100' }}>
+              红茶
+            </p>
+          </div>
+        </div>
+        <div className="absolute flex items-center justify-center left-[195.08px] size-[181.833px] top-[1.08px]" data-node-id="I747:3546;747:3364;1:695">
+          <div className="flex-none rotate-14">
+            <div className="bg-[#2a2925] content-stretch flex items-center justify-center relative rounded-[75px] size-[150px]" data-name="Text">
+              <div className="relative shrink-0 size-[54px]" data-node-id="I747:3546;747:3364;203:512" data-name="Icon/Beens/Light Roast">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconBeensLightRoast} />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="absolute content-stretch flex flex-col items-start left-[22px] pr-[70px] top-[53px] w-[231px]" data-node-id="I747:3546;747:3364;1:699" data-name="Heading 1">
+          <p className="[word-break:break-word] font-['SF_Pro:Bold'] font-bold leading-[30.45px] relative shrink-0 text-[29px] text-white tracking-[-0.4106px] w-[189px]" data-node-id="I747:3546;747:3364;1:700" style={{ fontVariationSettings: '"wdth" 100' }}>
+            Citaly 1号
+          </p>
+        </div>
+      </div>
+      <div className="[word-break:break-word] bg-[var(--surface\/normal,#f5f3ee)] border border-[var(--surface\/surface\/brand\/text\/text\/text\/border\/default,#e7e3da)] border-solid content-stretch flex flex-col gap-[14px] h-[124px] items-start not-italic p-[16px] relative rounded-[20px] shrink-0 w-full whitespace-nowrap" data-node-id="I747:3546;747:3384">
+        <p className="font-['Inter:Regular'] font-normal leading-[normal] relative shrink-0 text-[12px] text-[color:var(--surface\/surface\/brand\/text\/text\/text\/tertiary,#999a94)]" data-node-id="I747:3546;747:3384;745:3301">
+          这包豆子的偏好
+        </p>
+        <p className="font-['Inter:Semi_Bold'] font-semibold leading-[22px] relative shrink-0 text-[20px] text-[color:var(--surface\/surface\/brand\/text\/primary,#171715)]" data-node-id="I747:3546;747:3384;745:3302">
+          喜欢更淡一些
+        </p>
+        <p className="font-['Inter:Regular'] font-normal leading-[normal] relative shrink-0 text-[12px] text-[color:var(--surface\/surface\/brand\/text\/text\/text\/tertiary,#999a94)]" data-node-id="I747:3546;747:3384;745:3303">
+          Yeema会优先参考这款豆子的反馈并结合账号中的口味。
+        </p>
+      </div>
+      <div className="bg-[var(--surface\/normal,#f5f3ee)] border border-[var(--surface\/surface\/brand\/text\/text\/text\/border\/default,#e7e3da)] border-solid content-stretch flex flex-col h-[72px] items-center justify-center p-[16px] relative rounded-[20px] shrink-0 w-full" data-node-id="I747:3546;747:3388">
+        <div className="content-stretch flex items-center justify-between relative shrink-0 w-[318.991px]" data-node-id="I747:3546;747:3388;746:3321">
+          <div className="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start relative shrink-0 w-[112px]" data-node-id="I747:3546;747:3388;746:3320">
+            <p className="font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[12px] text-[color:var(--surface\/surface\/brand\/text\/text\/text\/tertiary,#999a94)] w-full" data-node-id="I747:3546;747:3388;746:3317">
+              账号口味记忆
+            </p>
+            <p className="font-['Noto_Sans_SC:Medium'] font-medium leading-[20px] relative shrink-0 text-[14px] text-black w-full" data-node-id="I747:3546;747:3388;746:3318">
+              正在了解您的偏好
+            </p>
+          </div>
+          <div className="h-[14.969px] relative shrink-0 w-[16.991px]" data-node-id="I747:3546;747:3388;746:3310" data-name="Vector">
+            <div className="absolute inset-[-5.01%_-4.41%]">
+              <img alt="" className="block max-w-none size-full" src={imgVector1} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="content-stretch flex gap-[180px] h-[72px] items-center px-[20px] py-[9px] relative shrink-0 w-[353px]" data-node-id="I747:3546;782:4155">
+        <div className="absolute bg-[var(--surface\/normal,#f5f3ee)] border border-[var(--surface\/surface\/brand\/text\/text\/text\/border\/default,#e7e3da)] border-solid content-stretch flex flex-col h-[72px] items-center justify-center left-0 p-[16px] rounded-[20px] top-0 w-[353px]" data-node-id="I747:3546;782:4155;781:4114" />
+        <div className="content-stretch flex gap-[190px] items-center relative shrink-0 w-[112px]" data-node-id="I747:3546;782:4155;781:4148">
+          <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start min-w-px relative" data-node-id="I747:3546;782:4155;781:4149">
+            <p className="font-['Inter:Semi_Bold'] font-semibold leading-[28px] min-w-full not-italic relative shrink-0 text-[22px] text-[color:var(--surface\/surface\/brand\/text\/primary,#171715)] w-[min-content]" data-node-id="I747:3546;782:4155;781:4150">
+              拍照识豆
+            </p>
+            <p className="font-['Noto_Sans_SC:Regular'] font-normal leading-[18px] relative shrink-0 text-[10px] text-[color:var(--surface\/surface\/brand\/text\/text\/secondary,#6f706a)] whitespace-nowrap" data-node-id="I747:3546;782:4155;781:4151">
+              拍包装，看看这包豆子的信息
+            </p>
+          </div>
+        </div>
+        <div className="h-[31px] relative shrink-0 w-[34px]" data-node-id="I747:3546;782:4155;781:4135">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFrame85} />
+        </div>
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Yeema/Typography/Page title: Font(family: "Inter", style: Semi Bold, size: 22, weight: 600, lineHeight: 28, letterSpacing: 0), Yeema/Typography/Card title: Font(family: "Inter", style: Semi Bold, size: 20, weight: 600, lineHeight: 22, letterSpacing: 0), Yeema/Typography/Section label: Font(family: "Noto Sans SC", style: Medium, size: 14, weight: 500, lineHeight: 20, letterSpacing: 0), Body-2: Font(family: "Noto Sans SC", style: Regular, size: 10, weight: 400, lineHeight: 18, letterSpacing: 0).
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Home Indicator
+**Node ID:** 3:1146
+
+**Documentation:**
+- [https://developer.apple.com/design/human-interface-guidelines/going-full-screen](https://developer.apple.com/design/human-interface-guidelines/going-full-screen)
+Images and SVGs will be stored as constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These constants will be used in the code as the source for the image, ex: <img src={image} />. Image assets are stored on a remote server for 7 days and can be fetched using the provided URLs until they expire.

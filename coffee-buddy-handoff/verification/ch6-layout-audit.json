@@ -1,0 +1,241 @@
+{
+  "frames": 720,
+  "fps": 30,
+  "findings": [],
+  "composerMinimumGap": 33.14061864217122,
+  "seekSignatures": [
+    {
+      "t": 22,
+      "recipe": "Alex's Shot · Saved",
+      "scroll": -1518,
+      "pill": 74
+    },
+    {
+      "t": 4.8,
+      "recipe": "Alex's Shot",
+      "scroll": -70,
+      "pill": 0
+    },
+    {
+      "t": 18,
+      "recipe": "Alex's Shot",
+      "scroll": -1518,
+      "pill": 74
+    },
+    {
+      "t": 7,
+      "recipe": "Alex's Shot",
+      "scroll": -403,
+      "pill": 74
+    },
+    {
+      "t": 16,
+      "recipe": "Alex's Shot",
+      "scroll": -1518,
+      "pill": 74
+    },
+    {
+      "t": 2.5,
+      "recipe": "Alex's Shot",
+      "scroll": 0,
+      "pill": 8
+    },
+    {
+      "t": 20.4,
+      "recipe": "Alex's Shot · Saved",
+      "scroll": -1518,
+      "pill": 74
+    }
+  ],
+  "samples": [
+    {
+      "t": 0,
+      "visible": []
+    },
+    {
+      "t": 1,
+      "visible": []
+    },
+    {
+      "t": 2,
+      "visible": []
+    },
+    {
+      "t": 3,
+      "visible": [
+        "#user-row .bubble",
+        "#user-row .avatar",
+        "#parse-row .assistant-card",
+        "#parse-row .avatar"
+      ]
+    },
+    {
+      "t": 4,
+      "visible": [
+        "#user-row .bubble",
+        "#user-row .avatar",
+        "#lock-group > .avatar",
+        "#lock-planning"
+      ]
+    },
+    {
+      "t": 5,
+      "visible": [
+        "#user-row .bubble",
+        "#user-row .avatar",
+        "#lock-group > .avatar",
+        "#lock-planning",
+        "#lock-pill",
+        "#lock-group .chip:nth-child(1)",
+        "#lock-group .chip:nth-child(2)",
+        "#lock-group .chip:nth-child(3)"
+      ]
+    },
+    {
+      "t": 6,
+      "visible": [
+        "#lock-group > .avatar",
+        "#lock-pill"
+      ]
+    },
+    {
+      "t": 7,
+      "visible": [
+        "#lock-group > .avatar",
+        "#lock-pill",
+        "#shot-card"
+      ]
+    },
+    {
+      "t": 8,
+      "visible": [
+        "#lock-group > .avatar",
+        "#lock-pill",
+        "#shot-card"
+      ]
+    },
+    {
+      "t": 9,
+      "visible": [
+        "#lock-group > .avatar",
+        "#lock-pill",
+        "#shot-card"
+      ]
+    },
+    {
+      "t": 10,
+      "visible": [
+        "#brew-command .bubble",
+        "#brew-command .avatar",
+        "#place-row .place-card",
+        "#place-row .avatar"
+      ]
+    },
+    {
+      "t": 11,
+      "visible": [
+        "#brew-command .bubble",
+        "#brew-command .avatar",
+        "#place-row .place-card",
+        "#place-row .avatar"
+      ]
+    },
+    {
+      "t": 12,
+      "visible": [
+        "#brew-row .brew-card",
+        "#brew-row .avatar"
+      ]
+    },
+    {
+      "t": 13,
+      "visible": [
+        "#brew-row .brew-card",
+        "#brew-row .avatar"
+      ]
+    },
+    {
+      "t": 14,
+      "visible": [
+        "#brew-row .brew-card",
+        "#brew-row .avatar"
+      ]
+    },
+    {
+      "t": 15,
+      "visible": [
+        "#brew-row .brew-card",
+        "#brew-row .avatar"
+      ]
+    },
+    {
+      "t": 16,
+      "visible": [
+        "#done-group .brew-card",
+        "#done-group .avatar",
+        "#done-group .feedback"
+      ]
+    },
+    {
+      "t": 17,
+      "visible": [
+        "#done-group .brew-card",
+        "#done-group .avatar",
+        "#done-group .feedback"
+      ]
+    },
+    {
+      "t": 18,
+      "visible": [
+        "#done-group .brew-card",
+        "#done-group .avatar",
+        "#save-bar"
+      ]
+    },
+    {
+      "t": 19,
+      "visible": [
+        "#done-group .brew-card",
+        "#done-group .avatar",
+        "#save-bar"
+      ]
+    },
+    {
+      "t": 20,
+      "visible": [
+        "#done-group .brew-card",
+        "#done-group .avatar",
+        "#final-row .assistant-card",
+        "#final-row .avatar"
+      ]
+    },
+    {
+      "t": 21,
+      "visible": [
+        "#done-group .brew-card",
+        "#done-group .avatar",
+        "#final-row .assistant-card",
+        "#final-row .avatar"
+      ]
+    },
+    {
+      "t": 22,
+      "visible": [
+        "#done-group .brew-card",
+        "#done-group .avatar",
+        "#final-row .assistant-card",
+        "#final-row .avatar"
+      ]
+    },
+    {
+      "t": 23,
+      "visible": [
+        "#done-group .brew-card",
+        "#done-group .avatar",
+        "#final-row .assistant-card",
+        "#final-row .avatar"
+      ]
+    }
+  ],
+  "runtimeErrors": []
+}

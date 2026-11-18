@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="330" viewBox="0 0 300 330" fill="none">
+  <defs><clipPath id="glass-inside"><path d="M70 83h160l-14 198a20 20 0 0 1-20 19h-92a20 20 0 0 1-20-19L70 83Z"/></clipPath></defs>
+  <ellipse cx="150" cy="307" rx="74" ry="7" fill="#171715" opacity=".06"/>
+  <path d="M65 80h170l-15 204a24 24 0 0 1-24 22h-92a24 24 0 0 1-24-22L65 80Z" fill="#DAE8EC" fill-opacity=".28" stroke="#9DB9C1" stroke-width="2.5"/>
+  <g clip-path="url(#glass-inside)">
+    <path d="M65 204h170v100H65z" fill="#E7BB68"/>
+    <ellipse cx="150" cy="204" rx="85" ry="10" fill="#F4D391"/>
+    <path d="M92 213v70a11 11 0 0 0 10 9" stroke="#FFF8E1" stroke-opacity=".76" stroke-width="5" stroke-linecap="round"/>
+    <g stroke="#FFF8E1" stroke-width="1.5"><circle cx="115" cy="232" r="3"/><circle cx="141" cy="264" r="4"/><circle cx="190" cy="249" r="2.5"/></g>
+    <path d="M150 72v138" stroke="#E7BB68" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <path d="M65 80h170" stroke="#BCD0D5" stroke-width="3" stroke-linecap="round"/>
+  <path d="M70 85h129" stroke="white" stroke-opacity=".9" stroke-width="2" stroke-linecap="round"/>
+</svg>

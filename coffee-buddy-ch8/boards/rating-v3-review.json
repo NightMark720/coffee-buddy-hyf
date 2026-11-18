@@ -1,0 +1,105 @@
+{
+  "chapter": 8,
+  "revision": 3,
+  "stage": "dynamic-preview-awaiting-user-approval",
+  "change": "Rating options inside Done card; two columns; black Just right becomes green with saved confirmation; selected state remains above naming card.",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds": 30.4
+  },
+  "checks": {
+    "lint": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    },
+    "runtime": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    },
+    "layout": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    },
+    "contrast": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    }
+  },
+  "layout_samples": 549,
+  "targeted_audit": {
+    "captures": [
+      {
+        "t": 15.28,
+        "buttonColor": "rgb(23, 23, 21)",
+        "savedOpacity": "0",
+        "savedVisibility": "hidden",
+        "columns": "137.5px 137.5px",
+        "card": {
+          "x": 170.38168334960938,
+          "y": 384.73284912109375,
+          "width": 871.14501953125,
+          "height": 541.3740234375,
+          "bottom": 926.1068725585938
+        },
+        "naming": {
+          "y": 970.0763549804688,
+          "opacity": "0"
+        },
+        "gap": 43.969482421875
+      },
+      {
+        "t": 15.8,
+        "buttonColor": "rgb(56, 137, 107)",
+        "savedOpacity": "1",
+        "savedVisibility": "visible",
+        "columns": "137.5px 137.5px",
+        "card": {
+          "x": 170.38168334960938,
+          "y": 384.73284912109375,
+          "width": 871.14501953125,
+          "height": 541.3740234375,
+          "bottom": 926.1068725585938
+        },
+        "naming": {
+          "y": 970.0763549804688,
+          "opacity": "0"
+        },
+        "gap": 43.969482421875
+      },
+      {
+        "t": 17.1,
+        "buttonColor": "rgb(56, 137, 107)",
+        "savedOpacity": "1",
+        "savedVisibility": "visible",
+        "columns": "137.5px 137.5px",
+        "card": {
+          "x": 170.38168334960938,
+          "y": 384.73284912109375,
+          "width": 871.14501953125,
+          "height": 541.3740234375,
+          "bottom": 926.1068725585938
+        },
+        "naming": {
+          "y": 970.0763549804688,
+          "opacity": "1"
+        },
+        "gap": 43.969482421875
+      }
+    ],
+    "seek": {
+      "samples": 17,
+      "differences": []
+    }
+  },
+  "mp4_exported": false
+}

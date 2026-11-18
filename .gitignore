@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+._*
+
+# HyperFrames 本地状态与预览缓存（可重新生成，不入库）
+.hyperframes/
+.thumbnails/
+.waveform-cache/
+.playwright-cli/
+**/.media/audio/
+
+# 依赖与临时产物
+node_modules/
+*.tmp

@@ -1,0 +1,232 @@
+[
+  {
+    "id": "keyboard-open",
+    "asset": "assets/sfx/swipe.wav",
+    "start": 1.2,
+    "duration": 0.38,
+    "volume": 0.11,
+    "label": "Keyboard opens",
+    "track": 1,
+    "offset": 0
+  },
+  {
+    "id": "typing",
+    "asset": "assets/sfx/typing-ch7.wav",
+    "start": 1.35,
+    "duration": 2.45,
+    "volume": 0.09,
+    "label": "48 keyboard taps",
+    "track": 2,
+    "offset": 0
+  },
+  {
+    "id": "send",
+    "asset": "assets/sfx/pop.wav",
+    "start": 3.8,
+    "duration": 0.3,
+    "volume": 0.18,
+    "label": "Send the creative request",
+    "track": 2,
+    "offset": 0
+  },
+  {
+    "id": "keyboard-close",
+    "asset": "assets/sfx/swipe.wav",
+    "start": 3.8,
+    "duration": 0.38,
+    "volume": 0.09,
+    "label": "Keyboard closes",
+    "track": 1,
+    "offset": 0
+  },
+  {
+    "id": "drop-1",
+    "asset": "assets/sfx/drop-high.wav",
+    "start": 4.4,
+    "duration": 0.38,
+    "volume": 0.16,
+    "label": "Inventing drop 1",
+    "track": 1,
+    "offset": 0
+  },
+  {
+    "id": "drop-2",
+    "asset": "assets/sfx/drop-mid.wav",
+    "start": 4.75,
+    "duration": 0.38,
+    "volume": 0.16,
+    "label": "Inventing drop 2",
+    "track": 2,
+    "offset": 0
+  },
+  {
+    "id": "drop-3",
+    "asset": "assets/sfx/drop-low.wav",
+    "start": 5.1000000000000005,
+    "duration": 0.38,
+    "volume": 0.16,
+    "label": "Inventing drop 3",
+    "track": 1,
+    "offset": 0
+  },
+  {
+    "id": "creation-spark",
+    "asset": "assets/sfx/parameter.wav",
+    "start": 5.65,
+    "duration": 0.55,
+    "volume": 0.18,
+    "label": "Creation overtone",
+    "track": 1,
+    "offset": 0.25
+  },
+  {
+    "id": "recipe-settle",
+    "asset": "assets/sfx/tap.wav",
+    "start": 8,
+    "duration": 0.18,
+    "volume": 0.16,
+    "label": "Recipe settles",
+    "track": 1,
+    "offset": 0
+  },
+  {
+    "id": "fizz",
+    "asset": "assets/sfx/steam-demo.wav",
+    "start": 9.25,
+    "duration": 0.68,
+    "volume": 0.12,
+    "label": "Cold tonic fizz",
+    "track": 1,
+    "offset": 0
+  },
+  {
+    "id": "pour",
+    "asset": "assets/sfx/extraction-demo.wav",
+    "start": 9.7,
+    "duration": 0.75,
+    "volume": 0.18,
+    "label": "Tonic pours into the recipe glass",
+    "track": 1,
+    "offset": 0.5
+  },
+  {
+    "id": "espresso-layer",
+    "asset": "assets/sfx/extraction-demo.wav",
+    "start": 10.3,
+    "duration": 0.7,
+    "volume": 0.13,
+    "label": "Espresso layer forms",
+    "track": 2,
+    "offset": 0.2
+  },
+  {
+    "id": "orange-drop",
+    "asset": "assets/sfx/drop-high.wav",
+    "start": 11.28,
+    "duration": 0.38,
+    "volume": 0.2,
+    "label": "Orange lands",
+    "track": 1,
+    "offset": 0
+  },
+  {
+    "id": "condensation",
+    "asset": "assets/sfx/key.wav",
+    "start": 11.6,
+    "duration": 0.072,
+    "volume": 0.11,
+    "label": "Condensation tick",
+    "track": 2,
+    "offset": 0
+  },
+  {
+    "id": "cup-dock",
+    "asset": "assets/sfx/swipe.wav",
+    "start": 11.72,
+    "duration": 0.38,
+    "volume": 0.15,
+    "label": "Cup returns to recipe slot",
+    "track": 1,
+    "offset": 0
+  },
+  {
+    "id": "make-it",
+    "asset": "assets/sfx/tap.wav",
+    "start": 13.2,
+    "duration": 0.18,
+    "volume": 0.22,
+    "label": "Confirm drink",
+    "track": 1,
+    "offset": 0
+  },
+  {
+    "id": "cup-in-place",
+    "asset": "assets/sfx/tap.wav",
+    "start": 14.8,
+    "duration": 0.18,
+    "volume": 0.23,
+    "label": "Confirm cup under spout",
+    "track": 1,
+    "offset": 0
+  },
+  {
+    "id": "grinding",
+    "asset": "assets/sfx/grinding-demo.wav",
+    "start": 15.4,
+    "duration": 0.9,
+    "volume": 0.18,
+    "label": "Grinding — demo texture",
+    "track": 1,
+    "offset": 0
+  },
+  {
+    "id": "extraction",
+    "asset": "assets/sfx/extraction-demo.wav",
+    "start": 16.3,
+    "duration": 1.8,
+    "volume": 0.26,
+    "label": "Extraction — demo texture",
+    "track": 1,
+    "offset": 0
+  },
+  {
+    "id": "disposing",
+    "asset": "assets/sfx/dispose-demo.wav",
+    "start": 18.1,
+    "duration": 0.48,
+    "volume": 0.18,
+    "label": "Disposing — demo texture",
+    "track": 1,
+    "offset": 0
+  },
+  {
+    "id": "reset",
+    "asset": "assets/sfx/reset-demo.wav",
+    "start": 18.7,
+    "duration": 0.6,
+    "volume": 0.11,
+    "label": "Resetting — demo texture",
+    "track": 1,
+    "offset": 0
+  },
+  {
+    "id": "complete",
+    "asset": "assets/sfx/complete.wav",
+    "start": 19.4,
+    "duration": 1.88,
+    "volume": 0.28,
+    "label": "Coffee ready",
+    "track": 1,
+    "offset": 0
+  },
+  {
+    "id": "save",
+    "asset": "assets/sfx/tap.wav",
+    "start": 20.4,
+    "duration": 0.18,
+    "volume": 0.13,
+    "label": "Save Just right",
+    "track": 2,
+    "offset": 0
+  }
+]

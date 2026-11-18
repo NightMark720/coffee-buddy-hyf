@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Coffee Buddy - Ch.4: One app, one fleet</title>
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "SF Pro"; src: url("assets/fonts/SF-Pro-ch1.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
+      @font-face { font-family: Inter; src: url("assets/fonts/Inter-ch1.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
+      :root { --bg: #fcfbf9; --card: #f5f3ee; --line: #e7e3da; --ink: #171715; --muted: #6f706a; --orange: #ff7e2e; --care: #986500; --green: #2f7d5b; }
+      * { box-sizing: border-box; letter-spacing: 0; }
+      html, body { width: 1080px; height: 1920px; margin: 0; overflow: hidden; background: var(--bg); }
+      body { color: var(--ink); font-family: "SF Pro", Arial, sans-serif; }
+      h1, h2, h3, p { margin: 0; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--bg); }
+      .app { position: relative; width: 393px; height: 698.666667px; overflow: hidden; background: var(--bg); transform: scale(2.748091603); transform-origin: 0 0; }
+      .statusbar { position: absolute; top: 23px; left: 54px; right: 35px; z-index: 9; height: 21px; display: flex; align-items: center; justify-content: space-between; font-size: 17px; font-weight: 600; }
+      .statusbar img { width: 81px; height: 18px; object-fit: contain; }
+      .profile { position: absolute; top: 60px; right: 18px; z-index: 9; width: 48px; height: 48px; }
+      .chat-viewport { position: absolute; top: 128px; left: 14px; right: 14px; bottom: 108px; z-index: 3; overflow: hidden; }
+      .chat-content { position: relative; width: 365px; height: 1000px; }
+      .greeting { position: absolute; top: 0; left: 6px; width: 353px; font-family: Inter, sans-serif; font-size: 32px; line-height: 40px; font-weight: 600; }
+      .greeting span { display: block; }
+      .exception { position: absolute; top: 140px; left: 6px; width: 353px; height: 171px; padding: 18px; border: 1px solid #f1bd95; border-radius: 20px; background: var(--card); }
+      .exception-heading { display: flex; align-items: center; gap: 10px; }
+      .attention { width: 22px; height: 22px; flex: 0 0 22px; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--orange); border-radius: 50%; color: var(--care); font-size: 14px; line-height: 19px; font-weight: 600; }
+      .exception h2 { font-family: Inter, sans-serif; font-size: 20px; line-height: 24px; font-weight: 600; }
+      .exception p { margin-top: 10px; color: var(--muted); font-size: 15px; line-height: 22px; }
+      .exception-action { height: 42px; margin-top: 16px; display: flex; align-items: center; justify-content: center; border-radius: 23px; background: var(--orange); font-size: 14px; line-height: 20px; font-weight: 600; }
+      .user-row { position: absolute; top: 337px; right: 0; width: 365px; height: 90px; display: flex; align-items: flex-end; justify-content: flex-end; gap: 12px; }
+      .avatar { width: 36px; height: 36px; flex: 0 0 36px; border-radius: 50%; background: center / cover no-repeat; }
+      .bean-avatar { background-image: url("assets/avatars/coffee-buddy-bean.svg"); }
+      .cup-avatar { background-image: url("assets/avatars/user-cup-chat.svg"); }
+      .bubble { width: 305px; min-height: 90px; padding: 12px 14px; border-radius: 20px 20px 6px 20px; background: var(--ink); color: #fff; font-size: 15px; line-height: 22px; }
+      .assistant-group { position: absolute; top: 443px; left: 0; width: 365px; height: 68px; display: flex; align-items: flex-start; gap: 12px; }
+      .assistant-card { width: 317px; min-height: 68px; padding: 11px 13px; border: 1px solid var(--line); border-radius: 20px 20px 20px 6px; background: #fff; font-size: 14px; line-height: 20px; }
+      .planning-card { color: var(--muted); }
+      .drop-row { height: 25px; display: flex; align-items: center; gap: 11px; padding-left: 7px; }
+      .drop { display: block; width: 12px; height: 17px; border-radius: 60% 60% 60% 15%; background: #d9d4c9; }
+      .understanding-card { position: absolute; top: 0; left: 48px; width: 317px; min-height: 68px; background: var(--card); }
+      .understanding-card span { display: block; }
+      .fleet { position: absolute; top: 527px; left: 6px; width: 353px; height: 342px; padding: 17px 17px 10px; border: 1px solid var(--line); border-radius: 20px; background: var(--card); overflow: hidden; }
+      .fleet-head { height: 24px; margin-bottom: 9px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+      .fleet h2 { font-family: Inter, sans-serif; font-size: 20px; line-height: 24px; font-weight: 600; }
+      .online { display: flex; align-items: center; gap: 5px; color: var(--green); font-size: 12px; line-height: 18px; white-space: nowrap; }
+      .online i { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+      .machine-row { position: relative; height: 64px; display: flex; align-items: center; gap: 14px; border-top: 1px solid var(--line); }
+      .machine-row.scheduled { height: 86px; }
+      .machine-copy { flex: 1; min-width: 0; }
+      .machine-name { font-size: 17px; line-height: 22px; font-weight: 600; }
+      .machine-state { margin-top: 1px; color: var(--green); font-size: 13px; line-height: 18px; }
+      .machine-row > .ring-cleaning, .machine-row > .ring-done { position: absolute; left: 0; top: 11px; }
+      .machine-row:has(.state-cleaning) .machine-copy, .machine-row:has(.state-done) .machine-copy { position: relative; }
+      .state-cleaning, .state-done { position: absolute; top: 22px; left: 0; }
+      #lobby-2-row .machine-copy { position: relative; }
+      .appointment { position: absolute; top: 41px; left: 0; }
+      .machine-state.care, .machine-state.working { color: var(--care); }
+      .appointment { display: inline-flex; margin-top: 5px; padding: 2px 8px; border: 1px solid #e2c28e; border-radius: 999px; background: #fff8ed; color: var(--care); font-size: 11px; line-height: 16px; white-space: nowrap; }
+      .status-ring { position: relative; width: 40px; height: 40px; flex: 0 0 40px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--green); border-radius: 50%; color: var(--green); }
+      .ready-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+      .care-ring { border-color: var(--orange); color: var(--care); }
+      .care-ring::after { content: "!"; font-size: 18px; line-height: 20px; font-weight: 600; }
+      .cleaning-ring { border-color: var(--orange); overflow: hidden; background: #fffaf4; }
+      .liquid { position: absolute; left: 0; right: 0; bottom: 0; height: 24px; background: #ffca9e; }
+      .liquid::before { content: ""; position: absolute; left: -6px; right: -6px; top: -4px; height: 8px; border-radius: 50%; background: #ffca9e; transform: rotate(-6deg); }
+      .water-bubble { position: absolute; width: 5px; height: 5px; border: 1px solid #fff8ef; border-radius: 50%; background: #ffffff50; }
+      .bubble-a { left: 8px; bottom: 7px; }
+      .bubble-b { left: 22px; bottom: 13px; width: 4px; height: 4px; }
+      .bubble-c { left: 16px; bottom: 21px; width: 3px; height: 3px; }
+      .brewing-ring { border: 0; }
+      .brewing-ring svg { width: 40px; height: 40px; transform: rotate(-90deg); }
+      .brewing-track { stroke: #e7e3da; }
+      .brewing-progress { stroke: var(--orange); stroke-linecap: round; stroke-dasharray: 70.12 113.1; }
+      .brewing-ring::after { content: ""; position: absolute; inset: 16px; border-radius: 50%; background: var(--orange); }
+      .done-ring { border-color: var(--green); }
+      .done-ring svg { width: 21px; height: 21px; }
+      .state-cleaning, .state-done, .ring-cleaning, .ring-done, .appointment { opacity: 0; }
+      .summary { position: absolute; top: 885px; left: 0; width: 365px; display: flex; align-items: flex-start; gap: 12px; }
+      .summary .assistant-card { width: 317px; min-height: 68px; font-size: 15px; line-height: 22px; }
+      .composer { position: absolute; left: 14px; right: 14px; bottom: 44px; z-index: 12; height: 58px; display: flex; align-items: center; gap: 10px; padding: 6px 6px 6px 17px; border: 1px solid var(--line); border-radius: 26px; background: #fffffff5; box-shadow: 0 8px 28px #28241c1f; }
+      .composer-copy { position: relative; flex: 1; min-width: 0; height: 44px; display: flex; align-items: center; font-size: 12px; line-height: 18px; }
+      .placeholder { color: var(--muted); }
+      .typed-copy { position: absolute; inset: 0; display: block; align-content: center; color: var(--ink); font-size: 15px; line-height: 22px; }
+      .caret { display: inline-block; width: 1px; height: 17px; margin-left: 2px; vertical-align: -2px; background: var(--orange); }
+      .microphone { position: relative; width: 44px; height: 44px; flex: 0 0 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--orange); }
+      .microphone img { width: 19px; height: 19px; }
+      .send { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--ink); color: var(--bg); font-size: 23px; line-height: 1; }
+      .keyboard { position: absolute; left: 0; right: 0; bottom: 0; z-index: 11; height: 202px; padding: 13px 5px 24px; background: #d5d7dc; border-top: 1px solid #c8c9cf; }
+      .key-row { display: flex; justify-content: center; gap: 5px; margin-bottom: 7px; }
+      .key { height: 31px; flex: 1; max-width: 34px; display: flex; align-items: center; justify-content: center; border-radius: 5px; background: #fff; box-shadow: 0 1px 0 #8b8d94; font-size: 20px; }
+      .key-row:nth-child(2) { padding: 0 17px; }
+      .key.special { flex: 1.4; max-width: 46px; background: #b9bdc6; font-size: 15px; }
+      .key.space { flex: 5.6; max-width: none; font-size: 13px; }
+      .key.return { flex: 2; max-width: none; background: #b9bdc6; font-size: 13px; }
+      .home-indicator { position: absolute; left: 124.5px; bottom: 9px; z-index: 13; width: 144px; height: 5px; border-radius: 999px; background: var(--ink); }
+      .shimmer-mask { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(120deg, transparent 0%, transparent calc(var(--shimmer-pos, -20%) - 10%), rgba(255, 255, 255, .6) var(--shimmer-pos, -20%), transparent calc(var(--shimmer-pos, -20%) + 10%), transparent 100%); mix-blend-mode: overlay; }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-d4no" id="root" data-composition-id="coffee-buddy-ch4" data-duration="22" data-width="1080" data-height="1920" data-fps="30">
+      <div data-hf-id="hf-gk5l" class="app">
+        <div data-hf-id="hf-sz55" class="statusbar"><span data-hf-id="hf-zwmt">9:41</span><img data-hf-id="hf-e3f2" src="assets/figma/ios-status.png" alt="" /></div>
+        <img data-hf-id="hf-y255" class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar" />
+        <div data-hf-id="hf-8rno" id="chat-viewport" class="chat-viewport">
+          <div data-hf-id="hf-avvz" id="chat-content" class="chat-content" data-layout-allow-overflow>
+            <div data-hf-id="hf-ps42" id="greeting" class="greeting"><span data-hf-id="hf-jydm">Hi, Alex</span><span data-hf-id="hf-e3q6">What would you like today?</span></div>
+            <section data-hf-id="hf-e7m4" id="exception" class="exception"><div data-hf-id="hf-nzjq" class="exception-heading"><span data-hf-id="hf-igvc" class="attention">!</span><h2 data-hf-id="hf-jrpz">Lobby-2 needs descaling</h2></div><p data-hf-id="hf-yczj">Water hardness has reached the cleaning threshold.</p><div data-hf-id="hf-2dwa" class="exception-action">View machine</div></section>
+            <div data-hf-id="hf-ilgi" id="user-row" class="user-row"><div data-hf-id="hf-o7mb" class="bubble">Descale Lobby-2 at 2 AM, and deep clean Lobby-1 now.</div><span data-hf-id="hf-2qdw" class="avatar cup-avatar" aria-label="User"></span></div>
+            <div data-hf-id="hf-u0f6" id="assistant-group" class="assistant-group"><span data-hf-id="hf-h81h" class="avatar bean-avatar" aria-label="Coffee Buddy"></span><div data-hf-id="hf-z2ok" id="planning" class="assistant-card planning-card"><div data-hf-id="hf-5se4" class="drop-row"><i data-hf-id="hf-0i6b" class="drop"></i><i data-hf-id="hf-q937" class="drop"></i><i data-hf-id="hf-pus6" class="drop"></i></div><p data-hf-id="hf-mty0">Yeema is planning maintenance</p></div><div data-hf-id="hf-hq88" id="understanding" class="assistant-card understanding-card"><span data-hf-id="hf-01zd">Deep cleaning Lobby-1 now ·</span><span data-hf-id="hf-nmkd">Descaling Lobby-2 at 02:00</span></div></div>
+            <section data-hf-id="hf-80su" id="fleet" class="fleet shimmer-sweep-target"><div data-hf-id="hf-3m2e" class="shimmer-mask"></div><header data-hf-id="hf-5wsr" class="fleet-head"><h2 data-hf-id="hf-pve6">Your machines</h2><span data-hf-id="hf-82e7" class="online"><i data-hf-id="hf-wt6k"></i>4 online</span></header><div data-hf-id="hf-hjrn" class="machine-row" data-machine="Lobby-1"><span data-hf-id="hf-9gwq" class="status-ring ring-ready"><i data-hf-id="hf-am17" class="ready-dot"></i></span><span data-hf-id="hf-46ho" class="status-ring cleaning-ring ring-cleaning"><i data-hf-id="hf-f81g" class="liquid"></i><i data-hf-id="hf-2u7g" class="water-bubble bubble-a"></i><i data-hf-id="hf-bi3b" class="water-bubble bubble-b"></i><i data-hf-id="hf-7jza" class="water-bubble bubble-c"></i></span><div data-hf-id="hf-99hr" class="machine-copy"><h3 data-hf-id="hf-68kp" class="machine-name">Lobby-1</h3><p data-hf-id="hf-xk3m" class="machine-state state-ready">Ready</p><p data-hf-id="hf-786l" class="machine-state working state-cleaning">Deep cleaning</p></div></div><div data-hf-id="hf-s78w" id="lobby-2-row" class="machine-row"><span data-hf-id="hf-36nk" class="status-ring care-ring"></span><div data-hf-id="hf-6zjj" class="machine-copy"><h3 data-hf-id="hf-7fhs" class="machine-name">Lobby-2</h3><p data-hf-id="hf-lvtz" class="machine-state care">Needs care</p><span data-hf-id="hf-05ca" class="appointment">Descale · 02:00</span></div></div><div data-hf-id="hf-1pj1" id="lobby-3-row" class="machine-row"><span data-hf-id="hf-zd9e" class="status-ring brewing-ring ring-brewing"><svg data-hf-id="hf-bz0g" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle data-hf-id="hf-mssi" class="brewing-track" cx="20" cy="20" r="18" stroke-width="2" /><circle data-hf-id="hf-5vf2" class="brewing-progress" cx="20" cy="20" r="18" stroke-width="2" /></svg></span><span data-hf-id="hf-axiq" class="status-ring done-ring ring-done"><svg data-hf-id="hf-8yn8" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path data-hf-id="hf-8cgh" d="m5 12 4.5 4.5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg></span><div data-hf-id="hf-6l8i" class="machine-copy"><h3 data-hf-id="hf-716r" class="machine-name">Lobby-3</h3><p data-hf-id="hf-imnz" class="machine-state working state-brewing">Brewing · 62%</p><p data-hf-id="hf-0r9a" class="machine-state state-done">Done</p></div></div><div data-hf-id="hf-pajx" class="machine-row" id="pantry-row"><span data-hf-id="hf-4b65" class="status-ring ring-pantry"><i data-hf-id="hf-xaaz" class="ready-dot"></i></span><div data-hf-id="hf-66xh" class="machine-copy"><h3 data-hf-id="hf-qa4d" class="machine-name">Pantry</h3><p data-hf-id="hf-zkhx" class="machine-state">Ready</p></div></div></section>
+            <div data-hf-id="hf-v056" id="summary" class="summary"><span data-hf-id="hf-p7ah" class="avatar bean-avatar" aria-label="Coffee Buddy"></span><div data-hf-id="hf-vo0b" class="assistant-card"><span data-hf-id="hf-n1cm" id="summary-text"></span><i data-hf-id="hf-7e7v" id="summary-caret" class="caret"></i></div></div>
+          </div>
+        </div>
+        <div data-hf-id="hf-8c6q" id="composer" class="composer"><div data-hf-id="hf-5mj0" class="composer-copy"><span data-hf-id="hf-o72r" id="placeholder" class="placeholder">What would you like? Tell Yeema</span><span data-hf-id="hf-ryf7" id="typed-copy" class="typed-copy"><span data-hf-id="hf-yclq" id="typed-value"></span><i data-hf-id="hf-nq6b" id="typed-caret" class="caret"></i></span></div><div data-hf-id="hf-c6xu" id="microphone" class="microphone"><img data-hf-id="hf-wjkt" src="assets/figma/13c65.svg" alt="Microphone" /><span data-hf-id="hf-m6qe" id="send" class="send">↑</span></div></div>
+        <div data-hf-id="hf-feqb" id="keyboard" class="keyboard" data-layout-allow-overflow><div data-hf-id="hf-08za" class="key-row"><span data-hf-id="hf-2srl" class="key">q</span><span data-hf-id="hf-205j" class="key">w</span><span data-hf-id="hf-7kfx" class="key">e</span><span data-hf-id="hf-3zoo" class="key">r</span><span data-hf-id="hf-1lui" class="key">t</span><span data-hf-id="hf-5z7t" class="key">y</span><span data-hf-id="hf-17jh" class="key">u</span><span data-hf-id="hf-cc49" class="key">i</span><span data-hf-id="hf-bji7" class="key">o</span><span data-hf-id="hf-372m" class="key">p</span></div><div data-hf-id="hf-0dzu" class="key-row"><span data-hf-id="hf-2spk" class="key inset">a</span><span data-hf-id="hf-3ldn" class="key">s</span><span data-hf-id="hf-7yqy" class="key">d</span><span data-hf-id="hf-8rd0" class="key">f</span><span data-hf-id="hf-8d1z" class="key">g</span><span data-hf-id="hf-cqfa" class="key">h</span><span data-hf-id="hf-dj1c" class="key">j</span><span data-hf-id="hf-d4qb" class="key">k</span><span data-hf-id="hf-3zmn" class="key inset">l</span></div><div data-hf-id="hf-0sav" class="key-row"><span data-hf-id="hf-u80k" class="key special">⇧</span><span data-hf-id="hf-764w" class="key">z</span><span data-hf-id="hf-6diu" class="key">x</span><span data-hf-id="hf-9ya3" class="key">c</span><span data-hf-id="hf-2egk" class="key">v</span><span data-hf-id="hf-acl4" class="key">b</span><span data-hf-id="hf-bxt8" class="key">n</span><span data-hf-id="hf-aqw5" class="key">m</span><span data-hf-id="hf-v240" class="key special">⌫</span></div><div data-hf-id="hf-16lw" class="key-row"><span data-hf-id="hf-zuid" class="key special">123</span><span data-hf-id="hf-d4qi" class="key space">space</span><span data-hf-id="hf-mwqy" class="key return">return</span></div></div>
+        <div data-hf-id="hf-78cx" class="home-indicator"></div>
+      </div>
+      <audio data-hf-id="hf-3va1" id="sfx-attention" src="assets/sfx/attention.wav" preload="auto" data-start="1.6" data-duration="0.64" data-media-start="0" data-volume="0.16" data-track-index="1" data-label="Maintenance attention"></audio>
+      <audio data-hf-id="hf-auxe" id="sfx-keyboard" src="assets/sfx/swipe.wav" preload="auto" data-start="3.35" data-duration="0.379979" data-media-start="0" data-volume="0.1" data-track-index="2" data-label="Keyboard opens"></audio>
+      <audio data-hf-id="hf-aig8" id="sfx-typing" src="assets/sfx/typing-ch4.wav" preload="auto" data-start="3.4" data-duration="2.4" data-media-start="0" data-volume="0.08" data-track-index="3" data-label="Instruction typing"></audio>
+      <audio data-hf-id="hf-5xxf" id="sfx-send" src="assets/sfx/pop.wav" preload="auto" data-start="5.8" data-duration="0.3" data-media-start="0" data-volume="0.18" data-track-index="4" data-label="Send instruction"></audio>
+      <audio data-hf-id="hf-0i85" id="sfx-drop-1" src="assets/sfx/drop-high.wav" preload="auto" data-start="6.4" data-duration="0.38" data-media-start="0" data-volume="0.14" data-track-index="5" data-label="Planning drop one"></audio>
+      <audio data-hf-id="hf-1r2l" id="sfx-drop-2" src="assets/sfx/drop-mid.wav" preload="auto" data-start="6.75" data-duration="0.38" data-media-start="0" data-volume="0.14" data-track-index="6" data-label="Planning drop two"></audio>
+      <audio data-hf-id="hf-g25d" id="sfx-drop-3" src="assets/sfx/drop-low.wav" preload="auto" data-start="7.1" data-duration="0.38" data-media-start="0" data-volume="0.14" data-track-index="7" data-label="Planning drop three"></audio>
+      <audio data-hf-id="hf-fwk0" id="sfx-row-1" src="assets/sfx/row-1.wav" preload="auto" data-start="9.6" data-duration="0.3" data-media-start="0" data-volume="0.09" data-track-index="8" data-label="Fleet row one"></audio>
+      <audio data-hf-id="hf-5q6o" id="sfx-row-2" src="assets/sfx/row-2.wav" preload="auto" data-start="9.85" data-duration="0.3" data-media-start="0" data-volume="0.09" data-track-index="9" data-label="Fleet row two"></audio>
+      <audio data-hf-id="hf-g1hw" id="sfx-row-3" src="assets/sfx/row-3.wav" preload="auto" data-start="10.1" data-duration="0.3" data-media-start="0" data-volume="0.09" data-track-index="10" data-label="Fleet row three"></audio>
+      <audio data-hf-id="hf-uhls" id="sfx-row-4" src="assets/sfx/row-4.wav" preload="auto" data-start="10.35" data-duration="0.3" data-media-start="0" data-volume="0.09" data-track-index="11" data-label="Fleet row four"></audio>
+      <audio data-hf-id="hf-3lzj" id="sfx-rinse" src="assets/sfx/rinse-illustrative.wav" preload="auto" data-start="12" data-duration="4" data-media-start="0" data-volume="0.1" data-track-index="12" data-label="Illustrative rinse texture"></audio>
+      <audio data-hf-id="hf-v3vi" id="sfx-clean-complete" src="assets/sfx/brew-complete.wav" preload="auto" data-start="16" data-duration="0.42" data-media-start="0" data-volume="0.14" data-track-index="13" data-label="Lobby-1 completion"></audio>
+      <audio data-hf-id="hf-fp6c" id="sfx-brew-complete" src="assets/sfx/complete.wav" preload="auto" data-start="16.4" data-duration="1.88" data-media-start="0" data-volume="0.12" data-track-index="14" data-label="Lobby-3 completion"></audio>
+      <audio data-hf-id="hf-jvsw" id="sfx-summary" src="assets/sfx/summary-typing.wav" preload="auto" data-start="18" data-duration="0.8" data-media-start="0" data-volume="0.07" data-track-index="15" data-label="Summary typing"></audio>
+    </div>
+    <script>
+      (async () => {
+        await document.fonts.ready;
+        const instruction = "Descale Lobby-2 at 2 AM, and deep clean Lobby-1 now.";
+        const summary = "Done — Lobby-1 deep cleaned. Lobby-2 descales at 2 AM.";
+        const tl = gsap.timeline({ paused: true });
+        const rows = ['#fleet [data-machine="Lobby-1"]', "#lobby-2-row", "#lobby-3-row", "#pantry-row"];
+        const typeText = (selector, text, start, duration) => {
+          gsap.set(selector, { textContent: "" });
+          for (let i = 1; i <= text.length; i++) {
+            tl.fromTo(selector, { textContent: text.slice(0, i - 1) }, { textContent: text.slice(0, i), duration: 0, immediateRender: false }, start + duration * i / text.length);
+          }
+        };
+
+        gsap.set("#greeting", { opacity: 0, y: 12 });
+        gsap.set("#exception", { opacity: 0, y: 18 });
+        gsap.set("#user-row", { opacity: 0, y: 12 });
+        gsap.set("#assistant-group", { opacity: 0, y: 12 });
+        gsap.set("#planning", { opacity: 0 });
+        gsap.set("#understanding", { opacity: 0 });
+        gsap.set("#fleet", { opacity: 0, y: 16, height: 320 });
+        gsap.set(rows, { opacity: 0, y: 10 });
+        gsap.set("#summary", { opacity: 0, y: 12 });
+        gsap.set("#typed-copy", { opacity: 0 });
+        gsap.set("#send", { opacity: 0 });
+        gsap.set("#keyboard", { y: 202 });
+        gsap.set("#chat-content", { y: 0 });
+        gsap.set("#chat-viewport", { clipPath: "inset(0 0 0 0)" });
+        gsap.set(".ring-cleaning, .state-cleaning, .ring-done, .state-done, .appointment", { opacity: 0 });
+        gsap.set(".liquid", { height: 0 });
+        gsap.set(".water-bubble", { opacity: 0, y: 6 });
+        gsap.set("#summary-text", { textContent: "" });
+        gsap.set("#summary-caret", { opacity: 0 });
+
+        tl.to("#greeting", { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0);
+        tl.to("#exception", { opacity: 1, y: 0, duration: 0.48, ease: "power2.out" }, 0.55);
+        tl.to("#exception", { borderColor: "#eab17f", duration: 0.45, yoyo: true, repeat: 1, ease: "sine.inOut" }, 1.2);
+        tl.to("#chat-content", { y: -120, duration: 0.34, ease: "power2.inOut" }, 3.35);
+        tl.to("#chat-viewport", { clipPath: "inset(0 0 192px 0)", duration: 0.34, ease: "power2.inOut" }, 3.35);
+        tl.to("#composer", { y: -167, height: 82, duration: 0.34, ease: "power2.inOut" }, 3.35);
+        tl.to("#keyboard", { y: 0, duration: 0.34, ease: "power2.inOut" }, 3.35);
+        tl.to("#placeholder", { opacity: 0, duration: 0.12 }, 3.4);
+        tl.to("#typed-copy", { opacity: 1, duration: 0.12 }, 3.4);
+        tl.to("#send", { opacity: 1, duration: 0.12 }, 3.4);
+        tl.to("#microphone img", { opacity: 0, duration: 0.12 }, 3.4);
+        typeText("#typed-value", instruction, 3.4, 2.15);
+        tl.to("#chat-content", { y: -337, duration: 0.34, ease: "power2.inOut" }, 5.8);
+        tl.to("#chat-viewport", { clipPath: "inset(0 0 0 0)", duration: 0.34, ease: "power2.inOut" }, 5.8);
+        tl.to("#composer", { y: 0, height: 58, duration: 0.34, ease: "power2.inOut" }, 5.8);
+        tl.to("#keyboard", { y: 202, duration: 0.34, ease: "power2.inOut" }, 5.8);
+        tl.to("#typed-copy", { opacity: 0, duration: 0.12 }, 5.8);
+        tl.to("#placeholder", { opacity: 1, duration: 0.12 }, 5.8);
+        tl.to("#send", { opacity: 0, duration: 0.12 }, 5.8);
+        tl.to("#microphone img", { opacity: 1, duration: 0.12 }, 5.8);
+        tl.to("#user-row", { opacity: 1, y: 0, duration: 0.34, ease: "power2.out" }, 5.8);
+        tl.to("#assistant-group", { opacity: 1, y: 0, duration: 0.34, ease: "power2.out" }, 6.35);
+        tl.to("#planning", { opacity: 1, duration: 0.22 }, 6.4);
+        tl.fromTo(".drop", { y: -10, scale: 0.7 }, { y: 0, scale: 1, duration: 0.3, stagger: 0.35, ease: "back.out(1.3)" }, 6.4);
+        tl.to("#planning", { opacity: 0, duration: 0.24 }, 7.6);
+        tl.to("#understanding", { opacity: 1, duration: 0.3, ease: "power2.out" }, 7.6);
+        tl.to("#chat-content", { y: -443, duration: 0.42, ease: "power2.inOut" }, 9.4);
+        tl.to("#fleet", { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 9.4);
+        tl.to(rows, { opacity: 1, y: 0, duration: 0.3, stagger: 0.25, ease: "power2.out" }, 9.55);
+        tl.to("#fleet", { height: 342, duration: 0.28, ease: "power2.out" }, 12);
+        tl.to("#lobby-2-row", { height: 86, duration: 0.28, ease: "power2.out" }, 12);
+        tl.to("#lobby-2-row .machine-copy", { y: -11, duration: 0.28, ease: "power2.out" }, 12);
+        tl.to(".appointment", { opacity: 1, duration: 0.22 }, 12.12);
+        tl.to(".ring-cleaning", { opacity: 1, duration: 0.3 }, 12);
+        tl.to(".ring-ready", { opacity: 0, duration: 0.24 }, 12);
+        tl.to(".state-ready", { opacity: 0, duration: 0.12 }, 12);
+        tl.to(".state-cleaning", { opacity: 1, duration: 0.18 }, 12.12);
+        tl.to(".liquid", { height: 24, duration: 2.1, ease: "sine.inOut" }, 12);
+        tl.to(".water-bubble", { opacity: 1, y: 0, duration: 0.4, stagger: 0.35, ease: "power2.out" }, 12.25);
+        tl.to(".water-bubble", { y: -3, duration: 0.55, stagger: 0.22, yoyo: true, repeat: 2, ease: "sine.inOut" }, 13.2);
+        tl.to(".ring-cleaning", { opacity: 0, duration: 0.28 }, 16);
+        tl.to(".ring-ready", { opacity: 1, duration: 0.28 }, 16);
+        tl.to(".state-cleaning", { opacity: 0, duration: 0.12 }, 16);
+        tl.to(".state-ready", { opacity: 1, duration: 0.16 }, 16.12);
+        tl.to(".ring-done", { opacity: 1, duration: 0.28 }, 16.4);
+        tl.to(".ring-brewing", { opacity: 0, duration: 0.28 }, 16.4);
+        tl.to(".state-brewing", { opacity: 0, duration: 0.12 }, 16.4);
+        tl.to(".state-done", { opacity: 1, duration: 0.16 }, 16.52);
+        tl.to("#chat-content", { y: -527, duration: 0.42, ease: "power2.inOut" }, 18);
+        tl.to("#summary", { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 18);
+        tl.to("#summary-caret", { opacity: 1, duration: 0.1 }, 18);
+        typeText("#summary-text", summary, 18, 0.8);
+        tl.fromTo("#fleet", { "--shimmer-pos": "-20%" }, { "--shimmer-pos": "120%", duration: 1.05, ease: "power2.inOut" }, 20);
+        tl.to("#summary-caret", { opacity: 0, duration: 0.1 }, 18.8);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["coffee-buddy-ch4"] = tl;
+        tl.seek(0);
+      })();
+    </script>
+  </body>
+</html>

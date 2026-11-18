@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Coffee Buddy | Ch.7 关键画面 v1</title>
+  <style>
+    @font-face{font-family:'SF Pro';src:url('assets/fonts/SF-Pro-ch1.woff2') format('woff2');font-weight:100 900;font-display:block}
+    @font-face{font-family:Inter;src:url('assets/fonts/Inter-ch1.woff2') format('woff2');font-weight:100 900;font-display:block}
+    :root{--bg:#fcfbf9;--card:#f5f3ee;--line:#e7e3da;--ink:#171715;--muted:#6f706a;--orange:#ff7e2e;--green:#2f7d5b}
+    *{box-sizing:border-box;letter-spacing:0}html{background:#f1f3f2;scroll-behavior:auto}body{margin:0;color:var(--ink);font-family:'SF Pro',Arial,sans-serif}h1,h2,h3,p,figure{margin:0}button{font:inherit;color:inherit;border:0;padding:0;background:none}
+    .sheet{max-width:1300px;margin:0 auto;padding:32px 28px 40px}.sheet-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;border-bottom:1px solid #d7dcda;padding-bottom:22px;margin-bottom:24px}.kicker{font-size:12px;color:var(--green);margin-bottom:9px;font-weight:650}.sheet h1{font-family:Inter,'SF Pro',sans-serif;font-size:32px;line-height:40px;font-weight:650}.dek{font-size:14px;line-height:22px;color:#616862;margin-top:8px}.spec{font-size:12px;line-height:21px;text-align:right;color:#616862;flex:0 0 auto}
+    .frame-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px}.frame{min-width:0;scroll-margin-top:20px}.preview{width:100%;aspect-ratio:9/16;overflow:hidden;position:relative;container-type:inline-size;background:var(--bg);outline:1px solid #d9ddda}.screen{position:absolute;width:393px;height:698.666667px;transform:scale(calc(100cqw / 393px));transform-origin:0 0;background:var(--bg);overflow:hidden}
+    .statusbar{position:absolute;top:24px;left:54px;right:36px;height:21px;display:flex;align-items:center;justify-content:space-between;font-size:18px;font-weight:600}.statusbar img{width:80px;height:20px;object-fit:contain}.profile{position:absolute;top:60px;right:18px;width:48px;height:48px}.avatar{width:36px;height:36px;flex:0 0 36px;display:block}.home-indicator{position:absolute;width:144px;height:5px;left:124.5px;bottom:9px;border-radius:999px;background:var(--ink);z-index:8}
+    .chat{position:absolute;left:14px;right:14px;top:127px;bottom:108px;overflow:hidden}.user-row{display:flex;align-items:flex-end;justify-content:flex-end;gap:12px}.bubble{max-width:305px;min-width:0;padding:12px 14px;border-radius:20px 20px 6px 20px;background:var(--ink);color:white;font-size:15px;line-height:22px}.assistant-row{display:flex;gap:12px;align-items:flex-start;margin-top:16px}.assistant-bubble{padding:11px 13px;background:white;border:1px solid var(--line);border-radius:20px 20px 20px 6px;max-width:317px;font-size:15px;line-height:22px}.assistant-bubble p+p{margin-top:6px}.created-name{font-weight:600}.ingredient{font-weight:650;color:#ffd399}
+    .recipe{width:353px;height:210px;position:relative;border-radius:20px;background:var(--ink);color:var(--bg);margin:16px auto 0;padding:19px 22px;overflow:hidden}.eyebrow{font-size:10px;line-height:15px;font-weight:500;color:#b6b7ae}.recipe-title{font-family:Inter,sans-serif;font-size:24px;line-height:28px;font-weight:600;max-width:205px;margin-top:10px}.recipe-desc{font-size:11px;line-height:16px;color:#d1cfc7;max-width:205px;margin-top:10px}.weather{position:absolute;right:20px;top:19px;font-size:9px;line-height:14px;color:#bcbeb5}.icon-slot{position:absolute;right:18px;top:60px;width:92px;height:92px;border-radius:50%;background:#292823;display:flex;align-items:center;justify-content:center}.icon-slot.empty:after{content:'';width:64px;height:70px;border:1.2px dashed #7c7b70;border-radius:15px 15px 23px 23px}.icon-slot img{display:block;width:88px;height:96.8px;object-fit:contain}.chips{position:absolute;bottom:19px;left:22px;right:15px;display:flex;gap:7px}.chips span{font-size:9px;line-height:13px;padding:5px 8px;border:1px solid #45443f;border-radius:999px;color:#d8d5cb;white-space:nowrap}.chips .cold{border-color:#c8dde5;color:#c8dde5}
+    .composer{position:absolute;bottom:44px;left:14px;right:14px;height:58px;border-radius:26px;border:1px solid var(--line);background:#fffffff5;box-shadow:0 8px 28px #28241c1f;display:flex;align-items:center;gap:10px;padding:6px 6px 6px 17px;z-index:3}.composer p{flex:1;min-width:0;font-size:12px;line-height:18px;color:var(--muted)}.microphone{width:44px;height:44px;flex:0 0 44px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center}.microphone img{width:19px;height:19px}
+    .stage-chat{position:absolute;left:14px;right:14px;top:132px}.stage-chat .recipe{margin-top:0}.dimmer{position:absolute;inset:0;background:rgba(23,23,21,.15);z-index:4}.cup-stage{position:absolute;left:76.5px;top:348px;width:240px;height:264px;z-index:6}.cup-stage img{width:100%;height:100%;display:block}.word-token{position:absolute;z-index:6;font-size:16px;line-height:23px;font-weight:650;color:#b45a24}.tonic-word{left:75px;top:374px;transform:rotate(-7deg)}.orange-word{right:53px;top:406px;transform:rotate(13deg)}.pour-line{position:absolute;top:408px;left:190px;height:52px;width:5px;background:#e7bb68;border-radius:3px;z-index:6}
+    .confirm-chat{position:absolute;left:14px;right:14px;top:128px}.confirm-chat .recipe{margin-top:0}.make-row{display:flex;justify-content:flex-end;margin:16px 48px 16px 0}.make-chip{padding:12px 17px;font-size:13px;line-height:18px;border:1px solid var(--line);border-radius:999px;background:white}.make-chip.active{background:var(--ink);border-color:var(--ink);color:white}
+    .task-card{position:relative;width:353px;margin:0 auto;border-radius:20px;border:1px solid var(--line);background:var(--card);height:253px;padding:18px;overflow:hidden}.task-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.task-title{font-size:17px;line-height:23px;font-weight:700;max-width:225px}.task-machine{font-size:10px;line-height:15px;color:var(--muted);margin-top:1px}.task-status{display:flex;align-items:center;gap:5px;white-space:nowrap;font-size:10px;line-height:14px;border:1px solid #e7b18c;border-radius:999px;padding:5px 7px;background:#fff2e9}.task-status i{width:5px;height:5px;border-radius:50%;background:var(--orange)}.cup-copy{position:absolute;left:18px;right:18px;top:80px}.cup-copy h3{font-size:22px;line-height:27px;max-width:290px;font-weight:650}.cup-copy p{font-size:12px;line-height:18px;color:var(--muted);margin-top:9px}.cup-button{position:absolute;bottom:18px;left:18px;right:18px;height:43px;border-radius:23px;background:var(--orange);font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center}
+    .embedded-chat{position:absolute;left:14px;right:14px;top:130px}.embedded-chat .recipe{margin-top:0}.ready-assistant{margin-top:18px}.ready-assistant .assistant-bubble{max-width:317px}.make-row.pending{margin-top:20px}
+    .done-chat{position:absolute;left:14px;right:14px;top:129px}.done-chat .recipe{margin-top:0;height:182px}.done-chat .recipe-title{font-size:23px;line-height:27px;margin-top:8px}.done-chat .recipe-desc{font-size:10px;line-height:15px;max-width:209px;margin-top:6px}.done-chat .icon-slot{top:45px}.done-chat .chips{bottom:14px}.done-task{height:206px;margin-top:16px}.done-task .task-title{font-size:16px;line-height:21px;max-width:226px}.task-status.done{border-color:#a5c9b6;background:#e9f2ec;color:#2f7d5b}.task-status.done i{background:#2f7d5b}.feedback{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:19px}.feedback button{height:28px;border:1px solid var(--line);border-radius:18px;background:var(--bg);font-size:11px}.feedback-actions{display:flex;gap:10px;margin-top:10px}.feedback-actions button{height:34px;border:1px solid var(--line);border-radius:19px;flex:1;font-size:12px}.feedback-actions .just-right{background:var(--green);border-color:var(--green);color:white}.feedback-actions .later{background:#ededeb}.saved{margin-top:9px;font-size:11px;line-height:16px;color:var(--green);text-align:center}.closing{margin-top:14px}.closing .assistant-bubble{font-size:13px;line-height:19px;padding:10px 12px}
+    .frame-label{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-top:13px;font-size:14px;line-height:21px;font-weight:650}.frame-time{font-size:12px;font-weight:400;color:#68736b;white-space:nowrap}.frame-note{font-size:12px;line-height:19px;color:#68736b;margin-top:5px}.sheet-footer{margin-top:30px;border-top:1px solid #d7dcda;padding-top:17px;display:grid;grid-template-columns:1.25fr 1fr;gap:32px;font-size:12px;line-height:20px;color:#68736b}.sheet-footer strong{color:var(--ink);font-weight:600}.swatches{display:flex;gap:8px;margin-top:8px}.swatches i{display:block;width:20px;height:20px;border:1px solid #d7dcda;border-radius:3px}
+    @media(max-width:1000px){.frame-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sheet-head{align-items:flex-start}.sheet h1{font-size:28px;line-height:36px}}
+    @media(max-width:620px){.sheet{padding:23px 18px 28px}.sheet-head{display:block;padding-bottom:18px}.spec{text-align:left;margin-top:12px}.frame-grid{grid-template-columns:1fr;gap:26px}.sheet h1{font-size:25px;line-height:32px}.sheet-footer{grid-template-columns:1fr;gap:15px}}
+  </style>
+</head>
+<body>
+<main class="sheet">
+  <header class="sheet-head"><div><p class="kicker">COFFEE BUDDY × YEEMA ONE · CH.7</p><h1>Invented on the spot <span style="color:#76827a;font-size:18px">v1</span></h1><p class="dek">关键画面预览：从一句灵感，到一杯可保存的创作。</p></div><p class="spec">1080 × 1920 · 24 秒 · 30 fps<br>6 个关键时刻 · 静态画面审核</p></header>
+  <section class="frame-grid" aria-label="Ch.7 key frames">
+    <figure class="frame" id="frame-01">
+      <div class="preview"><div class="screen">
+        <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar">
+        <div class="chat">
+          <div class="user-row"><div class="bubble">It's a hot afternoon. I have <span class="ingredient">tonic water</span> and an <span class="ingredient">orange</span> — surprise me.</div><img class="avatar" src="assets/avatars/user-cup.svg" alt="User"></div>
+          <div class="assistant-row"><img class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><div class="assistant-bubble"><p>Created for you: <span class="created-name">Espresso Tonic No.3</span></p><p>Your bright profile, cut with citrus. Served at 5°C.</p></div></div>
+          <section class="recipe"><p class="eyebrow">CREATED FOR ALEX</p><span class="weather">32°C · Sunny</span><h2 class="recipe-title">Espresso Tonic No.3</h2><p class="recipe-desc">Bright espresso over tonic, finished with orange. Cold at 5°C.</p><div class="icon-slot empty" aria-label="Empty drink illustration slot"></div><div class="chips"><span>Espresso</span><span>Tonic</span><span>Orange</span><span class="cold">5°C</span></div></section>
+        </div>
+        <div class="composer"><p>What would you like? Tell Yeema</p><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home-indicator"></div>
+      </div></div>
+      <figcaption><div class="frame-label"><span>01 · 创作配方与空槽</span><span class="frame-time">8.8 秒</span></div><p class="frame-note">原料词成为动效起点。虚线空槽预留成品杯的回归位置。</p></figcaption>
+    </figure>
+    <figure class="frame" id="frame-02">
+      <div class="preview"><div class="screen">
+        <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar">
+        <div class="stage-chat"><section class="recipe"><p class="eyebrow">CREATED FOR ALEX</p><span class="weather">32°C · Sunny</span><h2 class="recipe-title">Espresso Tonic No.3</h2><p class="recipe-desc">Bright espresso over tonic, finished with orange. Cold at 5°C.</p><div class="icon-slot empty"></div><div class="chips"><span>Espresso</span><span>Tonic</span><span>Orange</span><span class="cold">5°C</span></div></section></div>
+        <div class="composer"><p>What would you like? Tell Yeema</p><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home-indicator"></div><div class="dimmer"></div>
+        <span class="word-token tonic-word">tonic water</span><span class="word-token orange-word">orange</span><div class="pour-line"></div><div class="cup-stage"><img src="assets/illustrations/tonic-stage.svg" alt="Tonic water entering the illustrated glass"></div>
+      </div></div>
+      <figcaption><div class="frame-label"><span>02 · 原料词落入杯中</span><span class="frame-time">10.0 秒</span></div><p class="frame-note">会话向上滚动，配方留在上半部；界面压暗 15%，汤力水先进入杯底。</p></figcaption>
+    </figure>
+    <figure class="frame" id="frame-03">
+      <div class="preview"><div class="screen">
+        <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar">
+        <div class="stage-chat"><section class="recipe"><p class="eyebrow">CREATED FOR ALEX</p><span class="weather">32°C · Sunny</span><h2 class="recipe-title">Espresso Tonic No.3</h2><p class="recipe-desc">Bright espresso over tonic, finished with orange. Cold at 5°C.</p><div class="icon-slot empty"></div><div class="chips"><span>Espresso</span><span>Tonic</span><span>Orange</span><span class="cold">5°C</span></div></section></div>
+        <div class="composer"><p>What would you like? Tell Yeema</p><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home-indicator"></div><div class="dimmer"></div>
+        <div class="cup-stage"><img src="assets/illustrations/espresso-tonic.svg" alt="Layered espresso tonic with an orange slice and condensation"></div>
+      </div></div>
+      <figcaption><div class="frame-label"><span>03 · 浓缩、橙片与冷凝成型</span><span class="frame-time">11.6 秒</span></div><p class="frame-note">浓缩在上、汤力水在下。橙片落入后，整杯沿轨迹缩回上方虚线槽。</p></figcaption>
+    </figure>
+    <figure class="frame" id="frame-04">
+      <div class="preview"><div class="screen">
+        <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar">
+        <div class="chat">
+          <div class="user-row"><div class="bubble">It's a hot afternoon. I have tonic water and an orange — surprise me.</div><img class="avatar" src="assets/avatars/user-cup.svg" alt="User"></div>
+          <div class="assistant-row"><img class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><div class="assistant-bubble"><p>Created for you: <span class="created-name">Espresso Tonic No.3</span></p><p>Your bright profile, cut with citrus. Served at 5°C.</p></div></div>
+          <section class="recipe"><p class="eyebrow">CREATED FOR ALEX</p><span class="weather">32°C · Sunny</span><h2 class="recipe-title">Espresso Tonic No.3</h2><p class="recipe-desc">Bright espresso over tonic, finished with orange. Cold at 5°C.</p><div class="icon-slot"><img src="assets/illustrations/espresso-tonic.svg" alt="Created drink, embedded into the recipe"></div><div class="chips"><span>Espresso</span><span>Tonic</span><span>Orange</span><span class="cold">5°C</span></div></section>
+          <div class="make-row pending"><span class="make-chip">Make it →</span></div>
+        </div>
+        <div class="composer"><p>What would you like? Tell Yeema</p><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home-indicator"></div>
+      </div></div>
+      <figcaption><div class="frame-label"><span>04 · 成品杯归位与制作确认</span><span class="frame-time">13.0 秒</span></div><p class="frame-note">界面恢复亮度，成品替换虚线槽；确认按钮随后进入阅读区。</p></figcaption>
+    </figure>
+    <figure class="frame" id="frame-05">
+      <div class="preview"><div class="screen">
+        <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar">
+        <div class="confirm-chat"><section class="recipe"><p class="eyebrow">CREATED FOR ALEX</p><span class="weather">32°C · Sunny</span><h2 class="recipe-title">Espresso Tonic No.3</h2><p class="recipe-desc">Bright espresso over tonic, finished with orange. Cold at 5°C.</p><div class="icon-slot"><img src="assets/illustrations/espresso-tonic.svg" alt="Created drink"></div><div class="chips"><span>Espresso</span><span>Tonic</span><span>Orange</span><span class="cold">5°C</span></div></section>
+          <div class="make-row"><span class="make-chip active">Make it →</span></div>
+          <section class="task-card"><div class="task-head"><div><h2 class="task-title">Espresso Tonic No.3</h2><p class="task-machine">Yeema One</p></div><span class="task-status"><i></i>Ready</span></div><div class="cup-copy"><h3>Place your cup under the spout</h3><p>Espresso only. Add tonic and orange yourself.</p></div><div class="cup-button">Cup is in place</div></section>
+        </div>
+        <div class="composer"><p>What would you like? Tell Yeema</p><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home-indicator"></div>
+      </div></div>
+      <figcaption><div class="frame-label"><span>05 · 放杯确认与能力边界</span><span class="frame-time">14.4 秒</span></div><p class="frame-note">确认卡沿用 Ch.1。明确机器只制作浓缩，汤力水与橙片由人添加。</p></figcaption>
+    </figure>
+    <figure class="frame" id="frame-06">
+      <div class="preview"><div class="screen">
+        <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar">
+        <div class="done-chat"><section class="recipe"><p class="eyebrow">CREATED FOR ALEX</p><span class="weather">32°C · Sunny</span><h2 class="recipe-title">Espresso Tonic No.3</h2><p class="recipe-desc">Bright espresso over tonic, finished with orange. Cold at 5°C.</p><div class="icon-slot"><img src="assets/illustrations/espresso-tonic.svg" alt="Saved drink recipe"></div><div class="chips"><span>Espresso</span><span>Tonic</span><span>Orange</span><span class="cold">5°C</span></div></section>
+          <section class="task-card done-task"><div class="task-head"><div><h2 class="task-title">Espresso Tonic No.3</h2><p class="task-machine">Yeema One</p></div><span class="task-status done"><i></i>Done</span></div><div class="feedback"><button>Too sour</button><button>Too bitter</button><button>Too strong</button><button>Too weak</button></div><div class="feedback-actions"><button class="just-right">Just right</button><button class="later">Later</button></div><p class="saved">Saved to your creations.</p></section>
+          <div class="assistant-row closing"><img class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><div class="assistant-bubble">No.3 is yours. Ask for it by name — or invent the next one.</div></div>
+        </div>
+        <div class="composer"><p>What would you like? Tell Yeema</p><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home-indicator"></div>
+      </div></div>
+      <figcaption><div class="frame-label"><span>06 · 完成与保存创作</span><span class="frame-time">22.8 秒</span></div><p class="frame-note">最终保留配方、已保存的创作和助手回复。动画版只让杯内微气泡轻冒。</p></figcaption>
+    </figure>
+  </section>
+  <footer class="sheet-footer"><div><strong>运动路径</strong><p>聊天气泡中的原料词 → 下半部调制杯 → 配方卡图标槽。全程保持同一个会话世界，确认与制作状态沿用 Ch.1。</p></div><div><strong>视觉与范围</strong><p>原 Figma 字体、头像和麦克风；新增分层饮品插画。此页仅审核布局，不是最终视频。Ch.1 原项目保持不变。</p><div class="swatches"><i style="background:#fcfbf9"></i><i style="background:#171715"></i><i style="background:#ff7e2e"></i><i style="background:#9db9c1"></i><i style="background:#2f7d5b"></i></div></div></footer>
+</main>
+</body>
+</html>

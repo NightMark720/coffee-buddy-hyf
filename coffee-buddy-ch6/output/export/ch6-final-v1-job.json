@@ -1,0 +1,22 @@
+{
+  "pid": 28912,
+  "source_sha256": "86d33cc1cc8686088712b6e0c86f8486291581e4780183a43079f9baf187f60e",
+  "cli_version": "0.8.180",
+  "output": "renders/coffee-buddy-ch6-final-v1.mp4",
+  "args": [
+    "npx",
+    "--offline",
+    "--yes",
+    "hyperframes@0.8.180",
+    "render",
+    "--quality",
+    "delivery",
+    "--fps",
+    "30",
+    "--workers",
+    "2",
+    "--output",
+    "renders/coffee-buddy-ch6-final-v1.mp4"
+  ],
+  "started_at": "2026-10-20T11:50:18.857854"
+}

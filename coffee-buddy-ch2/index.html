@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Coffee Buddy - Ch.2: One sentence, two cups</title>
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "SF Pro"; src: url("assets/fonts/SF-Pro-ch1.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
+      @font-face { font-family: Inter; src: url("assets/fonts/Inter-ch1.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
+      :root { --bg: #fcfbf9; --card: #f5f3ee; --line: #e7e3da; --ink: #171715; --muted: #6f706a; --orange: #ff7e2e; --green: #2f7d5b; --brew-green: #2c7555; }
+      * { box-sizing: border-box; letter-spacing: 0; }
+      html, body { width: 1080px; height: 1920px; margin: 0; overflow: hidden; background: var(--bg); }
+      body { color: var(--ink); font-family: "SF Pro", Arial, sans-serif; }
+      h1, h2, h3, p { margin: 0; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--bg); }
+      .app { position: relative; width: 393px; height: 698.666667px; overflow: hidden; background: var(--bg); transform: scale(2.748091603); transform-origin: 0 0; }
+      .statusbar { position: absolute; top: 23px; left: 54px; right: 35px; z-index: 9; height: 21px; display: flex; align-items: center; justify-content: space-between; font-size: 17px; font-weight: 600; }
+      .statusbar img { width: 81px; height: 18px; object-fit: contain; }
+      .profile { position: absolute; top: 60px; right: 18px; z-index: 9; width: 48px; height: 48px; }
+      .chat-viewport { position: absolute; top: 128px; left: 14px; right: 14px; bottom: 108px; z-index: 3; overflow: hidden; }
+      .chat-content { position: relative; width: 365px; height: 1900px; }
+      .greeting { position: absolute; top: 0; left: 6px; width: 353px; font-family: Inter, sans-serif; font-size: 32px; line-height: 40px; font-weight: 600; }
+      .greeting span { display: block; }
+      .row { position: absolute; left: 0; width: 365px; display: flex; align-items: flex-end; gap: 12px; }
+      .row.user { justify-content: flex-end; }
+      .row.assistant { align-items: flex-start; }
+      .user-order { top: 96px; height: 92px; }
+      .user-brew { top: 712px; height: 76px; }
+      .avatar { width: 36px; height: 36px; flex: 0 0 36px; border-radius: 50%; background: center / cover no-repeat; }
+      .bean-avatar { background-image: url("assets/avatars/coffee-buddy-bean.svg"); }
+      .cup-avatar { background-image: url("assets/avatars/user-cup-chat.svg"); }
+      .bubble { max-width: 305px; padding: 12px 14px; border-radius: 20px 20px 6px 20px; background: var(--ink); color: var(--bg); font-size: 15px; line-height: 22px; }
+      .assistant-group { position: absolute; left: 0; width: 365px; display: flex; align-items: flex-start; gap: 12px; }
+      .parse-group { top: 210px; height: 166px; }
+      .place-group { top: 806px; height: 176px; }
+      .assistant-stack { width: 317px; }
+      .assistant-card { width: 317px; min-height: 48px; padding: 11px 13px; border: 1px solid var(--line); border-radius: 20px 20px 20px 6px; background: #fff; font-size: 14px; line-height: 20px; }
+      .planning-card { color: var(--muted); }
+      .drop-row { height: 25px; display: flex; align-items: center; gap: 11px; padding-left: 7px; }
+      .drop { display: block; width: 12px; height: 17px; border-radius: 60% 60% 60% 15%; background: #d9d4c9; }
+      .understanding-card { margin-top: 9px; min-height: 52px; background: var(--card); }
+      .understanding-card span { display: block; }
+      .chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 10px 0 0 0; }
+      .chip { display: inline-flex; align-items: center; min-height: 30px; padding: 6px 11px; border: 1px solid var(--line); border-radius: 15px; background: #fffefa; font-size: 12px; line-height: 16px; font-weight: 650; }
+      .order { position: absolute; top: 390px; left: 48px; width: 317px; padding: 17px; border-radius: 20px; background: var(--card); border: 1px solid var(--line); }
+      .eyebrow { color: var(--muted); font-size: 11px; letter-spacing: 1.2px; line-height: 16px; font-weight: 700; }
+      .order h2, .place h2, .brew h2 { margin-top: 4px; font-family: Inter, sans-serif; font-size: 20px; line-height: 24px; font-weight: 600; }
+      .order-row { display: flex; align-items: center; gap: 10px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+      .order-row:last-of-type { border-bottom: 0; }
+      .cup-icon { width: 28px; height: 28px; flex: 0 0 28px; color: var(--ink); }
+      .order-copy { min-width: 0; flex: 1; }
+      .order-copy strong { display: block; font-size: 14px; line-height: 19px; }
+      .order-copy span { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; line-height: 18px; }
+      .serve { display: inline-flex; align-items: center; min-height: 24px; padding: 3px 8px; border: 1px solid var(--line); border-radius: 12px; background: #fffefa; color: var(--muted); font-size: 11px; line-height: 16px; }
+      .cta { height: 42px; margin-top: 14px; display: flex; align-items: center; justify-content: center; border-radius: 22px; background: var(--orange); color: var(--ink); font-size: 13px; font-weight: 700; }
+      .place { width: 317px; padding: 18px; border-radius: 20px; background: var(--card); border: 1px solid var(--line); }
+      .place p { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 20px; }
+      .place .cta { margin-top: 16px; }
+      .brew { position: absolute; top: 1082px; left: 48px; width: 317px; padding: 17px; border-radius: 20px; background: var(--card); border: 1px solid var(--line); }
+      .brew-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+      .done-pill { display: inline-flex; align-items: center; min-height: 26px; padding: 4px 9px; border-radius: 13px; background: #dcece3; color: var(--brew-green); font-size: 11px; font-weight: 700; }
+      .brew-row { padding: 13px 0 12px; border-bottom: 1px solid var(--line); }
+      .brew-row:last-of-type { border-bottom: 0; }
+      .brew-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+      .brew-title strong { font-size: 14px; line-height: 19px; }
+      .check { width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; border: 1.5px solid var(--line); border-radius: 50%; color: transparent; font-size: 14px; }
+      .check.active { border-color: var(--brew-green); background: var(--brew-green); color: #fff; -webkit-text-fill-color: #fff; }
+      .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin-top: 10px; }
+      .step { position: relative; padding-top: 7px; color: var(--muted); font-size: 10px; line-height: 14px; }
+      .step::before { content: ""; display: block; width: 7px; height: 7px; margin-bottom: 4px; border-radius: 50%; background: #c7c6c0; }
+      .step.done-step::before { background: var(--ink); }
+      .step.current { color: var(--ink); font-weight: 650; }
+      .step.current::before { background: var(--orange); box-shadow: 0 0 0 3px #ff7e2e22; }
+      .step small { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; line-height: 12px; }
+      .status-note { min-height: 16px; margin-top: 7px; color: var(--muted); font-size: 10px; line-height: 14px; }
+      .progress { height: 3px; margin-top: 8px; overflow: hidden; border-radius: 4px; background: #ddd9d0; }
+      .progress-fill { width: 100%; height: 100%; transform: scaleX(0); transform-origin: 0 50%; border-radius: inherit; background: var(--orange); }
+      .stop { height: 38px; margin-top: 14px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 19px; color: var(--muted); font-size: 12px; }
+      .feedback { position: absolute; top: 1478px; left: 48px; width: 317px; }
+      .feedback .chips { margin-top: 10px; }
+      .feedback .chip { background: #fffefa; }
+      .feedback .cta { margin-top: 12px; }
+      .later { height: 34px; margin-top: 7px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 17px; background: #fffefa; color: var(--muted); font-size: 12px; }
+      .composer { position: absolute; left: 14px; right: 14px; bottom: 44px; z-index: 12; height: 58px; display: flex; align-items: center; gap: 10px; padding: 6px 6px 6px 17px; border: 1px solid var(--line); border-radius: 26px; background: #fffffff5; box-shadow: 0 8px 28px #28241c1f; }
+      .composer-copy { position: relative; flex: 1; min-width: 0; height: 44px; display: flex; align-items: center; font-size: 12px; line-height: 18px; }
+      .placeholder { color: var(--muted); }
+      .typed-copy { position: absolute; inset: 0; display: block; align-content: center; color: var(--ink); font-size: 15px; line-height: 22px; }
+      .caret { display: inline-block; width: 1px; height: 17px; margin-left: 2px; vertical-align: -2px; background: var(--orange); }
+      .microphone { position: relative; width: 44px; height: 44px; flex: 0 0 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--orange); }
+      .microphone img { width: 19px; height: 19px; }
+      .send { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--ink); color: var(--bg); font-size: 23px; line-height: 1; }
+      .keyboard { position: absolute; left: 0; right: 0; bottom: 0; z-index: 11; height: 202px; padding: 13px 5px 24px; border-top: 1px solid #c8c9cf; background: #d5d7dc; }
+      .key-row { display: flex; justify-content: center; gap: 5px; margin-bottom: 7px; }
+      .key { height: 31px; flex: 1; max-width: 34px; display: flex; align-items: center; justify-content: center; border-radius: 5px; background: #fff; box-shadow: 0 1px 0 #8b8d94; font-size: 20px; }
+      .key-row:nth-child(2) { padding: 0 17px; }
+      .key.special { flex: 1.4; max-width: 46px; background: #b9bdc6; font-size: 15px; }
+      .key.space { flex: 5.6; max-width: none; font-size: 13px; }
+      .key.return { flex: 2; max-width: none; background: #b9bdc6; font-size: 13px; }
+      .home-indicator { position: absolute; left: 124.5px; bottom: 9px; z-index: 13; width: 144px; height: 5px; border-radius: 999px; background: var(--ink); }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-uzai" id="root" data-composition-id="coffee-buddy-ch2" data-duration="22" data-width="1080" data-height="1920" data-fps="30">
+      <div data-hf-id="hf-gk5l" class="app">
+        <div data-hf-id="hf-sz55" class="statusbar"><span data-hf-id="hf-zwmt">9:41</span><img data-hf-id="hf-e3f2" src="assets/figma/ios-status.png" alt="" /></div>
+        <img data-hf-id="hf-y255" class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar" />
+        <div data-hf-id="hf-8rno" id="chat-viewport" class="chat-viewport">
+          <div data-hf-id="hf-avvz" id="chat-content" class="chat-content" data-layout-allow-overflow>
+            <div data-hf-id="hf-ps42" id="greeting" class="greeting"><span data-hf-id="hf-jydm">Hi, Alex</span><span data-hf-id="hf-e3q6">What would you like today?</span></div>
+            <div data-hf-id="hf-hnil" id="user-order" class="row user user-order"><div data-hf-id="hf-1a7c" class="bubble">A double espresso for here, and a latte to go.</div><span data-hf-id="hf-2qdw" class="avatar cup-avatar" aria-label="User"></span></div>
+            <div data-hf-id="hf-8nlm" id="parse-group" class="assistant-group parse-group"><span data-hf-id="hf-h81h" class="avatar bean-avatar" aria-label="Coffee Buddy"></span><div data-hf-id="hf-3r7v" class="assistant-stack"><div data-hf-id="hf-z2ok" id="planning" class="assistant-card planning-card"><div data-hf-id="hf-5se4" class="drop-row"><i data-hf-id="hf-0i6b" class="drop"></i><i data-hf-id="hf-q937" class="drop"></i><i data-hf-id="hf-pus6" class="drop"></i></div><p data-hf-id="hf-az71">Yeema is reading your order</p></div><div data-hf-id="hf-hq88" id="understanding" class="assistant-card understanding-card"><span data-hf-id="hf-8i2e">Two drinks - double espresso for here, latte to go</span></div><div data-hf-id="hf-m741" id="drink-chips" class="chips"><span data-hf-id="hf-lvou" class="chip">Double Espresso</span><span data-hf-id="hf-xodw" class="chip">Caffe Latte</span></div></div></div>
+            <section data-hf-id="hf-lsca" id="order" class="order"><div data-hf-id="hf-ijia" class="eyebrow">YOUR ORDER</div><h2 data-hf-id="hf-oqg4">Two cups, coming up</h2><div data-hf-id="hf-pp1z" class="order-row"><svg data-hf-id="hf-p6qd" class="cup-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path data-hf-id="hf-azo0" d="M6 9h13v6.5A5.5 5.5 0 0 1 13.5 21h-2A5.5 5.5 0 0 1 6 15.5V9Z" stroke="currentColor" stroke-width="1.6"/><path data-hf-id="hf-0qfp" d="M19 11h2a2.5 2.5 0 0 1 0 5h-2M4 23h17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><div data-hf-id="hf-siay" class="order-copy"><strong data-hf-id="hf-8r51">Double Espresso</strong><span data-hf-id="hf-8cmk">Short, bold and served now</span></div><span data-hf-id="hf-1lq5" class="serve">For here</span></div><div data-hf-id="hf-axav" class="order-row"><svg data-hf-id="hf-1gg9" class="cup-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path data-hf-id="hf-l63d" d="M7 8h14l-1.3 14H8.3L7 8Z" stroke="currentColor" stroke-width="1.6"/><path data-hf-id="hf-c4pw" d="M6 8h16M9 5h10M11 12h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><div data-hf-id="hf-5rhq" class="order-copy"><strong data-hf-id="hf-gqfr">Caffe Latte</strong><span data-hf-id="hf-dkmp">Milk-forward and ready to go</span></div><span data-hf-id="hf-zlkr" class="serve">To go</span></div><div data-hf-id="hf-d1qk" class="cta">Brew both -&gt;</div></section>
+            <div data-hf-id="hf-clfd" id="user-brew" class="row user user-brew"><div data-hf-id="hf-2zj4" class="bubble">Brew both -&gt;</div><span data-hf-id="hf-osa4" class="avatar cup-avatar" aria-label="User"></span></div>
+            <div data-hf-id="hf-d5y2" id="place-group" class="assistant-group place-group"><span data-hf-id="hf-p7ah" class="avatar bean-avatar" aria-label="Coffee Buddy"></span><div data-hf-id="hf-iq9t" class="place"><h2 data-hf-id="hf-96su">Place both cups under the spout</h2><p data-hf-id="hf-4ix6">Once they're set, start brewing.</p><div data-hf-id="hf-0j7f" class="cta">Cups are in place</div></div></div>
+            <section data-hf-id="hf-c2i6" id="brew" class="brew"><div data-hf-id="hf-i9qb" class="brew-head"><div data-hf-id="hf-yeow"><div data-hf-id="hf-xomz" class="eyebrow">BREWING FOR YOU</div><h2 data-hf-id="hf-o0hq">Yeema One</h2></div><span data-hf-id="hf-f4wa" id="brew-pill" class="done-pill">2 drinks</span></div><div data-hf-id="hf-ldci" id="espresso-row" class="brew-row"><div data-hf-id="hf-etp5" class="brew-title"><strong data-hf-id="hf-pard">Double Espresso</strong><span data-hf-id="hf-1n5r" id="espresso-check" class="check">✓</span></div><div data-hf-id="hf-70xd" class="steps"><span data-hf-id="hf-z55q" id="espresso-grind" class="step">Grinding</span><span data-hf-id="hf-gt0c" id="espresso-extract" class="step">Extraction</span><span data-hf-id="hf-kz0p" id="espresso-dispose" class="step">Disposing</span></div><div data-hf-id="hf-8kda" id="espresso-note" class="status-note">Waiting to start</div><div data-hf-id="hf-31j5" class="progress"><div data-hf-id="hf-l80x" id="espresso-progress" class="progress-fill"></div></div></div><div data-hf-id="hf-pc2u" id="latte-row" class="brew-row"><div data-hf-id="hf-90h9" class="brew-title"><strong data-hf-id="hf-sclz">Caffe Latte</strong><span data-hf-id="hf-rr1f" id="latte-check" class="check">✓</span></div><div data-hf-id="hf-y0yt" class="steps"><span data-hf-id="hf-1tdu" id="latte-grind" class="step">Grinding</span><span data-hf-id="hf-nqio" id="latte-extract" class="step">Extraction<small data-hf-id="hf-7as7">Steaming milk - venturi</small></span><span data-hf-id="hf-8vn1" id="latte-dispose" class="step">Disposing</span></div><div data-hf-id="hf-7rn0" id="latte-note" class="status-note">Queued next</div><div data-hf-id="hf-jw5x" class="progress"><div data-hf-id="hf-fqrp" id="latte-progress" class="progress-fill"></div></div></div><div data-hf-id="hf-5fdl" id="stop-brewing" class="stop">Stop brewing</div></section>
+            <div data-hf-id="hf-zk3a" id="feedback" class="feedback"><div data-hf-id="hf-r217" class="eyebrow">HOW DID IT TASTE?</div><div data-hf-id="hf-exrd" class="chips"><span data-hf-id="hf-y8x8" class="chip">Too sour</span><span data-hf-id="hf-q85n" class="chip">Too bitter</span><span data-hf-id="hf-32bu" class="chip">Too strong</span><span data-hf-id="hf-tahl" class="chip">Too weak</span></div><div data-hf-id="hf-0tku" class="cta">Just right</div><div data-hf-id="hf-d9jk" class="later">Later</div></div>
+          </div>
+        </div>
+        <div data-hf-id="hf-8c6q" id="composer" class="composer"><div data-hf-id="hf-5mj0" class="composer-copy"><span data-hf-id="hf-o72r" id="placeholder" class="placeholder">What would you like? Tell Yeema</span><span data-hf-id="hf-ryf7" id="typed-copy" class="typed-copy"><span data-hf-id="hf-yclq" id="typed-value"></span><i data-hf-id="hf-nq6b" id="typed-caret" class="caret"></i></span></div><div data-hf-id="hf-c6xu" id="microphone" class="microphone"><img data-hf-id="hf-wjkt" src="assets/figma/13c65.svg" alt="Microphone" /><span data-hf-id="hf-m6qe" id="send" class="send">↑</span></div></div>
+        <div data-hf-id="hf-feqb" id="keyboard" class="keyboard" data-layout-allow-overflow><div data-hf-id="hf-08za" class="key-row"><span data-hf-id="hf-2srl" class="key">q</span><span data-hf-id="hf-205j" class="key">w</span><span data-hf-id="hf-7kfx" class="key">e</span><span data-hf-id="hf-3zoo" class="key">r</span><span data-hf-id="hf-1lui" class="key">t</span><span data-hf-id="hf-5z7t" class="key">y</span><span data-hf-id="hf-17jh" class="key">u</span><span data-hf-id="hf-cc49" class="key">i</span><span data-hf-id="hf-bji7" class="key">o</span><span data-hf-id="hf-372m" class="key">p</span></div><div data-hf-id="hf-0dzu" class="key-row"><span data-hf-id="hf-95o1" class="key">a</span><span data-hf-id="hf-3ldn" class="key">s</span><span data-hf-id="hf-7yqy" class="key">d</span><span data-hf-id="hf-8rd0" class="key">f</span><span data-hf-id="hf-8d1z" class="key">g</span><span data-hf-id="hf-cqfa" class="key">h</span><span data-hf-id="hf-dj1c" class="key">j</span><span data-hf-id="hf-d4qb" class="key">k</span><span data-hf-id="hf-b576" class="key">l</span></div><div data-hf-id="hf-0sav" class="key-row"><span data-hf-id="hf-u80k" class="key special">⇧</span><span data-hf-id="hf-764w" class="key">z</span><span data-hf-id="hf-6diu" class="key">x</span><span data-hf-id="hf-9ya3" class="key">c</span><span data-hf-id="hf-2egk" class="key">v</span><span data-hf-id="hf-acl4" class="key">b</span><span data-hf-id="hf-bxt8" class="key">n</span><span data-hf-id="hf-aqw5" class="key">m</span><span data-hf-id="hf-v240" class="key special">⌫</span></div><div data-hf-id="hf-16lw" class="key-row"><span data-hf-id="hf-zuid" class="key special">123</span><span data-hf-id="hf-d4qi" class="key space">space</span><span data-hf-id="hf-mwqy" class="key return">return</span></div></div>
+        <div data-hf-id="hf-78cx" class="home-indicator"></div>
+      </div>
+      <audio data-hf-id="hf-ggma" id="sfx-keyboard" src="assets/sfx/swipe.wav" preload="auto" data-start="1.18" data-duration="0.379979" data-media-start="0" data-volume="0.1" data-track-index="1" data-label="Keyboard opens"></audio>
+      <audio data-hf-id="hf-1rcq" id="sfx-key-1" src="assets/sfx/key.wav" preload="auto" data-start="1.34" data-duration="0.072" data-media-start="0" data-volume="0.08" data-track-index="2" data-label="Typing key one"></audio>
+      <audio data-hf-id="hf-d3tv" id="sfx-key-2" src="assets/sfx/key.wav" preload="auto" data-start="1.68" data-duration="0.072" data-media-start="0" data-volume="0.08" data-track-index="3" data-label="Typing key two"></audio>
+      <audio data-hf-id="hf-vy74" id="sfx-key-3" src="assets/sfx/key.wav" preload="auto" data-start="2.02" data-duration="0.072" data-media-start="0" data-volume="0.08" data-track-index="4" data-label="Typing key three"></audio>
+      <audio data-hf-id="hf-9f5v" id="sfx-key-4" src="assets/sfx/key.wav" preload="auto" data-start="2.36" data-duration="0.072" data-media-start="0" data-volume="0.08" data-track-index="5" data-label="Typing key four"></audio>
+      <audio data-hf-id="hf-36rf" id="sfx-key-5" src="assets/sfx/key.wav" preload="auto" data-start="2.70" data-duration="0.072" data-media-start="0" data-volume="0.08" data-track-index="6" data-label="Typing key five"></audio>
+      <audio data-hf-id="hf-oy3d" id="sfx-key-6" src="assets/sfx/key.wav" preload="auto" data-start="3.04" data-duration="0.072" data-media-start="0" data-volume="0.08" data-track-index="7" data-label="Typing key six"></audio>
+      <audio data-hf-id="hf-bfor" id="sfx-send" src="assets/sfx/pop.wav" preload="auto" data-start="3.46" data-duration="0.3" data-media-start="0" data-volume="0.16" data-track-index="8" data-label="Send order"></audio>
+      <audio data-hf-id="hf-tvgf" id="sfx-drop-1" src="assets/sfx/drop-high.wav" preload="auto" data-start="4.10" data-duration="0.38" data-media-start="0" data-volume="0.12" data-track-index="9" data-label="Parsing drop one"></audio>
+      <audio data-hf-id="hf-0xyg" id="sfx-drop-2" src="assets/sfx/drop-mid.wav" preload="auto" data-start="4.45" data-duration="0.38" data-media-start="0" data-volume="0.12" data-track-index="10" data-label="Parsing drop two"></audio>
+      <audio data-hf-id="hf-79jx" id="sfx-drop-3" src="assets/sfx/drop-low.wav" preload="auto" data-start="4.80" data-duration="0.38" data-media-start="0" data-volume="0.12" data-track-index="11" data-label="Parsing drop three"></audio>
+      <audio data-hf-id="hf-7nf1" id="sfx-row-1" src="assets/sfx/row-1.wav" preload="auto" data-start="6.12" data-duration="0.3" data-media-start="0" data-volume="0.09" data-track-index="12" data-label="Espresso order row"></audio>
+      <audio data-hf-id="hf-kjoc" id="sfx-row-2" src="assets/sfx/row-2.wav" preload="auto" data-start="6.38" data-duration="0.3" data-media-start="0" data-volume="0.09" data-track-index="13" data-label="Latte order row"></audio>
+      <audio data-hf-id="hf-8pgj" id="sfx-confirm" src="assets/sfx/pop.wav" preload="auto" data-start="8.88" data-duration="0.3" data-media-start="0" data-volume="0.14" data-track-index="14" data-label="Cups confirmed"></audio>
+      <audio data-hf-id="hf-ovd7" id="sfx-extraction" src="assets/sfx/extraction-demo.wav" preload="auto" data-start="12.85" data-duration="1.9" data-media-start="0" data-volume="0.1" data-track-index="15" data-label="Espresso extraction"></audio>
+      <audio data-hf-id="hf-gfjt" id="sfx-espresso-complete" src="assets/sfx/brew-complete.wav" preload="auto" data-start="14.88" data-duration="0.42" data-media-start="0" data-volume="0.14" data-track-index="16" data-label="Espresso complete"></audio>
+      <audio data-hf-id="hf-hniy" id="sfx-steam" src="assets/sfx/steam-demo.wav" preload="auto" data-start="15.28" data-duration="0.68" data-media-start="0" data-volume="0.1" data-track-index="17" data-label="Latte steaming"></audio>
+      <audio data-hf-id="hf-asrt" id="sfx-latte-complete" src="assets/sfx/brew-complete.wav" preload="auto" data-start="17.78" data-duration="0.42" data-media-start="0" data-volume="0.14" data-track-index="18" data-label="Latte complete"></audio>
+      <audio data-hf-id="hf-500t" id="sfx-finished" src="assets/sfx/complete.wav" preload="auto" data-start="18.66" data-duration="1.88" data-media-start="0" data-volume="0.12" data-track-index="19" data-label="Two drinks complete"></audio>
+    </div>
+    <script>
+      (async () => {
+        await document.fonts.ready;
+        const tl = gsap.timeline({ paused: true });
+        const orderText = "A double espresso for here, and a latte to go.";
+        const typeText = (selector, text, start, duration) => {
+          gsap.set(selector, { textContent: "" });
+          for (let i = 1; i <= text.length; i += 1) {
+            tl.fromTo(selector, { textContent: text.slice(0, i - 1) }, { textContent: text.slice(0, i), duration: 0, immediateRender: false }, start + duration * i / text.length);
+          }
+        };
+
+        gsap.set("#greeting", { opacity: 0, y: 12 });
+        gsap.set("#user-order, #parse-group, #order, #user-brew, #place-group, #brew, #feedback", { opacity: 0, y: 14 });
+        gsap.set("#planning, #understanding, #drink-chips", { opacity: 0, y: 8 });
+        gsap.set("#chat-content", { y: 0 });
+        gsap.set("#composer", { y: 0, height: 58 });
+        gsap.set("#keyboard", { y: 202 });
+        gsap.set("#placeholder, #send, #typed-copy, #typed-caret", { opacity: 0 });
+        gsap.set("#microphone img", { opacity: 1 });
+        gsap.set(".drop", { y: -8, scale: 0.75 });
+        gsap.set("#order .order-row, #order .cta", { opacity: 0, y: 8 });
+        gsap.set("#brew .step, #brew .status-note, #brew .progress, #stop-brewing", { opacity: 0.5 });
+        gsap.set("#espresso-progress, #latte-progress", { scaleX: 0 });
+        gsap.set("#espresso-check, #latte-check", { opacity: 0, color: "#fff", backgroundColor: "#2c7555", borderColor: "#2c7555", webkitTextFillColor: "#fff" });
+        gsap.set("#espresso-extract, #espresso-dispose, #latte-extract, #latte-dispose", { color: "#6f706a" });
+        gsap.set("#espresso-note, #latte-note", { opacity: 0 });
+        gsap.set("#feedback", { y: 18 });
+        gsap.set("#typed-value", { textContent: "" });
+
+        tl.to("#greeting", { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" }, 0);
+        tl.to("#composer", { y: -167, height: 82, duration: 0.34, ease: "power2.inOut" }, 1.2);
+        tl.to("#keyboard", { y: 0, duration: 0.34, ease: "power2.inOut" }, 1.2);
+        tl.to("#placeholder", { opacity: 0, duration: 0.12 }, 1.28);
+        tl.to("#typed-copy, #typed-caret", { opacity: 1, duration: 0.12 }, 1.28);
+        tl.to("#microphone img", { opacity: 0, duration: 0.12 }, 1.28);
+        typeText("#typed-value", orderText, 1.3, 2.0);
+        tl.to("#typed-caret", { opacity: 0.2, duration: 0.32, yoyo: true, repeat: 5, ease: "sine.inOut" }, 1.35);
+
+        tl.to("#composer", { y: 0, height: 58, duration: 0.34, ease: "power2.inOut" }, 3.4);
+        tl.to("#keyboard", { y: 202, duration: 0.34, ease: "power2.inOut" }, 3.4);
+        tl.to("#typed-copy, #typed-caret", { opacity: 0, duration: 0.12 }, 3.4);
+        tl.to("#placeholder, #microphone img", { opacity: 1, duration: 0.12 }, 3.4);
+        tl.to("#chat-content", { y: -78, duration: 0.34, ease: "power2.inOut" }, 3.4);
+        tl.to("#user-order", { opacity: 1, y: 0, duration: 0.34, ease: "power2.out" }, 3.58);
+        tl.to("#parse-group", { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" }, 3.92);
+        tl.to("#planning", { opacity: 1, y: 0, duration: 0.22 }, 4.02);
+        tl.to(".drop", { y: 0, scale: 1, duration: 0.28, stagger: 0.35, ease: "back.out(1.3)" }, 4.02);
+        tl.to("#planning", { opacity: 0, y: -5, duration: 0.2 }, 4.94);
+        tl.to("#understanding", { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, 4.94);
+        tl.to("#drink-chips", { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, 5.36);
+        tl.to("#chat-content", { y: -150, duration: 0.38, ease: "power2.inOut" }, 6.0);
+        tl.to("#order", { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" }, 6.02);
+        tl.to("#order .order-row, #order .cta", { opacity: 1, y: 0, duration: 0.24, stagger: 0.18, ease: "power2.out" }, 6.12);
+        tl.to("#chat-content", { y: -554, duration: 0.46, ease: "power2.inOut" }, 8.78);
+        tl.to("#user-brew", { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 8.98);
+        tl.to("#place-group", { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" }, 9.28);
+        tl.to("#chat-content", { y: -1010, duration: 0.48, ease: "power2.inOut" }, 11.82);
+        tl.to("#brew", { opacity: 1, y: 0, duration: 0.34, ease: "power2.out" }, 12.02);
+        tl.to("#espresso-row .step, #espresso-row .status-note, #espresso-row .progress, #stop-brewing", { opacity: 1, duration: 0.25 }, 12.18);
+        tl.to("#espresso-grind", { color: "#171715", duration: 0.2 }, 12.18);
+        tl.to("#espresso-progress", { scaleX: 0.34, duration: 0.76, ease: "power1.inOut" }, 12.3);
+        tl.to("#espresso-note", { opacity: 1, textContent: "Grinding beans", duration: 0.2 }, 12.3);
+        tl.to("#espresso-extract", { color: "#171715", duration: 0.2 }, 13.08);
+        tl.to("#espresso-progress", { scaleX: 0.72, duration: 0.85, ease: "power1.inOut", overwrite: "auto" }, 13.08);
+        tl.to("#espresso-note", { textContent: "Extracting a short, bold shot", duration: 0.2 }, 13.08);
+        tl.to("#espresso-dispose", { color: "#171715", duration: 0.2 }, 13.94);
+        tl.to("#espresso-progress", { scaleX: 1, duration: 0.62, ease: "power1.inOut" }, 13.94);
+        tl.to("#espresso-note", { textContent: "Ready for here", duration: 0.2 }, 13.94);
+        tl.to("#espresso-check", { opacity: 1, color: "#fff", backgroundColor: "#2c7555", borderColor: "#2c7555", webkitTextFillColor: "#fff", duration: 0.2 }, 14.68);
+        tl.to("#latte-row .step, #latte-row .status-note, #latte-row .progress", { opacity: 1, duration: 0.25 }, 14.82);
+        tl.to("#latte-grind", { color: "#171715", duration: 0.2 }, 14.82);
+        tl.to("#latte-progress", { scaleX: 0.3, duration: 0.72, ease: "power1.inOut" }, 14.92);
+        tl.to("#latte-note", { opacity: 1, textContent: "Grinding beans", duration: 0.2 }, 14.92);
+        tl.to("#latte-extract", { color: "#171715", duration: 0.2 }, 15.64);
+        tl.to("#latte-progress", { scaleX: 0.72, duration: 0.86, ease: "power1.inOut" }, 15.64);
+        tl.to("#latte-note", { textContent: "Steaming milk - venturi", duration: 0.2 }, 15.64);
+        tl.to("#latte-dispose", { color: "#171715", duration: 0.2 }, 16.54);
+        tl.to("#latte-progress", { scaleX: 1, duration: 0.7, ease: "power1.inOut" }, 16.54);
+        tl.to("#latte-note", { textContent: "Ready to go", duration: 0.2 }, 16.54);
+        tl.to("#latte-check", { opacity: 1, color: "#fff", backgroundColor: "#2c7555", borderColor: "#2c7555", webkitTextFillColor: "#fff", duration: 0.2 }, 17.42);
+        tl.to("#brew-pill", { textContent: "Done", duration: 0.2 }, 18.08);
+        tl.to("#chat-content", { y: -1114, duration: 0.48, ease: "power2.inOut" }, 18.42);
+        tl.to("#feedback", { opacity: 1, y: 0, duration: 0.34, ease: "power2.out" }, 18.66);
+        tl.to("#stop-brewing", { opacity: 0, duration: 0.18 }, 18.66);
+        tl.to("#espresso-note, #latte-note", { opacity: 0, duration: 0.18 }, 18.66);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["coffee-buddy-ch2"] = tl;
+        tl.seek(0);
+      })();
+    </script>
+  </body>
+</html>

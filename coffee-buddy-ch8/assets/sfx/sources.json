@@ -1,0 +1,155 @@
+[
+  {
+    "asset": "assets/sfx/swipe.wav",
+    "source": ".media/audio/sfx/sfx_002.mp3",
+    "source_start": 0.045,
+    "duration": 0.38,
+    "processing": "aresample=48000,volume=0.63517638,afade=t=in:st=0:d=0.012,afade=t=out:st=0.335000:d=0.045",
+    "provenance": "HyperFrames bundled SFX (Pixabay)",
+    "license": "Pixabay Content License",
+    "adoption": "Exact local series asset, copied without altering the previous chapter.",
+    "sha256": "174389e4eacf490c4fafeb3d37bd9401c56c7e3ffbcd24f15cf758c3313789e2"
+  },
+  {
+    "asset": "assets/sfx/pop.wav",
+    "source": ".media/audio/sfx/sfx_003.mp3",
+    "source_start": 0,
+    "duration": 0.3,
+    "processing": "aresample=48000,volume=0.72110971,afade=t=in:st=0:d=0.003,afade=t=out:st=0.255000:d=0.045",
+    "provenance": "HyperFrames bundled SFX (Pixabay)",
+    "license": "Pixabay Content License",
+    "adoption": "Exact local series asset, copied without altering the previous chapter.",
+    "sha256": "bbeeedb08eab103c699548cc2375da2ab41924800872db9a36e2d661eee24c13"
+  },
+  {
+    "asset": "assets/sfx/key.wav",
+    "source": ".media/audio/sfx/sfx_004.mp3",
+    "source_start": 0.068,
+    "duration": 0.072,
+    "processing": "aresample=48000,volume=16.97771519,afade=t=in:st=0:d=0.003,afade=t=out:st=0.057000:d=0.015",
+    "provenance": "HyperFrames bundled SFX (Pixabay)",
+    "license": "Pixabay Content License",
+    "adoption": "Exact local series asset, copied without altering the previous chapter.",
+    "sha256": "93359db783e1f48523241abf5f613e2ed92ec019119f470d355d3ba578630fd3"
+  },
+  {
+    "asset": "assets/sfx/drop-low.wav",
+    "source": "https://assets.mixkit.co/active_storage/sfx/3000/3000-preview.mp3",
+    "source_start": 0,
+    "duration": 0.38,
+    "processing": "aresample=48000,asetrate=42240,aresample=48000,volume=0.54144053,afade=t=in:st=0:d=0.003,afade=t=out:st=0.335000:d=0.045",
+    "provenance": "Mixkit: Liquid bubble",
+    "license": "Mixkit Sound Effects Free License",
+    "adoption": "Exact local series asset, copied without altering the previous chapter.",
+    "sha256": "652c4209bca38e996e342cb3296c09e25bcaabdd4764998f62215efd28fa2e10"
+  },
+  {
+    "asset": "assets/sfx/drop-mid.wav",
+    "source": "https://assets.mixkit.co/active_storage/sfx/3000/3000-preview.mp3",
+    "source_start": 0,
+    "duration": 0.38,
+    "processing": "aresample=48000,volume=0.54163504,afade=t=in:st=0:d=0.003,afade=t=out:st=0.335000:d=0.045",
+    "provenance": "Mixkit: Liquid bubble",
+    "license": "Mixkit Sound Effects Free License",
+    "adoption": "Exact local series asset, copied without altering the previous chapter.",
+    "sha256": "5444f8eaa145958369c85c48fd52c26f1c64d10fb865ea2b0ca3a9f911cabe49"
+  },
+  {
+    "asset": "assets/sfx/drop-high.wav",
+    "source": "https://assets.mixkit.co/active_storage/sfx/3000/3000-preview.mp3",
+    "source_start": 0,
+    "duration": 0.38,
+    "processing": "aresample=48000,asetrate=53760,aresample=48000,volume=0.54143997,afade=t=in:st=0:d=0.003,afade=t=out:st=0.335000:d=0.045",
+    "provenance": "Mixkit: Liquid bubble",
+    "license": "Mixkit Sound Effects Free License",
+    "adoption": "Exact local series asset, copied without altering the previous chapter.",
+    "sha256": "944e7f3fb28944e9283d229277cf0fcae422d5f0d6429e0a3c995e2cc92f4f2b"
+  },
+  {
+    "asset": "assets/sfx/complete.wav",
+    "source": ".media/audio/sfx/sfx_006.mp3",
+    "source_start": 0.4,
+    "duration": 1.88,
+    "processing": "aresample=48000,volume=5.53471087,afade=t=in:st=0:d=0.012,afade=t=out:st=1.835000:d=0.045",
+    "provenance": "HyperFrames bundled SFX (Pixabay)",
+    "license": "Pixabay Content License",
+    "adoption": "Exact local series asset, copied without altering the previous chapter.",
+    "sha256": "ad351054e652ece72c769a62dcf903a94a09d98164960c5f0040ccb0c7ebf625"
+  },
+  {
+    "asset": "assets/sfx/extraction-demo.wav",
+    "source": "https://assets.mixkit.co/active_storage/sfx/2826/2826-preview.mp3",
+    "source_start": 0.7,
+    "duration": 1.9,
+    "processing": "aresample=48000,highpass=f=120,lowpass=f=7000,volume=1.20072448,afade=t=in:st=0:d=0.012,afade=t=out:st=1.855000:d=0.045",
+    "provenance": "Mixkit: Pouring water in a glass",
+    "license": "Mixkit Sound Effects Free License",
+    "adoption": "Exact local series asset, copied without altering the previous chapter.",
+    "sha256": "5680ccbdf32c95f912c0f5e70eecf99670e02ac191c7c2dd3e08ab5de6aa0c4a"
+  },
+  {
+    "asset": "assets/sfx/steam-demo.wav",
+    "source": "https://assets.mixkit.co/active_storage/sfx/1817/1817-preview.mp3",
+    "source_start": 10.0,
+    "duration": 0.68,
+    "processing": "aresample=48000,highpass=f=500,lowpass=f=6500,volume=3.18972254,afade=t=in:st=0:d=0.012,afade=t=out:st=0.635000:d=0.045",
+    "provenance": "Mixkit: Kettle boiling",
+    "license": "Mixkit Sound Effects Free License",
+    "adoption": "Exact local series asset, copied without altering the previous chapter.",
+    "sha256": "d2f55e2f5cafd7de289eacca034f213e0e23c76620e3402c9f47d2b44952b2c5"
+  },
+  {
+    "asset": "assets/sfx/typing-ch4.wav",
+    "provenance": "40 quiet keyboard taps arranged over 2.4 seconds from key.wav; timed independently of the 52 input characters.",
+    "license": "Inherits the recorded source license for stock arrangements; original UI synthesis for tonal marks.",
+    "sha256": "23c320c36dbd51787414a68ae10c064515a22718a90bf37ab6595d761b26ff5c"
+  },
+  {
+    "asset": "assets/sfx/summary-typing.wav",
+    "provenance": "14 taps over 0.8 seconds from key.wav.",
+    "license": "Inherits the recorded source license for stock arrangements; original UI synthesis for tonal marks.",
+    "sha256": "6bf916313c8e119b6182d5942ab7b684e1158c9a09b47d6a1ae880b01374b7bb"
+  },
+  {
+    "asset": "assets/sfx/attention.wav",
+    "provenance": "Original locally synthesized restrained two-note UI cue (294/349 Hz); not an alarm.",
+    "license": "Inherits the recorded source license for stock arrangements; original UI synthesis for tonal marks.",
+    "sha256": "fed608f57546637f0be6778a285725bbe5f3847f7cd1c302142b708394072837"
+  },
+  {
+    "asset": "assets/sfx/rinse-illustrative.wav",
+    "provenance": "4-second illustrative stock arrangement of Pouring water in a glass + Kettle boiling. Never an actual Yeema recording.",
+    "license": "Inherits the recorded source license for stock arrangements; original UI synthesis for tonal marks.",
+    "sha256": "59ca3adb88758c7c5cffaed93b22ee68b4b172177f84d2bfda8ae5d951b19d78"
+  },
+  {
+    "asset": "assets/sfx/brew-complete.wav",
+    "provenance": "Original locally synthesized short completion UI note (880 Hz).",
+    "license": "Inherits the recorded source license for stock arrangements; original UI synthesis for tonal marks.",
+    "sha256": "e187389318bf6d4afbe8e2ef4396518773afcbd95735f77c55c2751d8a60d832"
+  },
+  {
+    "asset": "assets/sfx/row-1.wav",
+    "provenance": "Original locally synthesized UI note at 440 Hz.",
+    "license": "Inherits the recorded source license for stock arrangements; original UI synthesis for tonal marks.",
+    "sha256": "5c5f53ae6c45174a51c82f565a476dd8abf1ffa1e0077b2a01d607dea5b7b2c9"
+  },
+  {
+    "asset": "assets/sfx/row-2.wav",
+    "provenance": "Original locally synthesized UI note at 523.25 Hz.",
+    "license": "Inherits the recorded source license for stock arrangements; original UI synthesis for tonal marks.",
+    "sha256": "49fec30fc3042192a2ec10e273a245b3d0895723f6c6b9d143f667a6d863a8ad"
+  },
+  {
+    "asset": "assets/sfx/row-3.wav",
+    "provenance": "Original locally synthesized UI note at 659.25 Hz.",
+    "license": "Inherits the recorded source license for stock arrangements; original UI synthesis for tonal marks.",
+    "sha256": "94d6bf7c3ca6ff4bf6ec98419edc81ed3d80fad4eb2d0945e4f92110ef9d0112"
+  },
+  {
+    "asset": "assets/sfx/row-4.wav",
+    "provenance": "Original locally synthesized UI note at 783.99 Hz.",
+    "license": "Inherits the recorded source license for stock arrangements; original UI synthesis for tonal marks.",
+    "sha256": "4c6a5dfe7b051a540699d08f6d7ff29f7a161417a17eb95bc912ade05e76b905"
+  }
+]

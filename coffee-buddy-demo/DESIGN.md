@@ -1,0 +1,6 @@
+# Ch.1: Say it or type it
+Full-frame Coffee Buddy UI from Figma Page 1 Home Ready and talk/texting. Audience: exhibition visitors. Show spoken taste → typed temperature refinement → explicit cup confirmation → brewing → saved feedback. 1080×1920, 26 seconds, 30 fps; English; restrained interaction sound effects.
+Palette: canvas #fcfbf9; card #f5f3ee; border #e7e3da; ink #171715; secondary #6f706a; tertiary #999a94; orange #ff7e2e; success #2f7d5b.
+Typography: original SF Pro and Inter, locally frozen. Original Figma bean and microphone assets. Avatars use matching warm line art on black circles. Uniform scale from a 393×698.667 logical viewport; reflow spacing for 9:16.
+Motion: shared composer and voice bubble across Home→Agent; three listening ripples; three settling drops; one task card with internal cup/brewing/resetting/done updates. Deterministic seeking.
+No device frame, machine footage, workbench, slogan, percentages, countdown or bypassed confirmation. Avatar rule: Coffee Buddy is always the left-side coffee bean. User messages are always right-side coffee cups; the top profile uses the exact same cup asset at a larger size. The blue ring in the review image identifies the profile position. Audio cues follow existing animation timestamps; no Yeema machine recordings have been supplied.

@@ -1,0 +1,11 @@
+{
+  "name": "coffee-buddy-ch8",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.8.180 preview",
+    "check": "npx --yes hyperframes@0.8.180 check",
+    "render": "npx --yes hyperframes@0.8.180 render --output renders/coffee-buddy-ch8-final-v1.mp4",
+    "publish": "npx --yes hyperframes@0.8.180 publish"
+  }
+}

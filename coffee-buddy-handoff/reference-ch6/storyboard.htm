@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Coffee Buddy | Ch.6 Precision, by words</title>
+  <style>
+    @font-face{font-family:SFPro;src:url('assets/fonts/SF-Pro-ch1.woff2') format('woff2');font-weight:100 900;font-display:block}
+    @font-face{font-family:Inter;src:url('assets/fonts/Inter-ch1.woff2') format('woff2');font-weight:100 900;font-display:block}
+    :root{--bg:#fcfbf9;--card:#f5f3ee;--line:#e7e3da;--ink:#171715;--muted:#6f706a;--orange:#ff7e2e;--green:#2f7d5b;--soft:#fffefa}
+    *{box-sizing:border-box;letter-spacing:0}
+    html{background:#f1f3f2}
+    body{margin:0;color:var(--ink);font-family:SFPro,Arial,sans-serif}
+    h1,h2,h3,p,figure{margin:0}
+    .sheet{max-width:1320px;margin:0 auto;padding:32px 28px 44px}
+    .head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;border-bottom:1px solid #d7dcda;padding-bottom:22px;margin-bottom:25px}
+    .kicker{font-size:12px;color:var(--green);margin-bottom:9px;font-weight:700}
+    h1{font-family:Inter,sans-serif;font-size:32px;line-height:40px;font-weight:650}
+    .dek{margin-top:8px;color:#616862;font-size:14px;line-height:22px}
+    .spec{text-align:right;color:#616862;font-size:12px;line-height:21px;white-space:nowrap}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px 24px}
+    .frame{min-width:0}
+    .preview{position:relative;overflow:hidden;aspect-ratio:9/16;background:var(--bg);outline:1px solid #d9ddda;container-type:inline-size}
+    .screen{position:absolute;left:0;top:0;width:393px;height:698.666667px;transform:scale(calc(100cqw / 393px));transform-origin:top left;overflow:hidden;background:var(--bg)}
+    .statusbar{position:absolute;top:24px;left:54px;right:36px;height:21px;display:flex;align-items:center;justify-content:space-between;font-size:18px;font-weight:650;z-index:8}
+    .statusbar img{width:80px;height:20px;object-fit:contain}
+    .profile{position:absolute;top:60px;right:18px;width:48px;height:48px;z-index:8}
+    .home{position:absolute;left:124px;bottom:9px;width:145px;height:5px;border-radius:99px;background:var(--ink);z-index:10}
+    .chat{position:absolute;left:14px;right:14px;top:128px;bottom:108px;overflow:hidden}
+    .greeting{padding:0 6px;font-family:Inter,sans-serif;font-size:32px;line-height:40px;font-weight:600}
+    .greeting span{display:block}
+    .composer{position:absolute;left:14px;right:14px;bottom:44px;height:58px;display:flex;align-items:center;gap:10px;padding:6px 6px 6px 17px;border:1px solid var(--line);border-radius:26px;background:#fffffff5;box-shadow:0 8px 28px #28241c1f;z-index:7}
+    .composer-copy{flex:1;min-width:0;color:var(--muted);font-size:12px;line-height:18px}
+    .composer-copy.typed{color:var(--ink);font-size:15px;line-height:22px}
+    .caret{display:inline-block;width:1px;height:17px;margin-left:2px;vertical-align:-3px;background:var(--orange)}
+    .microphone,.send{width:44px;height:44px;flex:0 0 44px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .microphone{background:var(--orange)}
+    .microphone img{width:19px;height:19px}
+    .send{background:var(--ink);color:var(--bg);font-size:23px;line-height:1}
+    .waveform{display:flex;align-items:center;justify-content:center;gap:4px;width:44px;height:44px;flex:0 0 44px;border-radius:50%;background:var(--orange)}
+    .waveform i{display:block;width:3px;border-radius:3px;background:#fff7ef}
+    .waveform i:nth-child(1){height:10px}.waveform i:nth-child(2){height:22px}.waveform i:nth-child(3){height:14px}.waveform i:nth-child(4){height:27px}.waveform i:nth-child(5){height:12px}
+    .keyboard{position:absolute;left:0;right:0;bottom:0;height:202px;padding:13px 5px 24px;background:#d5d7dc;border-top:1px solid #c8c9cf;z-index:6}
+    .key-row{display:flex;justify-content:center;gap:5px;margin-bottom:7px}
+    .key{height:31px;flex:1;max-width:34px;display:flex;align-items:center;justify-content:center;border-radius:5px;background:#fff;box-shadow:0 1px 0 #8b8d94;font-size:20px;color:#1d1d1f}
+    .key.inset{padding:0 17px}
+    .key.special{flex:1.4;max-width:46px;background:#b9bdc6;font-size:15px}
+    .key.space{flex:5.6;max-width:none;font-size:13px}.key.return{flex:2;max-width:none;background:#b9bdc6;font-size:13px}
+    .row{display:flex;align-items:flex-end;gap:12px;margin-top:16px}
+    .row.user{justify-content:flex-end;margin-top:0}
+    .avatar{width:36px;height:36px;flex:0 0 36px;display:block}
+    .bubble{max-width:305px;padding:12px 14px;border-radius:20px 20px 6px 20px;background:var(--ink);color:#fff;font-size:15px;line-height:22px}
+    .assistant{display:flex;align-items:flex-start;gap:12px;margin-top:16px}
+    .assistant-card{width:317px;padding:12px 13px;border:1px solid var(--line);border-radius:20px 20px 20px 6px;background:#fff;font-size:14px;line-height:20px}
+    .assistant-card.soft{background:var(--card)}
+    .drops{display:flex;gap:8px;margin:0 0 7px 7px}
+    .drop{width:10px;height:14px;border-radius:70% 30% 65% 35% / 60% 35% 65% 40%;background:var(--orange);transform:rotate(45deg)}
+    .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+    .chip{display:inline-flex;align-items:center;min-height:30px;padding:6px 11px;border:1px solid var(--line);border-radius:15px;background:var(--soft);font-size:12px;line-height:16px;font-weight:650}
+    .chip.dark{border-color:var(--ink);background:var(--ink);color:#fff}
+    .chip.orange{border-color:var(--orange);background:var(--orange);color:var(--ink)}
+    .chip.green{border-color:var(--green);background:#dcece3;color:var(--green)}
+    .shot-card{width:353px;margin:12px auto 0;padding:17px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+    .eyebrow{color:var(--muted);font-size:11px;line-height:16px;font-weight:700;letter-spacing:1.2px}
+    .shot-title{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+    .shot-card h2{margin-top:4px;font-family:Inter,sans-serif;font-size:20px;line-height:25px;font-weight:600}
+    .shot-card .sub{margin-top:5px;color:var(--muted);font-size:12px;line-height:18px}
+    .param-row{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:18px}
+    .param-row:last-of-type{border-bottom:0}
+    .param-label{flex:1;color:var(--muted)}
+    .param-value{font-weight:700}
+    .adjust{display:flex;gap:4px}
+    .adjust i{display:flex;align-items:center;justify-content:center;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;font-style:normal;color:var(--muted);font-size:15px;line-height:1;background:#fffefa}
+    .note{margin-top:10px;padding:9px 10px;border-radius:12px;background:#fffefa;color:var(--muted);font-size:11px;line-height:16px}
+    .cta{height:42px;margin-top:13px;display:flex;align-items:center;justify-content:center;border-radius:22px;background:var(--orange);color:var(--ink);font-size:13px;font-weight:700}
+    .place-card{width:353px;margin:16px auto 0;padding:18px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+    .place-card h2{font-family:Inter,sans-serif;font-size:20px;line-height:25px;font-weight:600}
+    .place-card p{margin-top:8px;color:var(--muted);font-size:13px;line-height:20px}
+    .brew-card{width:353px;margin:16px auto 0;padding:17px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+    .brew-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+    .brew-head h2{margin-top:4px;font-family:Inter,sans-serif;font-size:20px;line-height:25px;font-weight:600}
+    .state{display:inline-flex;align-items:center;min-height:26px;padding:4px 9px;border-radius:13px;background:var(--orange);color:var(--ink);font-size:11px;font-weight:700}
+    .state.done{background:#dcece3;color:var(--green)}
+    .brew-row{padding:13px 0 12px;border-bottom:1px solid var(--line)}
+    .brew-row:last-of-type{border-bottom:0}
+    .brew-title{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:14px;line-height:19px;font-weight:650}
+    .check{display:flex;align-items:center;justify-content:center;width:22px;height:22px;border:1.5px solid var(--line);border-radius:50%;color:transparent;font-size:14px}
+    .check.active{border-color:var(--green);background:var(--green);color:#fff}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:10px}
+    .step{position:relative;padding-top:7px;color:var(--muted);font-size:10px;line-height:14px}
+    .step:before{content:"";display:block;width:7px;height:7px;margin-bottom:4px;border-radius:50%;background:#c7c6c0}
+    .step.done-step:before{background:var(--ink)}
+    .step.current{color:var(--ink);font-weight:650}.step.current:before{background:var(--orange);box-shadow:0 0 0 3px #ff7e2e22}
+    .step small{display:block;margin-top:2px;color:var(--muted);font-size:9px;line-height:12px}
+    .progress{height:3px;margin-top:9px;overflow:hidden;border-radius:4px;background:#ddd9d0}.progress i{display:block;width:72%;height:100%;border-radius:inherit;background:var(--orange)}
+    .stop{height:38px;margin-top:14px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:19px;color:var(--muted);font-size:12px}
+    .feedback{width:353px;margin:14px auto 0}.feedback .chips{gap:7px}.feedback .cta{margin-top:11px}.later{height:34px;margin-top:7px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:17px;background:var(--soft);color:var(--muted);font-size:12px}
+    .save-bar{width:353px;margin:12px auto 0;padding:13px 14px;border:1px solid #f1bd95;border-radius:18px;background:#fff8ef}.save-bar p{font-size:13px;line-height:18px;font-weight:650}.save-bar .cta{margin-top:10px}.save-bar .later{margin-top:7px;background:#fffefa}
+    .saved-row{display:flex;align-items:center;justify-content:space-between;gap:9px;margin-top:10px;padding:10px 12px;border-radius:12px;background:#fff8ef;color:var(--orange);font-size:12px;line-height:16px;font-weight:700}
+    .final-note{margin-top:14px}
+    .label{display:inline-flex;align-items:center;min-height:36px;padding:8px 14px;border:1px solid var(--line);border-radius:18px;background:var(--card);color:var(--muted);font-size:13px;line-height:18px}
+    figcaption{padding-top:13px}.frame-label{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-size:14px;line-height:21px;font-weight:650}.time{color:#68736b;font-size:12px;font-weight:400;white-space:nowrap}.note-text{margin-top:5px;color:#68736b;font-size:12px;line-height:19px}
+    .footer{display:grid;grid-template-columns:1.25fr 1fr;gap:32px;margin-top:32px;padding-top:18px;border-top:1px solid #d7dcda;color:#68736b;font-size:12px;line-height:20px}.footer strong{display:block;margin-bottom:5px;color:var(--ink);font-weight:650}.swatches{display:flex;gap:8px;margin-top:9px}.swatches i{display:block;width:20px;height:20px;border:1px solid #d7dcda;border-radius:3px}
+    @media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.head{align-items:flex-start}.spec{text-align:left;white-space:normal}}
+    @media(max-width:620px){.sheet{padding:22px 16px 32px}.head{display:block}.spec{margin-top:12px}.grid{grid-template-columns:1fr;gap:26px}.footer{grid-template-columns:1fr;gap:15px}h1{font-size:27px;line-height:35px}}
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="head">
+      <div><div class="kicker">COFFEE BUDDY × YEEMA ONE · CH.6</div><h1>Precision, by words</h1><p class="dek">Static keyframe review for a 24-second voice-led custom shot flow.</p></div>
+      <div class="spec">1080 × 1920 · 24 seconds · 30 fps<br>English UI · SFX only<br>9 approval frames</div>
+    </header>
+    <section class="grid" aria-label="Ch.6 storyboard key frames">
+      <figure class="frame">
+        <div class="preview"><div class="screen">
+          <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User profile">
+          <div class="chat"><div class="greeting"><span>Hi, Alex</span><span>What would you like today?</span></div></div>
+          <div class="composer"><span class="composer-copy">What would you like? Tell Yeema</span><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home"></div>
+        </div></div>
+        <figcaption><div class="frame-label"><span>01 · The opening prompt</span><span class="time">0.0–1.2s</span></div><p class="note-text">Series opening frame. The voice route begins from the familiar Coffee Buddy composer.</p></figcaption>
+      </figure>
+
+      <figure class="frame">
+        <div class="preview"><div class="screen">
+          <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User profile">
+          <div class="chat"><div class="row user"><div class="bubble">Pull my shot at 88°C, 9 bar, 28 s, 1:2.</div><img class="avatar" src="assets/avatars/user-cup-chat.svg" alt="User"></div><div class="assistant" style="margin-top:12px"><img class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><div><div class="label">Voice input normalized</div></div></div></div>
+          <div class="composer"><span class="composer-copy typed">Pull my shot at 88°C, 9 bar, 28 s, 1:2.<i class="caret"></i></span><div class="waveform" aria-label="Voice waveform"><i></i><i></i><i></i><i></i><i></i></div></div><div class="home"></div>
+        </div></div>
+        <figcaption><div class="frame-label"><span>02 · Spoken precision</span><span class="time">1.2–2.6s</span></div><p class="note-text">The sentence appears as normalized UI copy: 88°C, 9 bar, 28 s and 1:2.</p></figcaption>
+      </figure>
+
+      <figure class="frame">
+        <div class="preview"><div class="screen">
+          <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User profile">
+          <div class="chat"><div class="row user"><div class="bubble">Pull my shot at 88°C, 9 bar, 28 s, 1:2.</div><img class="avatar" src="assets/avatars/user-cup-chat.svg" alt="User"></div><div class="assistant"><img class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><div><div class="drops"><i class="drop"></i><i class="drop"></i><i class="drop"></i></div><div class="assistant-card soft">Yeema is locking your parameters</div><div class="assistant-card soft" style="margin-top:9px">Custom shot · 5 parameters locked</div><div class="chips"><span class="chip dark">Dose <b>&nbsp;18 g</b></span><span class="chip dark">Temp <b>&nbsp;88°C</b></span><span class="chip dark">Pressure <b>&nbsp;9 bar</b></span><span class="chip dark">Time <b>&nbsp;28 s</b></span><span class="chip dark">Ratio <b>&nbsp;1:2</b></span></div></div></div></div>
+          <div class="composer"><span class="composer-copy">What would you like? Tell Yeema</span><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home"></div>
+        </div></div>
+        <figcaption><div class="frame-label"><span>03 · Five parameters locked</span><span class="time">2.6–6.0s</span></div><p class="note-text">The five dark chips are the visual focal point. Each number arrives as a separate, audible snap.</p></figcaption>
+      </figure>
+
+      <figure class="frame">
+        <div class="preview"><div class="screen">
+          <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User profile">
+          <div class="chat"><div class="assistant"><img class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><div class="assistant-card soft">Custom shot · 5 parameters locked</div></div><section class="shot-card"><div class="shot-title"><div><div class="eyebrow">CUSTOM SHOT</div><h2>Alex's precise recipe</h2><p class="sub">Adjust any value before brewing.</p></div><span class="chip orange">Ready</span></div><div class="param-row"><span class="param-label">Dose</span><b class="param-value">18 g</b><span class="adjust"><i>−</i><i>+</i></span></div><div class="param-row"><span class="param-label">Temperature</span><b class="param-value">88°C</b><span class="adjust"><i>−</i><i>+</i></span></div><div class="param-row"><span class="param-label">Pressure</span><b class="param-value">9 bar</b><span class="adjust"><i>−</i><i>+</i></span></div><div class="param-row"><span class="param-label">Time</span><b class="param-value">28 s</b><span class="adjust"><i>−</i><i>+</i></span></div><div class="param-row"><span class="param-label">Ratio</span><b class="param-value">1:2</b><span class="adjust"><i>−</i><i>+</i></span></div><div class="note">Grind is set manually on the machine.</div><div class="cta">Brew it →</div></section></div>
+          <div class="composer"><span class="composer-copy">What would you like? Tell Yeema</span><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home"></div>
+        </div></div>
+        <figcaption><div class="frame-label"><span>04 · Checkable custom shot</span><span class="time">6.0–8.2s</span></div><p class="note-text">Five editable rows make the controls tangible. The manual-grind note stays visible as a trust boundary.</p></figcaption>
+      </figure>
+
+      <figure class="frame">
+        <div class="preview"><div class="screen">
+          <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User profile">
+          <div class="chat"><div class="row user"><div class="bubble">Brew it →</div><img class="avatar" src="assets/avatars/user-cup-chat.svg" alt="User"></div><div class="assistant"><img class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><section class="place-card"><h2>Place your cup under the spout</h2><p>Once it's set, start brewing.</p><div class="cta">Cup is in place</div></section></div></div>
+          <div class="composer"><span class="composer-copy">What would you like? Tell Yeema</span><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home"></div>
+        </div></div>
+        <figcaption><div class="frame-label"><span>05 · Cup confirmation</span><span class="time">9.4–11.2s</span></div><p class="note-text">The safety step remains explicit: the machine waits for the cup before execution.</p></figcaption>
+      </figure>
+
+      <figure class="frame">
+        <div class="preview"><div class="screen">
+          <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User profile">
+          <div class="chat"><div class="assistant"><img class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><section class="brew-card"><div class="brew-head"><div><div class="eyebrow">CUSTOM SHOT</div><h2>Yeema One</h2></div><span class="state">Brewing</span></div><div class="brew-row"><div class="brew-title"><span>Grinding</span><span class="check active">✓</span></div><div class="steps"><span class="step done-step">Dose 18 g</span><span class="step current">Temp 88°C</span><span class="step">Pressure 9 bar</span></div><div class="progress"><i></i></div></div><div class="brew-row"><div class="brew-title"><span>Extraction · 28 s</span><span class="check"></span></div><div class="steps"><span class="step done-step">Time 28 s</span><span class="step current">Ratio 1:2</span><span class="step">Disposing</span></div><div class="progress"><i style="width:43%"></i></div></div><div class="stop">Stop brewing</div></section></div></div>
+          <div class="composer"><span class="composer-copy">What would you like? Tell Yeema</span><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home"></div>
+        </div></div>
+        <figcaption><div class="frame-label"><span>06 · The shot is executed</span><span class="time">11.2–15.2s</span></div><p class="note-text">One task card carries the exact recipe into grinding, extraction, disposing and resetting.</p></figcaption>
+      </figure>
+
+      <figure class="frame">
+        <div class="preview"><div class="screen">
+          <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User profile">
+          <div class="chat"><div class="assistant"><img class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><section class="brew-card"><div class="brew-head"><div><div class="eyebrow">CUSTOM SHOT</div><h2>Yeema One</h2></div><span class="state done">Done</span></div><div class="brew-row"><div class="brew-title"><span>Alex's Shot</span><span class="check active">✓</span></div><div class="steps"><span class="step done-step">18 g</span><span class="step done-step">88°C</span><span class="step done-step">9 bar</span></div></div><div class="brew-row"><div class="brew-title"><span>28 s · 1:2</span><span class="check active">✓</span></div><div class="steps"><span class="step done-step">Ground</span><span class="step done-step">Extracted</span><span class="step done-step">Reset</span></div></div></section></div><div class="feedback"><div class="eyebrow">HOW DID IT TASTE?</div><div class="chips"><span class="chip">Too sour</span><span class="chip">Too bitter</span><span class="chip">Too strong</span><span class="chip">Too weak</span></div><div class="cta">Just right</div><div class="later">Later</div></div></div>
+          <div class="composer"><span class="composer-copy">What would you like? Tell Yeema</span><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home"></div>
+        </div></div>
+        <figcaption><div class="frame-label"><span>07 · Finished, ready for feedback</span><span class="time">15.2–17.2s</span></div><p class="note-text">Green completion state and the familiar taste feedback area close the brew loop.</p></figcaption>
+      </figure>
+
+      <figure class="frame">
+        <div class="preview"><div class="screen">
+          <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User profile">
+          <div class="chat"><div class="assistant"><img class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><section class="brew-card"><div class="brew-head"><div><div class="eyebrow">CUSTOM SHOT</div><h2>Yeema One</h2></div><span class="state done">Done</span></div><div class="brew-row"><div class="brew-title"><span>Alex's Shot</span><span class="check active">✓</span></div><div class="steps"><span class="step done-step">18 g</span><span class="step done-step">88°C</span><span class="step done-step">9 bar</span></div></div><div class="brew-row"><div class="brew-title"><span>28 s · 1:2</span><span class="check active">✓</span></div><div class="steps"><span class="step done-step">Ground</span><span class="step done-step">Extracted</span><span class="step done-step">Reset</span></div></div></section></div><div class="save-bar"><p>Save this recipe?</p><div class="cta">Save as "Alex's Shot"</div><div class="later">Later</div></div></div>
+          <div class="composer"><span class="composer-copy">What would you like? Tell Yeema</span><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home"></div>
+        </div></div>
+        <figcaption><div class="frame-label"><span>08 · Save the recipe</span><span class="time">17.2–19.6s</span></div><p class="note-text">The recipe becomes reusable with a concrete name: Alex's Shot.</p></figcaption>
+      </figure>
+
+      <figure class="frame">
+        <div class="preview"><div class="screen">
+          <div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User profile">
+          <div class="chat"><div class="assistant"><img class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><section class="brew-card"><div class="brew-head"><div><div class="eyebrow">CUSTOM SHOT</div><h2>Yeema One</h2></div><span class="state done">Done</span></div><div class="brew-row"><div class="brew-title"><span>Alex's Shot · Saved</span><span class="check active">✓</span></div><div class="steps"><span class="step done-step">18 g</span><span class="step done-step">88°C</span><span class="step done-step">9 bar</span></div></div><div class="brew-row"><div class="brew-title"><span>28 s · 1:2</span><span class="check active">✓</span></div><div class="steps"><span class="step done-step">Ground</span><span class="step done-step">Extracted</span><span class="step done-step">Reset</span></div></div></section></div><div class="assistant final-note"><img class="avatar" src="assets/avatars/coffee-buddy-bean.svg" alt="Coffee Buddy"><div class="assistant-card soft">Saved. Next time, just say "make my shot".</div></div></div>
+          <div class="composer"><span class="composer-copy">What would you like? Tell Yeema</span><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div></div><div class="home"></div>
+        </div></div>
+        <figcaption><div class="frame-label"><span>09 · The next command exists</span><span class="time">19.6–24.0s</span></div><p class="note-text">Saved state, named recipe and the next natural-language shortcut hold the final frame.</p></figcaption>
+      </figure>
+    </section>
+    <footer class="footer">
+      <div><strong>Communication strategy</strong><p>Show the hard proof of control: one spoken sentence becomes five visible parameters, then a reproducible saved recipe. The interaction stays entirely inside the Coffee Buddy chat.</p></div>
+      <div><strong>Review scope</strong><p>This is a static layout approval pass. The parameter chip snaps, waveform, state transitions, steam detail and sound design will be built after the frames are approved.</p><div class="swatches"><i style="background:#fcfbf9"></i><i style="background:#f5f3ee"></i><i style="background:#171715"></i><i style="background:#ff7e2e"></i><i style="background:#2f7d5b"></i></div></div>
+    </footer>
+  </main>
+</body>
+</html>

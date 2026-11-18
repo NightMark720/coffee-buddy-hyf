@@ -1,0 +1,253 @@
+{
+  "created": "2026-10-20",
+  "version": 1,
+  "reference_entry_sha256": "86d33cc1cc8686088712b6e0c86f8486291581e4780183a43079f9baf187f60e",
+  "assets": [
+    {
+      "path": "reference-ch6/assets/avatars/coffee-buddy-bean.svg",
+      "bytes": 527,
+      "sha256": "b6989f80af2d6e2aafe2ecd518bc785546553ac5412f6aeb42ca6626a70e25d3",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/avatars/user-cup-chat.svg",
+      "bytes": 500,
+      "sha256": "04501b0d4ee0aa37f94df1266e309000dfc85bcdb29ecc202caa330410a84dfc",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/avatars/user-cup.svg",
+      "bytes": 500,
+      "sha256": "04501b0d4ee0aa37f94df1266e309000dfc85bcdb29ecc202caa330410a84dfc",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/figma/13c65.svg",
+      "bytes": 843,
+      "sha256": "6d4c7e7e05b0ed6cbd8996502004f0ee021b4ea56e58c2e5105aef565d61ccba",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/figma/ios-status.png",
+      "bytes": 995,
+      "sha256": "5e21228148b34374567cc4ea0aaa594dff4cb8619361606f63f2a5a821be8e6e",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/fonts/Inter-ch1.woff2",
+      "bytes": 71784,
+      "sha256": "ee383049dd788032c4710b4ac7021b162abca7b7353c8b80c04a038b0a164056",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/fonts/SF-Pro-ch1.woff2",
+      "bytes": 517924,
+      "sha256": "6abee5b52ec604e80c2083491d4b379bf77390e5e193f9098f1f18b631156d41",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/gsap.min.js",
+      "bytes": 72779,
+      "sha256": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/CREDITS.md",
+      "bytes": 775,
+      "sha256": "23cedca18538ad7db76cdf0de86d3a7c999ba5aaa7a6750adf22762776e657fb",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/attention.wav",
+      "bytes": 122924,
+      "sha256": "fed608f57546637f0be6778a285725bbe5f3847f7cd1c302142b708394072837",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/brew-complete.wav",
+      "bytes": 80684,
+      "sha256": "e187389318bf6d4afbe8e2ef4396518773afcbd95735f77c55c2751d8a60d832",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/complete.wav",
+      "bytes": 361038,
+      "sha256": "ad351054e652ece72c769a62dcf903a94a09d98164960c5f0040ccb0c7ebf625",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/drop-high.wav",
+      "bytes": 73038,
+      "sha256": "944e7f3fb28944e9283d229277cf0fcae422d5f0d6429e0a3c995e2cc92f4f2b",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/drop-low.wav",
+      "bytes": 73038,
+      "sha256": "652c4209bca38e996e342cb3296c09e25bcaabdd4764998f62215efd28fa2e10",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/drop-mid.wav",
+      "bytes": 73038,
+      "sha256": "5444f8eaa145958369c85c48fd52c26f1c64d10fb865ea2b0ca3a9f911cabe49",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/extraction-demo.wav",
+      "bytes": 364878,
+      "sha256": "5680ccbdf32c95f912c0f5e70eecf99670e02ac191c7c2dd3e08ab5de6aa0c4a",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/key.wav",
+      "bytes": 13902,
+      "sha256": "93359db783e1f48523241abf5f613e2ed92ec019119f470d355d3ba578630fd3",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/pop.wav",
+      "bytes": 57678,
+      "sha256": "bbeeedb08eab103c699548cc2375da2ab41924800872db9a36e2d661eee24c13",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/rinse-illustrative.wav",
+      "bytes": 768044,
+      "sha256": "59ca3adb88758c7c5cffaed93b22ee68b4b172177f84d2bfda8ae5d951b19d78",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/row-1.wav",
+      "bytes": 57644,
+      "sha256": "5c5f53ae6c45174a51c82f565a476dd8abf1ffa1e0077b2a01d607dea5b7b2c9",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/row-2.wav",
+      "bytes": 57644,
+      "sha256": "49fec30fc3042192a2ec10e273a245b3d0895723f6c6b9d143f667a6d863a8ad",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/row-3.wav",
+      "bytes": 57644,
+      "sha256": "94d6bf7c3ca6ff4bf6ec98419edc81ed3d80fad4eb2d0945e4f92110ef9d0112",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/row-4.wav",
+      "bytes": 57644,
+      "sha256": "4c6a5dfe7b051a540699d08f6d7ff29f7a161417a17eb95bc912ade05e76b905",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/sources.json",
+      "bytes": 8055,
+      "sha256": "dba14751acd1b289232ac109ab6811564997ddc7bd106c7e75633b7ac6bcb377",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/steam-demo.wav",
+      "bytes": 130638,
+      "sha256": "d2f55e2f5cafd7de289eacca034f213e0e23c76620e3402c9f47d2b44952b2c5",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/summary-typing.wav",
+      "bytes": 153644,
+      "sha256": "6bf916313c8e119b6182d5942ab7b684e1158c9a09b47d6a1ae880b01374b7bb",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/swipe.wav",
+      "bytes": 73034,
+      "sha256": "174389e4eacf490c4fafeb3d37bd9401c56c7e3ffbcd24f15cf758c3313789e2",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/tap-times.json",
+      "bytes": 277,
+      "sha256": "732dc836823236a9c233ec833ba67386812d0207fe821a79007c4b9afb14d8dc",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "reference-ch6/assets/sfx/typing-ch4.wav",
+      "bytes": 460844,
+      "sha256": "23c320c36dbd51787414a68ae10c064515a22718a90bf37ab6595d761b26ff5c",
+      "source_chapter": "coffee-buddy-ch6"
+    },
+    {
+      "path": "series-extras/figma/13c65.svg",
+      "bytes": 843,
+      "sha256": "6d4c7e7e05b0ed6cbd8996502004f0ee021b4ea56e58c2e5105aef565d61ccba",
+      "source_chapter": "coffee-buddy-demo / Ch.1"
+    },
+    {
+      "path": "series-extras/figma/38340.svg",
+      "bytes": 259,
+      "sha256": "6d7d09243782cfd5dcded499948e81bba6e7ba7917a864e7f6adc37e2d082874",
+      "source_chapter": "coffee-buddy-demo / Ch.1"
+    },
+    {
+      "path": "series-extras/figma/5731d.svg",
+      "bytes": 534,
+      "sha256": "ce3b589e568e1b04f8416f41f07d1d21f27fb51d8d1611e2ae88deda18648f02",
+      "source_chapter": "coffee-buddy-demo / Ch.1"
+    },
+    {
+      "path": "series-extras/figma/81d6a.svg",
+      "bytes": 778,
+      "sha256": "c35b97ff77236f275751763b0dd04a919e23586e91b816bdcb06596626d7d255",
+      "source_chapter": "coffee-buddy-demo / Ch.1"
+    },
+    {
+      "path": "series-extras/figma/84d82.svg",
+      "bytes": 236,
+      "sha256": "b6606e246962f781bd4b4afabeeec91569bcd0dfdf0d437185ee1733b2ca33da",
+      "source_chapter": "coffee-buddy-demo / Ch.1"
+    },
+    {
+      "path": "series-extras/figma/a05e4.svg",
+      "bytes": 1032,
+      "sha256": "fd81d42adb904a0a53b52ee9200c8831dee8d69e23f6a44bfbef6f8f5594e631",
+      "source_chapter": "coffee-buddy-demo / Ch.1"
+    },
+    {
+      "path": "series-extras/figma/ad71d.svg",
+      "bytes": 341,
+      "sha256": "85758a8cfae3209d470019b9ef3fd820226d5115652fbf159d8ec7122e8912b3",
+      "source_chapter": "coffee-buddy-demo / Ch.1"
+    },
+    {
+      "path": "series-extras/figma/b97da.svg",
+      "bytes": 636,
+      "sha256": "ab9d84386f996d466ac6d12db08d4613a9aaf30e4964bc4ac7eed7906f2cf15e",
+      "source_chapter": "coffee-buddy-demo / Ch.1"
+    },
+    {
+      "path": "series-extras/figma/d87c6.svg",
+      "bytes": 224,
+      "sha256": "54dbe302f6ff687d70c430387768325522f3b42ff1418a42fc47a08214ccfd1a",
+      "source_chapter": "coffee-buddy-demo / Ch.1"
+    },
+    {
+      "path": "series-extras/figma/dbeb6.svg",
+      "bytes": 234,
+      "sha256": "3e3bdc18465c261930a4c3df3aee9eeb760e920e3b2bd3d92e87887550c92fae",
+      "source_chapter": "coffee-buddy-demo / Ch.1"
+    },
+    {
+      "path": "series-extras/figma/ee49b.svg",
+      "bytes": 233,
+      "sha256": "562844f0c1f7e8d7db6aa9a49d16d9ae6b49948d0f1b7e609973f73c8bacebb6",
+      "source_chapter": "coffee-buddy-demo / Ch.1"
+    },
+    {
+      "path": "series-extras/figma/ios-status.png",
+      "bytes": 995,
+      "sha256": "5e21228148b34374567cc4ea0aaa594dff4cb8619361606f63f2a5a821be8e6e",
+      "source_chapter": "coffee-buddy-demo / Ch.1"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "file": "renders/coffee-buddy-ch6-final-v1.mp4",
+  "width": 1080,
+  "height": 1920,
+  "fps": "30/1",
+  "frames": 720,
+  "duration": 24.0,
+  "video_codec": "h264",
+  "audio_codec": "aac",
+  "audio_sample_rate": "48000",
+  "audio_channels": 2,
+  "audio_peak_dbfs": -20.82,
+  "audio_rms_dbfs": -44.75,
+  "decoded_clipped_samples": 0,
+  "source_unchanged_during_render": true,
+  "sha256": "5ae19efbe215b7a22e4e124141f8db7e95724d2bb5d617a59652749b6ad6be0b",
+  "bytes": 2126335
+}

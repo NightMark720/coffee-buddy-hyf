@@ -1,0 +1,137 @@
+[
+  {
+    "asset": "assets/sfx/tap.wav",
+    "source": ".media/audio/sfx/sfx_001.mp3",
+    "source_start": 0.036,
+    "duration": 0.18,
+    "processing": "aresample=48000,volume=0.98354392,afade=t=in:st=0:d=0.003,afade=t=out:st=0.135000:d=0.045",
+    "provenance": "HyperFrames bundled SFX (Pixabay)",
+    "license": "Pixabay Content License"
+  },
+  {
+    "asset": "assets/sfx/swipe.wav",
+    "source": ".media/audio/sfx/sfx_002.mp3",
+    "source_start": 0.045,
+    "duration": 0.38,
+    "processing": "aresample=48000,volume=0.63517638,afade=t=in:st=0:d=0.012,afade=t=out:st=0.335000:d=0.045",
+    "provenance": "HyperFrames bundled SFX (Pixabay)",
+    "license": "Pixabay Content License"
+  },
+  {
+    "asset": "assets/sfx/pop.wav",
+    "source": ".media/audio/sfx/sfx_003.mp3",
+    "source_start": 0,
+    "duration": 0.3,
+    "processing": "aresample=48000,volume=0.72110971,afade=t=in:st=0:d=0.003,afade=t=out:st=0.255000:d=0.045",
+    "provenance": "HyperFrames bundled SFX (Pixabay)",
+    "license": "Pixabay Content License"
+  },
+  {
+    "asset": "assets/sfx/key.wav",
+    "source": ".media/audio/sfx/sfx_004.mp3",
+    "source_start": 0.068,
+    "duration": 0.072,
+    "processing": "aresample=48000,volume=16.97771519,afade=t=in:st=0:d=0.003,afade=t=out:st=0.057000:d=0.015",
+    "provenance": "HyperFrames bundled SFX (Pixabay)",
+    "license": "Pixabay Content License"
+  },
+  {
+    "asset": "assets/sfx/parameter.wav",
+    "source": ".media/audio/sfx/sfx_005.mp3",
+    "source_start": 0.075,
+    "duration": 1.3,
+    "processing": "aresample=48000,volume=0.64461432,afade=t=in:st=0:d=0.012,afade=t=out:st=1.255000:d=0.045",
+    "provenance": "HyperFrames bundled SFX (Pixabay)",
+    "license": "Pixabay Content License"
+  },
+  {
+    "asset": "assets/sfx/complete.wav",
+    "source": ".media/audio/sfx/sfx_006.mp3",
+    "source_start": 0.4,
+    "duration": 1.88,
+    "processing": "aresample=48000,volume=5.53471087,afade=t=in:st=0:d=0.012,afade=t=out:st=1.835000:d=0.045",
+    "provenance": "HyperFrames bundled SFX (Pixabay)",
+    "license": "Pixabay Content License"
+  },
+  {
+    "asset": "assets/sfx/listening.wav",
+    "source": "https://assets.mixkit.co/active_storage/sfx/1317/1317-preview.mp3",
+    "source_start": 0,
+    "duration": 0.32,
+    "processing": "aresample=48000,lowpass=f=2400,volume=1.38219736,afade=t=in:st=0:d=0.012,afade=t=out:st=0.275000:d=0.045",
+    "provenance": "Mixkit: Water bubble",
+    "license": "Mixkit Sound Effects Free License"
+  },
+  {
+    "asset": "assets/sfx/drop-high.wav",
+    "source": "https://assets.mixkit.co/active_storage/sfx/3000/3000-preview.mp3",
+    "source_start": 0,
+    "duration": 0.38,
+    "processing": "aresample=48000,asetrate=53760,aresample=48000,volume=0.54143997,afade=t=in:st=0:d=0.003,afade=t=out:st=0.335000:d=0.045",
+    "provenance": "Mixkit: Liquid bubble",
+    "license": "Mixkit Sound Effects Free License"
+  },
+  {
+    "asset": "assets/sfx/drop-mid.wav",
+    "source": "https://assets.mixkit.co/active_storage/sfx/3000/3000-preview.mp3",
+    "source_start": 0,
+    "duration": 0.38,
+    "processing": "aresample=48000,volume=0.54163504,afade=t=in:st=0:d=0.003,afade=t=out:st=0.335000:d=0.045",
+    "provenance": "Mixkit: Liquid bubble",
+    "license": "Mixkit Sound Effects Free License"
+  },
+  {
+    "asset": "assets/sfx/drop-low.wav",
+    "source": "https://assets.mixkit.co/active_storage/sfx/3000/3000-preview.mp3",
+    "source_start": 0,
+    "duration": 0.38,
+    "processing": "aresample=48000,asetrate=42240,aresample=48000,volume=0.54144053,afade=t=in:st=0:d=0.003,afade=t=out:st=0.335000:d=0.045",
+    "provenance": "Mixkit: Liquid bubble",
+    "license": "Mixkit Sound Effects Free License"
+  },
+  {
+    "asset": "assets/sfx/grinding-demo.wav",
+    "source": "https://assets.mixkit.co/active_storage/sfx/119/119-preview.mp3",
+    "source_start": 0.12,
+    "duration": 0.9,
+    "processing": "aresample=48000,highpass=f=100,lowpass=f=3500,volume=0.56419618,afade=t=in:st=0:d=0.012,afade=t=out:st=0.855000:d=0.045",
+    "provenance": "Mixkit: Blender working in the kitchen",
+    "license": "Mixkit Sound Effects Free License"
+  },
+  {
+    "asset": "assets/sfx/extraction-demo.wav",
+    "source": "https://assets.mixkit.co/active_storage/sfx/2826/2826-preview.mp3",
+    "source_start": 0.7,
+    "duration": 1.9,
+    "processing": "aresample=48000,highpass=f=120,lowpass=f=7000,volume=1.20072448,afade=t=in:st=0:d=0.012,afade=t=out:st=1.855000:d=0.045",
+    "provenance": "Mixkit: Pouring water in a glass",
+    "license": "Mixkit Sound Effects Free License"
+  },
+  {
+    "asset": "assets/sfx/dispose-demo.wav",
+    "source": "https://assets.mixkit.co/active_storage/sfx/1131/1131-preview.mp3",
+    "source_start": 0.115,
+    "duration": 0.48,
+    "processing": "aresample=48000,volume=0.59947880,afade=t=in:st=0:d=0.012,afade=t=out:st=0.435000:d=0.045",
+    "provenance": "Mixkit: Mechanical tool click",
+    "license": "Mixkit Sound Effects Free License"
+  },
+  {
+    "asset": "assets/sfx/reset-demo.wav",
+    "source": "https://assets.mixkit.co/active_storage/sfx/1831/1831-preview.mp3",
+    "source_start": 3.0,
+    "duration": 0.6,
+    "processing": "aresample=48000,highpass=f=90,lowpass=f=2200,volume=12.40038811,afade=t=in:st=0:d=0.012,afade=t=out:st=0.555000:d=0.045",
+    "provenance": "Mixkit: Gas stove hum",
+    "license": "Mixkit Sound Effects Free License"
+  },
+  {
+    "asset": "assets/sfx/steam-demo.wav",
+    "source": "https://assets.mixkit.co/active_storage/sfx/1817/1817-preview.mp3",
+    "source_start": 10.0,
+    "duration": 0.68,
+    "processing": "aresample=48000,highpass=f=500,lowpass=f=6500,volume=3.18972254,afade=t=in:st=0:d=0.012,afade=t=out:st=0.635000:d=0.045",
+    "provenance": "Mixkit: Kettle boiling",
+    "license": "Mixkit Sound Effects Free License"
+  }
+]

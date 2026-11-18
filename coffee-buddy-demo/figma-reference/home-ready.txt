@@ -1,0 +1,160 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/1fda5613-97f6-4be9-a0be-ab56cffc0ddb";
+const imgIcon = `${assetPathPrefix}/13c65.svg`;
+const imgFrame12 = `${assetPathPrefix}/38340.svg`;
+const imgStatusDot = `${assetPathPrefix}/ee49b.svg`;
+
+export default function HomeFirstLunchConnectedReady() {
+  return (
+    <div className="relative size-full" data-node-id="537:1071" data-name="Home/first lunch/connected-ready">
+      <div className="absolute h-[852px] left-[10px] top-[10px] w-[393px]" data-node-id="I537:1071;434:615">
+        <div className="absolute bg-[#ebe9e4] h-[852px] left-0 top-0 w-[393px]" data-node-id="I537:1071;246:1021" data-name="01 Home/Agent Talk Base">
+          <div className="absolute content-stretch flex h-[852px] items-start justify-center left-0 right-0 top-0" data-node-id="I537:1071;246:1021;34:28" style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 393 852' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(0 -79.864 -79.864 0 275.1 102.24)'><stop stop-color='rgba(247,244,237,1)' offset='0'/><stop stop-color='rgba(247,244,237,0)' offset='0.34'/></radialGradient></defs></svg>\"), linear-gradient(90deg, rgb(234, 232, 227) 0%, rgb(234, 232, 227) 100%)" }} data-name="Body">
+            <div className="bg-[#0d0d0c] content-stretch flex flex-col h-[852px] items-start min-h-[600px] relative shrink-0 w-[393px]" data-node-id="I537:1071;246:1021;34:29" data-name="Container">
+              <div className="bg-[#fcfbf9] h-[852px] overflow-clip relative shrink-0 w-full" data-node-id="I537:1071;246:1021;34:30" data-name="Container">
+                <div className="absolute bg-[#fcfbf9] content-stretch flex flex-col h-[852px] items-start left-0 overflow-clip top-0 w-[393px]" data-node-id="I537:1071;246:1021;34:31" data-name="Main Content">
+                  <CodeConnectSnippet data-node-id="I537:1071;246:1021;34:118" data-name="Status bar - iPhone">
+                    {/* iOS and iPadOS 26 component */}
+                    <StatusBarIPhone textTime="9:41" time="9:41" />
+                  </CodeConnectSnippet>
+                  <div className="content-stretch flex items-center justify-between min-h-[59px] pb-[4px] pt-[11px] px-[20px] relative shrink-0 w-full" data-node-id="I537:1071;246:1021;34:32" data-name="Header">
+                    <div className="relative shrink-0 size-[44px]" data-node-id="I537:1071;246:1021;34:33" data-name="Text" />
+                  </div>
+                  <div className="content-stretch flex flex-col h-[696px] items-start overflow-clip pb-[32px] px-[20px] relative shrink-0 w-full" data-node-id="I537:1071;246:1021;34:38" data-name="Container">
+                    <div className="content-stretch flex flex-col h-[87px] items-start pt-[13px] relative shrink-0 w-[353px]" data-node-id="I537:1071;246:1021;34:39" data-name="Heading 1" />
+                  </div>
+                  <CodeConnectSnippet data-node-id="I537:1071;246:1021;34:128" data-name="Home Indicator">
+                    {/* iOS and iPadOS 26 component
+Docs:
+  https://developer.apple.com/design/human-interface-guidelines/going-full-screen */}
+                    <HomeIndicator booleanShowHomeIndicator={true} showHomeIndicator={true} variantDevice="iPhone" device="iPhone" variantOrientation="Portrait" orientation="Portrait" />
+                  </CodeConnectSnippet>
+                  <div className="absolute backdrop-blur-[16px] bg-[rgba(255,255,255,0.96)] border border-[#e7e3da] border-solid content-stretch flex items-center left-[14px] min-h-[56px] pl-[15px] pr-[6px] py-[6px] rounded-[26px] shadow-[0px_8px_28px_0px_rgba(40,36,28,0.12)] top-[743px] w-[365px]" data-node-id="I537:1071;246:1021;34:111" data-name="Form">
+                    <div className="content-stretch flex flex-[294_0_0] flex-col h-[42px] items-start justify-center min-w-px overflow-clip px-[2px] py-px relative" data-node-id="I537:1071;246:1021;34:112" data-name="Text Input - 告诉 Yeema 想喝什么">
+                      <p className="[word-break:break-word] font-['SF_Pro:Regular'] font-normal leading-[normal] relative shrink-0 text-[#999a94] text-[12px] w-full" data-node-id="I537:1071;246:1021;34:113" style={{ fontVariationSettings: '"wdth" 100' }}>
+                        想喝什么？告诉Yeema
+                      </p>
+                    </div>
+                    <div className="bg-[#ff7e2e] content-stretch flex items-center justify-center px-[6px] py-px relative rounded-[22px] shrink-0 size-[44px]" data-node-id="I537:1071;246:1021;34:114" data-name="Button - 开始语音输入">
+                      <div className="relative shrink-0 size-[19px]" data-node-id="I537:1071;246:1021;34:115" data-name="Icon">
+                        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcon} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="-translate-x-1/2 -translate-y-1/2 absolute h-[68px] left-[calc(50%+154.5px)] top-[calc(50%-330px)] w-[84px]" data-node-id="I537:1071;246:1021;203:762">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFrame12} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute bg-[rgba(245,243,238,0)] content-stretch flex flex-col gap-[12px] items-center left-[-6px] overflow-clip top-[307px] w-[418px]" data-node-id="I537:1071;406:520">
+        <div className="h-[295px] relative shrink-0 w-[367px]" data-node-id="I537:1071;406:522">
+          <div className="absolute bg-[var(--surface\/normal,#f5f3ee)] border border-[var(--surface\/surface\/brand\/text\/text\/text\/border\/default,#e7e3da)] border-solid content-stretch flex flex-col gap-[8px] items-center justify-center left-0 pb-[14px] pt-[28px] px-[12px] rounded-[20px] top-0" data-node-id="I537:1071;406:324" data-name="Component/Card/QuickBrew">
+            <div className="[word-break:break-word] content-stretch flex flex-col font-['Inter:Semi_Bold'] font-semibold items-start leading-[40px] not-italic px-[24px] relative shrink-0 text-[32px] text-black tracking-[-0.4px] w-full" data-node-id="I537:1071;406:324;219:834">
+              <p className="relative shrink-0 w-full" data-node-id="I537:1071;406:324;219:830">
+                此刻推荐
+              </p>
+              <p className="relative shrink-0 w-full" data-node-id="I537:1071;406:324;219:831">
+                美式咖啡
+              </p>
+            </div>
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal h-[22px] leading-[20px] relative shrink-0 text-[14px] text-black w-[295px]" data-node-id="I537:1071;406:324;219:835">
+              尝试其他
+            </p>
+            <div className="content-stretch flex gap-[12px] items-center justify-center p-[12px] relative shrink-0 w-[343px]" data-node-id="I537:1071;406:324;219:848">
+              <div className="bg-[var(--surface\/surface\/brand\/orange,#ff7e2e)] content-stretch flex h-[36px] items-center justify-center px-[34px] py-[8px] relative rounded-[20px] shrink-0" data-node-id="I537:1071;406:324;219:838">
+                <p className="[word-break:break-word] font-['Noto_Sans_SC:Medium'] font-medium leading-[20px] relative shrink-0 text-[14px] text-black whitespace-nowrap" data-node-id="I537:1071;406:324;219:837">
+                  拿铁
+                </p>
+              </div>
+              <div className="bg-[var(--surface\/surface\/brand\/orange,#ff7e2e)] content-stretch flex items-center justify-center px-[16px] py-[8px] relative rounded-[20px] shrink-0 w-[96px]" data-node-id="I537:1071;406:324;219:843">
+                <p className="[word-break:break-word] font-['Noto_Sans_SC:Medium'] font-medium leading-[20px] relative shrink-0 text-[14px] text-black whitespace-nowrap" data-node-id="I537:1071;406:324;219:845">
+                  卡布奇诺
+                </p>
+              </div>
+              <div className="bg-[var(--surface\/surface\/brand\/orange,#ff7e2e)] content-stretch flex items-center justify-center px-[16px] py-[8px] relative rounded-[20px] shrink-0 w-[96px]" data-node-id="I537:1071;406:324;219:846">
+                <p className="[word-break:break-word] font-['Noto_Sans_SC:Medium'] font-medium leading-[20px] relative shrink-0 text-[14px] text-black whitespace-nowrap" data-node-id="I537:1071;406:324;219:847">
+                  冷萃咖啡
+                </p>
+              </div>
+            </div>
+            <div className="content-stretch flex gap-[24px] items-center justify-center p-[12px] relative shrink-0 w-[343px]" data-node-id="I537:1071;406:324;219:852">
+              <div className="bg-black content-stretch flex h-[43px] items-center justify-center px-[36px] py-[12px] relative rounded-[20px] shrink-0" data-node-id="I537:1071;406:324;219:849">
+                <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[20px] relative shrink-0 text-[#f5f3ee] text-[14px] w-[70px]" data-node-id="I537:1071;406:324;219:850">
+                  冲泡这一杯
+                </p>
+              </div>
+              <div className="bg-[var(--surface\/surface\/brand\/text\/text\/text\/border\/border\/strong,#d9d4c9)] content-stretch flex h-[43px] items-center justify-center px-[28px] py-[12px] relative rounded-[20px] shrink-0" data-node-id="I537:1071;406:324;219:827">
+                <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[20px] relative shrink-0 text-[14px] text-[color:var(--surface\/surface\/brand\/text\/primary,#171715)] w-[84px]" data-node-id="I537:1071;406:324;219:828">
+                  查看全部饮品
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex gap-[24px] h-[126px] items-center px-[25px] relative shrink-0 w-full" data-node-id="I537:1071;406:511">
+          <div className="bg-[#f5f3ee] border border-[#e7e3da] border-solid content-stretch drop-shadow-[0px_2px_4px_rgba(40,36,28,0.04)] flex flex-col h-[126px] items-start justify-between p-[16px] relative rounded-[20px] shrink-0 w-[172px]" data-node-id="I537:1071;406:445" data-name="Component/Card/MachineStatus">
+            <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[22px] not-italic relative shrink-0 text-[#171715] text-[20px] w-full" data-node-id="I537:1071;406:445;42:27">
+              机器状态
+            </p>
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[20px] relative shrink-0 text-[#6f706a] text-[14px] w-full" data-node-id="I537:1071;406:445;42:28">
+              Yeema One
+            </p>
+            <div className="content-stretch flex gap-[8px] items-center relative shrink-0 w-full" data-node-id="I537:1071;406:445;42:29" data-name="StatusRow">
+              <div className="relative shrink-0 size-[10px]" data-node-id="I537:1071;406:445;42:30" data-name="StatusDot">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgStatusDot} />
+              </div>
+              <p className="[word-break:break-word] font-['Noto_Sans_SC:Medium'] font-medium leading-[20px] relative shrink-0 text-[#2f7d5b] text-[14px] whitespace-nowrap" data-node-id="I537:1071;406:445;42:31">
+                已连接
+              </p>
+            </div>
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[18px] relative shrink-0 text-[#6f706a] text-[13px] w-full" data-node-id="I537:1071;406:445;42:32">
+              可以开始冲泡
+            </p>
+          </div>
+          <div className="[word-break:break-word] bg-[#f5f3ee] border border-[#e7e3da] border-solid content-stretch drop-shadow-[0px_2px_4px_rgba(40,36,28,0.04)] flex flex-col h-[126px] items-start justify-between p-[16px] relative rounded-[20px] shrink-0 w-[172px]" data-node-id="I537:1071;406:493" data-name="Component/Card/CurrentBean">
+            <p className="font-['Inter:Semi_Bold'] font-semibold leading-[22px] not-italic relative shrink-0 text-[#171715] text-[20px] w-full" data-node-id="I537:1071;406:493;392:127">
+              当前咖啡豆
+            </p>
+            <p className="font-['Noto_Sans_SC:Regular'] font-normal leading-[22px] overflow-hidden relative shrink-0 text-[#171715] text-[15px] text-ellipsis w-full whitespace-nowrap" data-node-id="I537:1071;406:493;392:128">
+              Ethiopia Yirgacheffe
+            </p>
+            <p className="font-['Noto_Sans_SC:Regular'] font-normal leading-[20px] relative shrink-0 text-[#ff7e2e] text-[14px] w-full" data-node-id="I537:1071;406:493;392:129">
+              更换咖啡豆
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="absolute content-stretch flex flex-col h-[165px] items-start left-[12px] overflow-clip py-[10px] top-[133px] w-[390px]" data-node-id="I537:1071;246:1076">
+        <div className="h-[116px] relative shrink-0 w-full" data-node-id="I537:1071;434:616">
+          <div className="absolute content-stretch flex flex-col items-start justify-center left-0 px-[18px] py-[10px] top-0 w-[390px]" data-node-id="I537:1071;246:1087">
+            <div className="[word-break:break-word] font-['SF_Pro:Bold'] font-bold leading-[0] relative shrink-0 text-[40px] text-black w-full" data-node-id="I537:1071;246:1084" style={{ fontVariationSettings: '"wdth" 100' }}>
+              <p className="leading-[normal] mb-0">Hi，Alex</p>
+              <p className="leading-[normal]">今天想喝什么？</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Yeema/Typography/Display / Home greeting: Font(family: "Inter", style: Semi Bold, size: 32, weight: 600, lineHeight: 40, letterSpacing: -0.4000000059604645), Yeema/Typography/Secondary body: Font(family: "Noto Sans SC", style: Regular, size: 14, weight: 400, lineHeight: 20, letterSpacing: 0), Yeema/Typography/Button: Font(family: "Noto Sans SC", style: Medium, size: 14, weight: 500, lineHeight: 20, letterSpacing: 0), Yeema/Typography/Card title: Font(family: "Inter", style: Semi Bold, size: 20, weight: 600, lineHeight: 22, letterSpacing: 0), Yeema/Typography/Section label: Font(family: "Noto Sans SC", style: Medium, size: 14, weight: 500, lineHeight: 20, letterSpacing: 0), Yeema/Typography/Caption: Font(family: "Noto Sans SC", style: Regular, size: 13, weight: 400, lineHeight: 18, letterSpacing: 0), Yeema/Effects/Content card: Effect(type: DROP_SHADOW, color: #28241C0A, offset: (0, 2), radius: 8, spread: 0), Yeema/Typography/Body: Font(family: "Noto Sans SC", style: Regular, size: 15, weight: 400, lineHeight: 22, letterSpacing: 0).
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Home Indicator
+**Node ID:** 3:1146
+
+**Documentation:**
+- [https://developer.apple.com/design/human-interface-guidelines/going-full-screen](https://developer.apple.com/design/human-interface-guidelines/going-full-screen)
+Images and SVGs will be stored as constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These constants will be used in the code as the source for the image, ex: <img src={image} />. Image assets are stored on a remote server for 7 days and can be fetched using the provided URLs until they expire.

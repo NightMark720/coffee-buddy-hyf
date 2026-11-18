@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Coffee Buddy - Ch.6: Precision, by words</title>
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "SF Pro"; src: url("assets/fonts/SF-Pro-ch1.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
+      @font-face { font-family: Inter; src: url("assets/fonts/Inter-ch1.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
+      :root { --bg:#fcfbf9; --card:#f5f3ee; --line:#e7e3da; --ink:#171715; --muted:#6f706a; --orange:#ff7e2e; --green:#2c7555; --soft:#fffefa; }
+      * { box-sizing:border-box; letter-spacing:0; }
+      html, body { width:1080px; height:1920px; margin:0; overflow:hidden; background:var(--bg); }
+      body { color:var(--ink); font-family:"SF Pro", Arial, sans-serif; }
+      h1,h2,h3,p { margin:0; }
+      #root { position:relative; width:100%; height:100%; overflow:hidden; background:var(--bg); }
+      .app { position:relative; width:393px; height:698.666667px; overflow:hidden; background:var(--bg); transform:scale(2.748091603); transform-origin:0 0; }
+      .statusbar { position:absolute; top:23px; left:54px; right:35px; z-index:9; height:21px; display:flex; align-items:center; justify-content:space-between; font-size:17px; font-weight:600; }
+      .statusbar img { width:81px; height:18px; object-fit:contain; }
+      .profile { position:absolute; top:60px; right:18px; z-index:9; width:48px; height:48px; }
+      .chat-viewport { position:absolute; top:128px; left:14px; right:14px; bottom:108px; z-index:3; overflow:hidden; }
+      .chat-content { position:relative; width:365px; height:2520px; }
+      .greeting { position:absolute; top:0; left:6px; width:353px; font-family:Inter,sans-serif; font-size:32px; line-height:40px; font-weight:600; }
+      .greeting span { display:block; min-height:40px; }
+      .row { position:absolute; left:0; width:365px; display:flex; align-items:flex-end; gap:12px; }
+      .user-row { top:130px; justify-content:flex-end; }
+      .avatar { width:36px; height:36px; flex:0 0 36px; display:block; }
+      .buddy-avatar { background:url("assets/avatars/coffee-buddy-bean.svg") center / contain no-repeat; }
+      .user-chat-avatar { background:url("assets/avatars/user-cup-chat.svg") center / contain no-repeat; }
+      .bubble { max-width:305px; padding:12px 14px; border-radius:20px 20px 6px 20px; background:var(--ink); color:#fff; font-size:15px; line-height:22px; }
+      .assistant { display:flex; align-items:flex-start; gap:12px; }
+      .assistant-card { width:317px; min-height:45px; padding:12px 13px; border:1px solid var(--line); border-radius:20px 20px 20px 6px; background:#fff; font-size:14px; line-height:20px; }
+      .parse-row { top:202px; }
+      .soft { background:var(--card); }
+      .morph-flash { position:absolute; top:5px; right:10px; width:7px; height:7px; border-radius:50%; background:var(--orange); opacity:0; }
+      .lock-group { position:absolute; top:258px; left:0; width:365px; }
+      .lock-group .assistant-card { position:relative; }
+      .drop-row { display:flex; align-items:center; gap:10px; height:20px; padding-left:7px; margin-bottom:5px; }
+      .drop { display:block; width:11px; height:15px; border-radius:70% 30% 65% 35% / 60% 35% 65% 40%; background:var(--orange); }
+      .chips { display:flex; flex-wrap:wrap; gap:7px; margin:10px 0 0; width:317px; }
+      .chip { display:inline-flex; align-items:center; min-height:29px; padding:6px 11px; border:1px solid var(--line); border-radius:15px; background:var(--soft); font-size:12px; line-height:16px; font-weight:650; white-space:nowrap; }
+      .chip.dark { border-color:var(--ink); background:var(--ink); color:#fff; }
+      .chip.orange { border-color:var(--orange); background:var(--orange); color:var(--ink); }
+      .chip.green { border-color:var(--green); background:#dcece3; color:var(--green); }
+      .shot-card { position:absolute; top:470px; left:6px; width:353px; padding:17px; border:1px solid var(--line); border-radius:20px; background:var(--card); }
+      .eyebrow { color:var(--muted); font-size:11px; line-height:16px; font-weight:700; letter-spacing:1.2px; }
+      .shot-title { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
+      .shot-card h2, .brew-card h2 { margin-top:4px; font-family:Inter,sans-serif; font-size:20px; line-height:25px; font-weight:600; }
+      .sub { margin-top:5px; color:var(--muted); font-size:12px; line-height:18px; }
+      .param-row { display:flex; align-items:center; gap:9px; padding:7px 0; border-bottom:1px solid var(--line); font-size:13px; line-height:18px; }
+      .param-row:last-of-type { border-bottom:0; }
+      .param-label { flex:1; color:var(--muted); }
+      .param-value { font-weight:700; }
+      .adjust { display:flex; gap:4px; }
+      .adjust i { display:flex; align-items:center; justify-content:center; width:22px; height:22px; border:1px solid var(--line); border-radius:50%; font-style:normal; color:var(--muted); font-size:15px; line-height:1; background:var(--soft); }
+      .note { margin-top:9px; padding:8px 10px; border-radius:12px; background:var(--soft); color:var(--muted); font-size:11px; line-height:16px; }
+      .cta { height:42px; margin-top:12px; display:flex; align-items:center; justify-content:center; border-radius:22px; background:var(--orange); color:var(--ink); font-size:13px; font-weight:700; }
+      .brew-command { top:820px; justify-content:flex-end; }
+      .place-row { position:absolute; top:900px; left:0; width:365px; }
+      .place-card { width:317px; flex:0 0 317px; padding:18px; border:1px solid var(--line); border-radius:20px; background:var(--card); }
+      .place-card h2 { font-family:Inter,sans-serif; font-size:20px; line-height:25px; font-weight:600; }
+      .place-card p { margin-top:8px; color:var(--muted); font-size:13px; line-height:20px; }
+      .brew-row { position:absolute; top:1160px; left:0; width:365px; }
+      .brew-card { width:317px; flex:0 0 317px; padding:17px; border:1px solid var(--line); border-radius:20px; background:var(--card); }
+      .brew-head { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
+      .state { display:inline-flex; align-items:center; min-height:26px; padding:4px 9px; border-radius:13px; background:var(--orange); color:var(--ink); font-size:11px; font-weight:700; }
+      .state.done { background:#dcece3; color:var(--green); }
+      .brew-row-inner { padding:13px 0 12px; border-bottom:1px solid var(--line); }
+      .brew-row-inner:last-of-type { border-bottom:0; }
+      .brew-title { display:flex; align-items:center; justify-content:space-between; gap:8px; font-size:14px; line-height:19px; font-weight:650; }
+      .check { display:flex; align-items:center; justify-content:center; width:22px; height:22px; border:1.5px solid var(--line); border-radius:50%; color:transparent; font-size:14px; }
+      .check.active { border-color:var(--green); background:var(--green); color:#fff; }
+      .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-top:10px; }
+      .step { position:relative; padding-top:7px; color:var(--muted); font-size:10px; line-height:14px; }
+      .step:before { content:""; display:block; width:7px; height:7px; margin-bottom:4px; border-radius:50%; background:#c7c6c0; }
+      .step.active { color:var(--ink); font-weight:650; }
+      .step.active:before { background:var(--orange); box-shadow:0 0 0 3px #ff7e2e22; }
+      .step.done-step { color:var(--ink); }
+      .step.done-step:before { background:var(--green); }
+      .progress { height:3px; margin-top:9px; overflow:hidden; border-radius:4px; background:#ddd9d0; }
+      .progress i { display:block; width:100%; height:100%; border-radius:inherit; background:var(--orange); transform-origin:left center; }
+      .stop { height:38px; margin-top:14px; display:flex; align-items:center; justify-content:center; border:1px solid var(--line); border-radius:19px; color:var(--muted); font-size:12px; }
+      .done-group { position:absolute; top:1530px; left:0; width:365px; }
+      .feedback { width:353px; margin:14px 0 0 6px; }
+      .feedback .chips { margin-left:0; width:353px; gap:7px; }
+      .feedback .cta { margin-top:11px; }
+      .later { height:34px; margin-top:7px; display:flex; align-items:center; justify-content:center; border:1px solid var(--line); border-radius:17px; background:var(--soft); color:var(--muted); font-size:12px; }
+      .save-bar { position:absolute; top:1810px; left:6px; width:353px; padding:13px 14px; border:1px solid #f1bd95; border-radius:18px; background:#fff8ef; }
+      .save-bar p { font-size:13px; line-height:18px; font-weight:650; }
+      .save-bar .cta { margin-top:10px; }
+      .save-bar .later { margin-top:7px; background:#fffefa; }
+      .saved-row { position:absolute; top:2140px; left:6px; width:353px; display:flex; align-items:center; justify-content:space-between; gap:9px; padding:10px 12px; border-radius:12px; background:#fff8ef; color:#b55921; font-size:12px; line-height:16px; font-weight:700; }
+      .final-row { position:absolute; top:1770px; left:0; width:365px; }
+      .final-row .assistant-card { width:317px; font-size:14px; line-height:20px; }
+      .steam { position:absolute; top:145px; left:246px; width:70px; height:46px; opacity:0; }
+      .steam i { position:absolute; bottom:0; width:3px; height:32px; border-radius:50%; background:#d8d3c8; opacity:.7; }
+      .steam i:nth-child(1) { left:12px; transform:rotate(12deg); }
+      .steam i:nth-child(2) { left:31px; height:40px; transform:rotate(-7deg); }
+      .steam i:nth-child(3) { left:49px; height:28px; transform:rotate(9deg); }
+      .composer { position:absolute; left:14px; right:14px; bottom:44px; z-index:12; height:58px; display:flex; align-items:center; gap:10px; padding:6px 6px 6px 17px; border:1px solid var(--line); border-radius:26px; background:#fffffff5; box-shadow:0 8px 28px #28241c1f; }
+      .composer-copy { position:relative; flex:1; min-width:0; height:44px; display:flex; align-items:center; font-size:12px; line-height:18px; }
+      .placeholder { color:var(--muted); }
+      .typed-copy { position:absolute; inset:0; display:block; align-content:center; color:var(--ink); font-size:15px; line-height:22px; white-space:nowrap; }
+      .caret { display:inline-block; width:1px; height:17px; margin-left:2px; vertical-align:-2px; background:var(--orange); }
+      .voice-control { position:relative; width:44px; height:44px; flex:0 0 44px; }
+      .microphone, .waveform { position:absolute; inset:0; width:44px; height:44px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:var(--orange); }
+      .microphone img { width:19px; height:19px; }
+      .waveform { gap:4px; }
+      .waveform i { display:block; width:3px; border-radius:3px; background:#fff7ef; }
+      .waveform i:nth-child(1){height:10px}.waveform i:nth-child(2){height:22px}.waveform i:nth-child(3){height:14px}.waveform i:nth-child(4){height:27px}.waveform i:nth-child(5){height:12px}
+      .home-indicator { position:absolute; left:124.5px; bottom:9px; z-index:13; width:144px; height:5px; border-radius:999px; background:var(--ink); }
+      .scan { position:absolute; inset:0; z-index:8; pointer-events:none; opacity:0; background:linear-gradient(105deg, transparent 0%, transparent 42%, rgba(255,255,255,.65) 50%, transparent 58%, transparent 100%); }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-zlmk" id="root" data-composition-id="coffee-buddy-ch6" data-duration="24" data-width="1080" data-height="1920" data-fps="30">
+      <div data-hf-id="hf-gk5l" class="app">
+        <div data-hf-id="hf-sz55" class="statusbar"><span data-hf-id="hf-zwmt">9:41</span><img data-hf-id="hf-e3f2" src="assets/figma/ios-status.png" alt="" /></div>
+        <img data-hf-id="hf-y255" class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar" />
+        <div data-hf-id="hf-8rno" id="chat-viewport" class="chat-viewport">
+          <div data-hf-id="hf-9p17" id="chat-content" class="chat-content" data-layout-allow-overflow>
+            <div data-hf-id="hf-ps42" id="greeting" class="greeting"><span data-hf-id="hf-319j" id="greeting-one">Hi, Alex</span><span data-hf-id="hf-3sjh" id="greeting-two">What would you like today?</span></div>
+            <div data-hf-id="hf-tho6" id="user-row" class="row user-row"><div data-hf-id="hf-fw1m" class="bubble"><span data-hf-id="hf-j7vm" id="normalized-text">Pull my shot at 88°C, 9 bar, 28 s, 1:2.</span><i data-hf-id="hf-bm8o" id="morph-flash" class="morph-flash"></i></div><img data-hf-id="hf-1z63" class="avatar" src="assets/avatars/user-cup-chat.svg" alt="User" /></div>
+            <div data-hf-id="hf-lz6m" id="parse-row" class="row parse-row assistant"><span data-hf-id="hf-gczv" class="avatar buddy-avatar" role="img" aria-label="Coffee Buddy"></span><div data-hf-id="hf-vo0b" class="assistant-card"><span data-hf-id="hf-bu7m">Voice input normalized</span></div></div>
+            <div data-hf-id="hf-oemh" id="lock-group" class="lock-group assistant"><span data-hf-id="hf-byuj" class="avatar buddy-avatar" role="img" aria-label="Coffee Buddy"></span><div data-hf-id="hf-yeow"><div data-hf-id="hf-5sw4" id="lock-planning" class="assistant-card soft"><div data-hf-id="hf-5se4" class="drop-row"><i data-hf-id="hf-0i6b" class="drop"></i><i data-hf-id="hf-q937" class="drop"></i><i data-hf-id="hf-pus6" class="drop"></i></div><span data-hf-id="hf-7cn0">Yeema is locking your parameters</span></div><div data-hf-id="hf-cz0u" id="lock-pill" class="assistant-card soft" style="margin-top:9px">Custom shot · 5 parameters locked</div><div data-hf-id="hf-exrd" class="chips"><span data-hf-id="hf-z648" class="chip dark">Dose <b data-hf-id="hf-1w0p">&nbsp;18 g</b></span><span data-hf-id="hf-ugyn" class="chip dark">Temp <b data-hf-id="hf-i83w">&nbsp;88°C</b></span><span data-hf-id="hf-lzuy" class="chip dark">Pressure <b data-hf-id="hf-lii1">&nbsp;9 bar</b></span><span data-hf-id="hf-u1n0" class="chip dark">Time <b data-hf-id="hf-0z76">&nbsp;28 s</b></span><span data-hf-id="hf-pifw" class="chip dark">Ratio <b data-hf-id="hf-73nk">&nbsp;1:2</b></span></div></div></div>
+            <section data-hf-id="hf-q2h4" id="shot-card" class="shot-card"><div data-hf-id="hf-rqkt" class="shot-title"><div data-hf-id="hf-y7yw"><div data-hf-id="hf-29b2" class="eyebrow">CUSTOM SHOT</div><h2 data-hf-id="hf-49j2">Alex's precise recipe</h2><p data-hf-id="hf-fac8" class="sub">Adjust any value before brewing.</p></div><span data-hf-id="hf-e2u6" class="chip orange">Ready</span></div><div data-hf-id="hf-71k8" class="param-row"><span data-hf-id="hf-91xw" class="param-label">Dose</span><b data-hf-id="hf-9zk0" class="param-value">18 g</b><span data-hf-id="hf-u9go" class="adjust"><i data-hf-id="hf-1nu2">−</i><i data-hf-id="hf-5511">+</i></span></div><div data-hf-id="hf-7xy8" class="param-row"><span data-hf-id="hf-08wx" class="param-label">Temperature</span><b data-hf-id="hf-qh0l" class="param-value">88°C</b><span data-hf-id="hf-0zmo" class="adjust"><i data-hf-id="hf-bxri">−</i><i data-hf-id="hf-9hpl">+</i></span></div><div data-hf-id="hf-6r15" class="param-row"><span data-hf-id="hf-lkti" class="param-label">Pressure</span><b data-hf-id="hf-jr82" class="param-value">9 bar</b><span data-hf-id="hf-zspl" class="adjust"><i data-hf-id="hf-cc2j">−</i><i data-hf-id="hf-aomo">+</i></span></div><div data-hf-id="hf-75c6" class="param-row"><span data-hf-id="hf-fu0o" class="param-label">Time</span><b data-hf-id="hf-mjmr" class="param-value">28 s</b><span data-hf-id="hf-070m" class="adjust"><i data-hf-id="hf-cqdk">−</i><i data-hf-id="hf-aabn">+</i></span></div><div data-hf-id="hf-5yf3" class="param-row"><span data-hf-id="hf-svm0" class="param-label">Ratio</span><b data-hf-id="hf-hum7" class="param-value">1:2</b><span data-hf-id="hf-z03j" class="adjust"><i data-hf-id="hf-9y8d">−</i><i data-hf-id="hf-8asi">+</i></span></div><div data-hf-id="hf-qc7k" class="note">Grind is set manually on the machine.</div><div data-hf-id="hf-x13c" id="brew-cta" class="cta">Brew it →</div></section>
+            <div data-hf-id="hf-9x1c" id="brew-command" class="row brew-command"><div data-hf-id="hf-4prv" class="bubble">Brew it →</div><span data-hf-id="hf-0z4m" class="avatar user-chat-avatar" role="img" aria-label="User"></span></div>
+            <div data-hf-id="hf-kf4i" id="place-row" class="place-row assistant"><span data-hf-id="hf-bkji" class="avatar buddy-avatar" role="img" aria-label="Coffee Buddy"></span><section data-hf-id="hf-0ja4" class="place-card"><h2 data-hf-id="hf-092x">Place your cup under the spout</h2><p data-hf-id="hf-pqtv">Once it's set, start brewing.</p><div data-hf-id="hf-5im3" id="cup-cta" class="cta">Cup is in place</div></section></div>
+            <div data-hf-id="hf-iam2" id="brew-row" class="brew-row assistant"><span data-hf-id="hf-b68h" class="avatar buddy-avatar" role="img" aria-label="Coffee Buddy"></span><section data-hf-id="hf-pruz" class="brew-card"><div data-hf-id="hf-i9qb" class="brew-head"><div data-hf-id="hf-x11t"><div data-hf-id="hf-0jnm" class="eyebrow">CUSTOM SHOT</div><h2 data-hf-id="hf-o0hq">Yeema One</h2></div><span data-hf-id="hf-rrqr" id="brew-status" class="state">Brewing</span></div><div data-hf-id="hf-qifg" class="brew-row-inner"><div data-hf-id="hf-etp5" class="brew-title"><span data-hf-id="hf-w8qn">Grinding</span><span data-hf-id="hf-iz44" class="check active">✓</span></div><div data-hf-id="hf-70xd" class="steps"><span data-hf-id="hf-ru0q" id="step-dose" class="step active">Dose 18 g</span><span data-hf-id="hf-5km5" id="step-temp" class="step">Temp 88°C</span><span data-hf-id="hf-h6eg" id="step-pressure" class="step">Pressure 9 bar</span></div><div data-hf-id="hf-31j5" class="progress"><i data-hf-id="hf-ke5d" id="progress-grind"></i></div></div><div data-hf-id="hf-ihno" class="brew-row-inner"><div data-hf-id="hf-90h9" class="brew-title"><span data-hf-id="hf-wjvk">Extraction · 28 s</span><span data-hf-id="hf-vacz" class="check"></span></div><div data-hf-id="hf-y0yt" class="steps"><span data-hf-id="hf-j3w9" id="step-time" class="step">Time 28 s</span><span data-hf-id="hf-az5z" id="step-ratio" class="step">Ratio 1:2</span><span data-hf-id="hf-vh37" id="step-dispose" class="step">Disposing</span></div><div data-hf-id="hf-jw5x" class="progress"><i data-hf-id="hf-4r8o" id="progress-extract"></i></div></div><div data-hf-id="hf-p9fo" class="stop">Stop brewing</div></section></div>
+            <div data-hf-id="hf-6uoy" id="done-group" class="done-group"><div data-hf-id="hf-i8dc" class="assistant"><span data-hf-id="hf-arxg" class="avatar buddy-avatar" role="img" aria-label="Coffee Buddy"></span><section data-hf-id="hf-lgvf" class="brew-card"><div data-hf-id="hf-tcn7" class="brew-head"><div data-hf-id="hf-xfcu"><div data-hf-id="hf-0xyn" class="eyebrow">CUSTOM SHOT</div><h2 data-hf-id="hf-zbdu">Yeema One</h2></div><span data-hf-id="hf-u01k" class="state done">Done</span></div><div data-hf-id="hf-haql" class="brew-row-inner"><div data-hf-id="hf-a7ec" class="brew-title"><span data-hf-id="hf-r2t6" id="recipe-name">Alex's Shot</span><span data-hf-id="hf-pojg" class="check active">✓</span></div><div data-hf-id="hf-z7vw" class="steps"><span data-hf-id="hf-rinw" class="step done-step">18 g</span><span data-hf-id="hf-8n21" class="step done-step">88°C</span><span data-hf-id="hf-vzou" class="step done-step">9 bar</span></div></div><div data-hf-id="hf-hp1m" class="brew-row-inner"><div data-hf-id="hf-9t3b" class="brew-title"><span data-hf-id="hf-z1o0">28 s · 1:2</span><span data-hf-id="hf-ohmd" class="check active">✓</span></div><div data-hf-id="hf-ytkv" class="steps"><span data-hf-id="hf-9y0r" class="step done-step">Ground</span><span data-hf-id="hf-tlvs" class="step done-step">Extracted</span><span data-hf-id="hf-0ba7" class="step done-step">Reset</span></div></div></section></div><div data-hf-id="hf-f5xp" class="feedback"><div data-hf-id="hf-r217" class="eyebrow">HOW DID IT TASTE?</div><div data-hf-id="hf-4dp9" class="chips"><span data-hf-id="hf-y8x8" class="chip">Too sour</span><span data-hf-id="hf-q85n" class="chip">Too bitter</span><span data-hf-id="hf-32bu" class="chip">Too strong</span><span data-hf-id="hf-tahl" class="chip">Too weak</span></div><div data-hf-id="hf-0tku" class="cta">Just right</div><div data-hf-id="hf-d9jk" class="later">Later</div></div></div>
+            <div data-hf-id="hf-qvk2" id="save-bar" class="save-bar"><p data-hf-id="hf-ba19">Save this recipe?</p><div data-hf-id="hf-q79v" id="save-cta" class="cta">Save as "Alex's Shot"</div><div data-hf-id="hf-8cq0" class="later">Later</div></div>
+            <div data-hf-id="hf-iwxe" id="saved-row" class="saved-row"><span data-hf-id="hf-kzyv">Alex's Shot · Saved</span><span data-hf-id="hf-ls52">✓</span></div>
+            <div data-hf-id="hf-sn3c" id="final-row" class="final-row assistant"><span data-hf-id="hf-admf" class="avatar buddy-avatar" role="img" aria-label="Coffee Buddy"></span><div data-hf-id="hf-nsy3" class="assistant-card soft">Saved. Next time, just say "make my shot".</div></div>
+            <div data-hf-id="hf-tvl2" id="steam" class="steam"><i data-hf-id="hf-wt6k"></i><i data-hf-id="hf-zeb8"></i><i data-hf-id="hf-y7e5"></i></div>
+          </div>
+        </div>
+        <div data-hf-id="hf-8c6q" id="composer" class="composer"><div data-hf-id="hf-5mj0" class="composer-copy"><span data-hf-id="hf-o72r" id="placeholder" class="placeholder">What would you like? Tell Yeema</span><span data-hf-id="hf-ryf7" id="typed-copy" class="typed-copy"><span data-hf-id="hf-yclq" id="typed-value"></span><i data-hf-id="hf-ougp" class="caret"></i></span></div><div data-hf-id="hf-y62q" class="voice-control"><div data-hf-id="hf-c6xu" id="microphone" class="microphone"><img data-hf-id="hf-wjkt" src="assets/figma/13c65.svg" alt="Microphone" /></div><div data-hf-id="hf-mspe" id="waveform" class="waveform"><i data-hf-id="hf-ylp6"></i><i data-hf-id="hf-0l8b"></i><i data-hf-id="hf-0zjc"></i><i data-hf-id="hf-zsm9"></i><i data-hf-id="hf-06xa"></i></div></div></div>
+        <div data-hf-id="hf-ou1e" id="scan" class="scan" data-layout-ignore></div>
+        <div data-hf-id="hf-78cx" class="home-indicator"></div>
+      </div>
+
+      <audio data-hf-id="hf-ev7v" id="sfx-mic" src="assets/sfx/attention.wav" preload="auto" data-start="1.2" data-duration="0.64" data-media-start="0" data-volume="0.12" data-label="Microphone press"></audio>
+      <audio data-hf-id="hf-asom" id="sfx-normalize" src="assets/sfx/pop.wav" preload="auto" data-start="2.6" data-duration="0.3" data-media-start="0" data-volume="0.16" data-label="Voice normalized"></audio>
+      <audio data-hf-id="hf-jcl8" id="sfx-drop-1" src="assets/sfx/drop-high.wav" preload="auto" data-start="2.75" data-duration="0.38" data-media-start="0" data-volume="0.13" data-label="Parameter planning drop one"></audio>
+      <audio data-hf-id="hf-bus0" id="sfx-drop-2" src="assets/sfx/drop-mid.wav" preload="auto" data-start="3.02" data-duration="0.38" data-media-start="0" data-volume="0.13" data-label="Parameter planning drop two"></audio>
+      <audio data-hf-id="hf-2pp8" id="sfx-drop-3" src="assets/sfx/drop-low.wav" preload="auto" data-start="3.29" data-duration="0.38" data-media-start="0" data-volume="0.13" data-label="Parameter planning drop three"></audio>
+      <audio data-hf-id="hf-sbuh" id="sfx-chip-1" src="assets/sfx/key.wav" preload="auto" data-start="4.0" data-duration="0.072" data-media-start="0" data-volume="0.18" data-label="Dose chip snap"></audio>
+      <audio data-hf-id="hf-fbej" id="sfx-chip-2" src="assets/sfx/key.wav" preload="auto" data-start="4.35" data-duration="0.072" data-media-start="0" data-volume="0.18" data-label="Temperature chip snap"></audio>
+      <audio data-hf-id="hf-r5mo" id="sfx-chip-3" src="assets/sfx/key.wav" preload="auto" data-start="4.7" data-duration="0.072" data-media-start="0" data-volume="0.18" data-label="Pressure chip snap"></audio>
+      <audio data-hf-id="hf-v3yk" id="sfx-chip-4" src="assets/sfx/key.wav" preload="auto" data-start="5.05" data-duration="0.072" data-media-start="0" data-volume="0.18" data-label="Time chip snap"></audio>
+      <audio data-hf-id="hf-ror6" id="sfx-chip-5" src="assets/sfx/key.wav" preload="auto" data-start="5.4" data-duration="0.072" data-media-start="0" data-volume="0.18" data-label="Ratio chip snap"></audio>
+      <audio data-hf-id="hf-5wyj" id="sfx-brew" src="assets/sfx/pop.wav" preload="auto" data-start="8.2" data-duration="0.3" data-media-start="0" data-volume="0.18" data-label="Brew confirmation"></audio>
+      <audio data-hf-id="hf-4cjw" id="sfx-cup" src="assets/sfx/pop.wav" preload="auto" data-start="10.6" data-duration="0.3" data-media-start="0" data-volume="0.18" data-label="Cup confirmation"></audio>
+      <audio data-hf-id="hf-p2om" id="sfx-extraction" src="assets/sfx/extraction-demo.wav" preload="auto" data-start="11.2" data-duration="1.9" data-media-start="0" data-volume="0.12" data-label="Extraction texture"></audio>
+      <audio data-hf-id="hf-r1vj" id="sfx-rinse" src="assets/sfx/rinse-illustrative.wav" preload="auto" data-start="13.1" data-duration="1.9" data-media-start="0" data-volume="0.08" data-label="Reset texture"></audio>
+      <audio data-hf-id="hf-2qo0" id="sfx-complete" src="assets/sfx/complete.wav" preload="auto" data-start="15.2" data-duration="1.88" data-media-start="0" data-volume="0.12" data-label="Brew complete"></audio>
+      <audio data-hf-id="hf-opf9" id="sfx-save" src="assets/sfx/brew-complete.wav" preload="auto" data-start="18.6" data-duration="0.42" data-media-start="0" data-volume="0.14" data-label="Recipe saved"></audio>
+      <audio data-hf-id="hf-3hb2" id="sfx-summary" src="assets/sfx/summary-typing.wav" preload="auto" data-start="19.6" data-duration="0.8" data-media-start="0" data-volume="0.07" data-label="Saved recipe typing"></audio>
+      <audio data-hf-id="hf-i8g0" id="sfx-steam" src="assets/sfx/steam-demo.wav" preload="auto" data-start="21.4" data-duration="0.68" data-media-start="0" data-volume="0.08" data-label="Final steam"></audio>
+    </div>
+    <script>
+      (async () => {
+        await document.fonts.ready;
+        // Measure once, before animation, so cards keep their spacing under seeks.
+        const lockGroup = document.querySelector("#lock-group");
+        const lockPill = document.querySelector("#lock-pill");
+        const shotCard = document.querySelector("#shot-card");
+        const doneGroup = document.querySelector("#done-group");
+        const brewCommand = document.querySelector("#brew-command");
+        const brewCommandTop = shotCard.offsetTop + shotCard.offsetHeight + 16;
+        gsap.set(brewCommand, { top:brewCommandTop });
+        gsap.set("#place-row", { top:brewCommandTop + brewCommand.offsetHeight + 20 });
+        const followupTop = doneGroup.offsetTop + doneGroup.querySelector(".assistant").offsetHeight + 14;
+        gsap.set("#save-bar, #final-row", { top:followupTop });
+        const pillTop = shotCard.offsetTop - lockPill.offsetHeight - 12;
+        const pillTravel = pillTop - lockGroup.offsetTop - lockPill.offsetTop;
+        const avatarTravel = pillTop - lockGroup.offsetTop;
+        const viewportHeight = document.querySelector("#chat-viewport").clientHeight;
+        const recipeScroll = shotCard.offsetTop - Math.min(80, viewportHeight - shotCard.offsetHeight - 12);
+        const completionScroll = doneGroup.offsetTop - 12;
+        const tl = gsap.timeline({ paused:true });
+        const typeText = (selector, text, start, duration) => {
+          const node = document.querySelector(selector);
+          gsap.set(node, { textContent:"" });
+          for (let i = 1; i <= text.length; i += 1) {
+            tl.set(node, { textContent:text.slice(0, i) }, start + duration * i / text.length);
+          }
+        };
+
+        gsap.set(["#greeting", "#user-row", "#parse-row", "#lock-group", "#shot-card", "#brew-command", "#place-row", "#brew-row", "#done-group", "#save-bar", "#saved-row", "#final-row"], { opacity:0, y:12 });
+        gsap.set("#chat-content", { y:0 });
+        gsap.set("#typed-copy", { opacity:0 });
+        gsap.set("#waveform", { opacity:0, scale:0.84 });
+        gsap.set("#morph-flash", { opacity:0, scale:0.5 });
+        gsap.set("#lock-planning", { opacity:0 });
+        gsap.set("#lock-pill", { opacity:0, y:8 });
+        gsap.set("#lock-group .drop", { opacity:0, y:-8, scale:0.7, rotation:45 });
+        gsap.set("#lock-group .chip", { opacity:0, y:10, scale:0.88 });
+        gsap.set("#brew-cta, #cup-cta, #save-cta", { scale:1 });
+        gsap.set("#brew-status", { opacity:1 });
+        gsap.set("#done-group .feedback", { opacity:0, y:8 });
+        gsap.set("#progress-grind, #progress-extract", { scaleX:0 });
+        gsap.set("#scan", { x:"-110%" });
+        gsap.set("#step-temp, #step-pressure, #step-time, #step-ratio, #step-dispose", { color:"#6f706a" });
+        gsap.set("#steam", { opacity:0, y:6 });
+
+        tl.to("#greeting", { opacity:1, y:0, duration:0.42, ease:"power2.out" }, 0);
+        typeText("#greeting-one", "Hi, Alex", 0.12, 0.35);
+        typeText("#greeting-two", "What would you like today?", 0.48, 0.55);
+
+        tl.to("#typed-copy", { opacity:1, duration:0.12 }, 1.2);
+        tl.set("#placeholder, #microphone", { opacity:0 }, 1.2);
+        tl.to("#waveform", { opacity:1, scale:1, duration:0.22, ease:"back.out(1.4)" }, 1.2);
+        typeText("#typed-value", "Pull my shot at 88°C, 9 bar, 28 s, 1:2.", 1.2, 1.25);
+        tl.to("#waveform i", { scaleY:0.55, duration:0.22, repeat:5, yoyo:true, stagger:0.04, ease:"sine.inOut" }, 1.25);
+
+        tl.set("#typed-copy, #waveform", { opacity:0 }, 2.6);
+        tl.to("#placeholder", { opacity:1, duration:0.12 }, 2.6);
+        tl.to("#microphone", { opacity:1, duration:0.12 }, 2.6);
+        tl.to("#greeting", { opacity:0, y:-8, duration:0.2, ease:"power2.in" }, 2.6);
+        tl.to("#chat-content", { y:-70, duration:0.38, ease:"power2.inOut" }, 2.6);
+        tl.to("#user-row", { opacity:1, y:0, duration:0.3, ease:"power2.out" }, 2.6);
+        tl.to("#parse-row", { opacity:1, y:0, duration:0.3, ease:"power2.out" }, 2.72);
+        tl.fromTo("#morph-flash", { opacity:0, scale:0.5 }, { opacity:1, scale:1, duration:0.12, yoyo:true, repeat:1, ease:"power2.out" }, 2.6);
+        tl.to("#parse-row", { opacity:0, y:-8, duration:0.2, ease:"power2.in" }, 3.7);
+
+        tl.to("#lock-group", { opacity:1, y:0, duration:0.3, ease:"power2.out" }, 3.8);
+        tl.to("#lock-planning", { opacity:1, duration:0.2 }, 3.8);
+        tl.fromTo("#lock-group .drop", { opacity:0, y:-8, scale:0.7, rotation:45 }, { opacity:1, y:0, scale:1, duration:0.28, stagger:0.27, ease:"back.out(1.3)" }, 3.86);
+        tl.to("#lock-pill", { opacity:1, y:0, duration:0.24, ease:"power2.out" }, 4.0);
+        tl.to("#lock-group .chip", { opacity:1, y:0, scale:1, duration:0.22, stagger:0.35, ease:"back.out(1.55)" }, 4.0);
+        tl.to("#user-row", { opacity:0, y:-8, duration:0.2, ease:"power2.in" }, 5.72);
+        tl.to("#lock-planning, #lock-group .drop, #lock-group .chips", { opacity:0, y:-8, duration:0.2, ease:"power2.in" }, 5.72);
+        tl.to("#lock-pill", { y:pillTravel, duration:0.28, ease:"power2.inOut" }, 5.92);
+        tl.to("#lock-group > .avatar", { y:avatarTravel, duration:0.28, ease:"power2.inOut" }, 5.92);
+        tl.to("#scan", { opacity:0.6, x:"110%", duration:0.72, ease:"power2.inOut" }, 5.52);
+        tl.to("#scan", { opacity:0, duration:0.12 }, 6.24);
+
+        tl.to("#chat-content", { y:-recipeScroll, duration:0.45, ease:"power2.inOut" }, 6.0);
+        tl.to("#shot-card", { opacity:1, y:0, duration:0.36, ease:"power2.out" }, 6.0);
+        tl.fromTo("#shot-card .param-row", { opacity:0, y:7 }, { opacity:1, y:0, duration:0.18, stagger:0.12, ease:"power2.out" }, 6.18);
+        tl.to("#brew-cta", { scale:0.96, duration:0.1, yoyo:true, repeat:1, ease:"power2.inOut" }, 8.2);
+
+        tl.to("#chat-content", { y:-800, duration:0.48, ease:"power2.inOut" }, 9.4);
+        tl.to("#shot-card", { opacity:0, y:-8, duration:0.22, ease:"power2.in" }, 9.4);
+        tl.to("#brew-command", { opacity:1, y:0, duration:0.32, ease:"power2.out" }, 9.4);
+        tl.to("#place-row", { opacity:1, y:0, duration:0.36, ease:"power2.out" }, 9.4);
+        tl.to("#cup-cta", { scale:0.96, duration:0.1, yoyo:true, repeat:1, ease:"power2.inOut" }, 10.6);
+
+        tl.to("#chat-content", { y:-1070, duration:0.48, ease:"power2.inOut" }, 11.2);
+        tl.to("#brew-command, #place-row", { opacity:0, y:-8, duration:0.22, ease:"power2.in" }, 11.2);
+        tl.to("#brew-row", { opacity:1, y:0, duration:0.32, ease:"power2.out" }, 11.68);
+        tl.to("#progress-grind", { scaleX:1, duration:0.9, ease:"power1.inOut" }, 11.2);
+        tl.to("#step-dose", { color:"#171715", duration:0.15 }, 11.2);
+        tl.to("#step-temp", { color:"#171715", duration:0.15 }, 12.1);
+        tl.to("#step-pressure", { color:"#171715", duration:0.15 }, 12.65);
+        tl.to("#progress-extract", { scaleX:1, duration:2.0, ease:"power1.inOut" }, 12.1);
+        tl.to("#step-time", { color:"#171715", duration:0.15 }, 12.1);
+        tl.to("#step-ratio", { color:"#171715", duration:0.15 }, 13.1);
+        tl.to("#step-dispose", { color:"#171715", duration:0.15 }, 14.3);
+
+        tl.to("#brew-row", { opacity:0, y:-8, duration:0.22, ease:"power2.in" }, 15.2);
+        tl.to("#chat-content", { y:-completionScroll, duration:0.45, ease:"power2.inOut" }, 15.2);
+        tl.to("#done-group", { opacity:1, y:0, duration:0.3, ease:"power2.out" }, 15.65);
+        tl.to("#brew-status", { opacity:0, duration:0.12 }, 15.2);
+        tl.to("#done-group .feedback", { opacity:1, y:0, duration:0.35, ease:"power2.out" }, 15.8);
+
+        tl.set("#done-group .feedback", { opacity:0, y:-8 }, 17.2);
+        tl.to("#save-bar", { opacity:1, y:0, duration:0.36, ease:"power2.out" }, 17.2);
+        tl.to("#save-cta", { scale:0.96, duration:0.1, yoyo:true, repeat:1, ease:"power2.inOut" }, 18.6);
+        tl.to("#save-bar", { opacity:0, y:-8, duration:0.22, ease:"power2.in" }, 19.6);
+        tl.set("#recipe-name", { textContent:"Alex's Shot · Saved" }, 19.6);
+        tl.to("#recipe-name", { color:"#af5620", duration:0.2 }, 19.6);
+
+        tl.to("#final-row", { opacity:1, y:0, duration:0.32, ease:"power2.out" }, 19.82);
+        tl.fromTo("#steam", { opacity:0, y:6 }, { opacity:0.72, y:0, duration:0.38, ease:"sine.inOut" }, 21.4);
+        tl.to("#steam", { opacity:0.42, duration:0.6, yoyo:true, repeat:2, ease:"sine.inOut" }, 21.78);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["coffee-buddy-ch6"] = tl;
+        tl.seek(0);
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,408 @@
+{
+  "chapter": 8,
+  "revision": 5,
+  "stage": "dynamic-preview-awaiting-user-approval",
+  "change": "Drink card above; brewing progress, rating or repeat Done card below.",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds": 34.4,
+    "frames": 1032
+  },
+  "layout": {
+    "logical_card_width": 353,
+    "logical_inset": 6,
+    "logical_gap": 16,
+    "applies_to": [
+      "first-brew",
+      "initial-rating",
+      "selected-rating",
+      "repeat-brew",
+      "repeat-done"
+    ],
+    "naming": "Scroll first, then reveal the naming card at 16.1s."
+  },
+  "checks": {
+    "lint": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    },
+    "runtime": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    },
+    "layout": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    },
+    "contrast": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    }
+  },
+  "layout_samples": 558,
+  "seek_and_geometry": {
+    "stages": [
+      {
+        "time": 10.8,
+        "name": "first-grinding",
+        "status": "Brewing",
+        "cardFullyVisible": true,
+        "card": {
+          "x": 54.96183395385742,
+          "y": 843.6641235351562,
+          "width": 970.0763549804688,
+          "height": 687.0230102539062
+        },
+        "drink": {
+          "x": 54.96183395385742,
+          "y": 368.2442932128906,
+          "width": 970.0763549804688,
+          "height": 431.4504089355469,
+          "fullyVisible": true,
+          "gap": 43.96942138671875,
+          "sameWidth": true
+        },
+        "naming": null,
+        "rating": null
+      },
+      {
+        "time": 12.3,
+        "name": "first-extraction",
+        "status": "Brewing",
+        "cardFullyVisible": true,
+        "card": {
+          "x": 54.96183395385742,
+          "y": 843.6641235351562,
+          "width": 970.0763549804688,
+          "height": 687.0230102539062
+        },
+        "drink": {
+          "x": 54.96183395385742,
+          "y": 368.2442932128906,
+          "width": 970.0763549804688,
+          "height": 431.4504089355469,
+          "fullyVisible": true,
+          "gap": 43.96942138671875,
+          "sameWidth": true
+        },
+        "naming": null,
+        "rating": null
+      },
+      {
+        "time": 14.1,
+        "name": "first-resetting",
+        "status": "Resetting",
+        "cardFullyVisible": true,
+        "card": {
+          "x": 54.96183395385742,
+          "y": 843.6641235351562,
+          "width": 970.0763549804688,
+          "height": 687.0230102539062
+        },
+        "drink": {
+          "x": 54.96183395385742,
+          "y": 368.2442932128906,
+          "width": 970.0763549804688,
+          "height": 431.4504089355469,
+          "fullyVisible": true,
+          "gap": 43.96942138671875,
+          "sameWidth": true
+        },
+        "naming": null,
+        "rating": null
+      },
+      {
+        "time": 15.28,
+        "name": "rating-initial",
+        "status": "Done",
+        "cardFullyVisible": true,
+        "card": {
+          "x": 54.96183395385742,
+          "y": 843.6641235351562,
+          "width": 970.0763549804688,
+          "height": 555.1145629882812
+        },
+        "drink": {
+          "x": 54.96183395385742,
+          "y": 368.2442932128906,
+          "width": 970.0763549804688,
+          "height": 431.4504089355469,
+          "fullyVisible": true,
+          "gap": 43.96942138671875,
+          "sameWidth": true
+        },
+        "naming": null,
+        "rating": {
+          "buttonColor": "rgb(23, 23, 21)",
+          "savedOpacity": "0"
+        }
+      },
+      {
+        "time": 15.79,
+        "name": "rating-selected",
+        "status": "Done",
+        "cardFullyVisible": true,
+        "card": {
+          "x": 54.96183395385742,
+          "y": 843.6641235351562,
+          "width": 970.0763549804688,
+          "height": 555.1145629882812
+        },
+        "drink": {
+          "x": 54.96183395385742,
+          "y": 368.2442932128906,
+          "width": 970.0763549804688,
+          "height": 431.4504089355469,
+          "fullyVisible": true,
+          "gap": 43.96942138671875,
+          "sameWidth": true
+        },
+        "naming": null,
+        "rating": {
+          "buttonColor": "rgb(56, 137, 107)",
+          "savedOpacity": "1"
+        }
+      },
+      {
+        "time": 17.1,
+        "name": "naming",
+        "status": "Done",
+        "cardFullyVisible": true,
+        "card": {
+          "x": 54.96183395385742,
+          "y": 384.73284912109375,
+          "width": 970.0763549804688,
+          "height": 555.114501953125
+        },
+        "drink": null,
+        "naming": {
+          "fullyVisible": true,
+          "gap": 43.969482421875
+        },
+        "rating": null
+      },
+      {
+        "time": 19,
+        "name": "saved",
+        "status": "Done",
+        "cardFullyVisible": true,
+        "card": {
+          "x": 170.38168334960938,
+          "y": 384.73284912109375,
+          "width": 871.14501953125,
+          "height": 681.5266723632812
+        },
+        "drink": null,
+        "naming": null,
+        "rating": null
+      },
+      {
+        "time": 29.4,
+        "name": "repeat-grinding",
+        "status": "Brewing",
+        "cardFullyVisible": true,
+        "card": {
+          "x": 54.96183395385742,
+          "y": 843.6641235351562,
+          "width": 970.0763549804688,
+          "height": 687.0230102539062
+        },
+        "drink": {
+          "x": 54.96183395385742,
+          "y": 368.2442932128906,
+          "width": 970.0763549804688,
+          "height": 431.4504089355469,
+          "fullyVisible": true,
+          "gap": 43.96942138671875,
+          "sameWidth": true
+        },
+        "naming": null,
+        "rating": null
+      },
+      {
+        "time": 30.8,
+        "name": "repeat-extraction",
+        "status": "Brewing",
+        "cardFullyVisible": true,
+        "card": {
+          "x": 54.96183395385742,
+          "y": 843.6641235351562,
+          "width": 970.0763549804688,
+          "height": 687.0230102539062
+        },
+        "drink": {
+          "x": 54.96183395385742,
+          "y": 368.2442932128906,
+          "width": 970.0763549804688,
+          "height": 431.4504089355469,
+          "fullyVisible": true,
+          "gap": 43.96942138671875,
+          "sameWidth": true
+        },
+        "naming": null,
+        "rating": null
+      },
+      {
+        "time": 32,
+        "name": "repeat-disposing",
+        "status": "Brewing",
+        "cardFullyVisible": true,
+        "card": {
+          "x": 54.96183395385742,
+          "y": 843.6641235351562,
+          "width": 970.0763549804688,
+          "height": 687.0230102539062
+        },
+        "drink": {
+          "x": 54.96183395385742,
+          "y": 368.2442932128906,
+          "width": 970.0763549804688,
+          "height": 431.4504089355469,
+          "fullyVisible": true,
+          "gap": 43.96942138671875,
+          "sameWidth": true
+        },
+        "naming": null,
+        "rating": null
+      },
+      {
+        "time": 32.6,
+        "name": "repeat-resetting",
+        "status": "Resetting",
+        "cardFullyVisible": true,
+        "card": {
+          "x": 54.96183395385742,
+          "y": 843.6641235351562,
+          "width": 970.0763549804688,
+          "height": 687.0230102539062
+        },
+        "drink": {
+          "x": 54.96183395385742,
+          "y": 368.2442932128906,
+          "width": 970.0763549804688,
+          "height": 431.4504089355469,
+          "fullyVisible": true,
+          "gap": 43.96942138671875,
+          "sameWidth": true
+        },
+        "naming": null,
+        "rating": null
+      },
+      {
+        "time": 33.7,
+        "name": "repeat-done",
+        "status": "Done",
+        "cardFullyVisible": true,
+        "card": {
+          "x": 54.96183395385742,
+          "y": 843.6641235351562,
+          "width": 970.0763549804688,
+          "height": 406.71759033203125
+        },
+        "drink": {
+          "x": 54.96183395385742,
+          "y": 368.2442932128906,
+          "width": 970.0763549804688,
+          "height": 431.4504089355469,
+          "fullyVisible": true,
+          "gap": 43.96942138671875,
+          "sameWidth": true
+        },
+        "naming": null,
+        "rating": null
+      },
+      {
+        "time": 34.366666667,
+        "name": "end",
+        "status": "Done",
+        "cardFullyVisible": true,
+        "card": {
+          "x": 54.96183395385742,
+          "y": 843.6641235351562,
+          "width": 970.0763549804688,
+          "height": 406.71759033203125
+        },
+        "drink": {
+          "x": 54.96183395385742,
+          "y": 368.2442932128906,
+          "width": 970.0763549804688,
+          "height": 431.4504089355469,
+          "fullyVisible": true,
+          "gap": 43.96942138671875,
+          "sameWidth": true
+        },
+        "naming": null,
+        "rating": null
+      }
+    ],
+    "transitions": [
+      10.27,
+      10.52,
+      14.34,
+      14.53,
+      15.96,
+      16.19,
+      17.71,
+      17.96,
+      28.93,
+      29.08,
+      32.95,
+      33.08
+    ],
+    "audit": {
+      "duration": 34.4,
+      "fps": 30,
+      "frames": 1032,
+      "reverseFrames": 1032,
+      "randomRestarts": 20,
+      "differenceCount": 0,
+      "differences": [],
+      "audioWithinDuration": true,
+      "secondBrewAudio": [
+        {
+          "src": "assets/sfx/extraction-demo.wav",
+          "start": 29.9,
+          "duration": 1.65,
+          "volume": 0.09
+        },
+        {
+          "src": "assets/sfx/steam-demo.wav",
+          "start": 30.05,
+          "duration": 0.68,
+          "volume": 0.07
+        },
+        {
+          "src": "assets/sfx/rinse-illustrative.wav",
+          "start": 31.7,
+          "duration": 1.15,
+          "volume": 0.08
+        },
+        {
+          "src": "assets/sfx/brew-complete.wav",
+          "start": 33,
+          "duration": 0.4,
+          "volume": 0.13
+        }
+      ]
+    }
+  },
+  "visual_review": {
+    "stable_poses": 13,
+    "transition_frames": 12,
+    "passed": true
+  },
+  "audio_unchanged_from_v4": true,
+  "audio_clips": 28,
+  "unchanged_asset_count": 34,
+  "mp4_exported": false
+}

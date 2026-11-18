@@ -1,0 +1,66 @@
+{
+  "chapter": 8,
+  "stage": "dynamic-preview-awaiting-user-approval",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds": 30.4,
+    "frames": 912
+  },
+  "hyperframes_version": "0.8.180",
+  "checks": {
+    "lint": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    },
+    "runtime": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    },
+    "layout": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    },
+    "contrast": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0
+    }
+  },
+  "layout_samples": 547,
+  "seek": {
+    "dom": {
+      "frames": 912,
+      "reverseFrames": 912,
+      "randomRestarts": 17,
+      "diffs": [],
+      "diffCount": 0,
+      "details": []
+    },
+    "pixels": {
+      "samples": 26,
+      "reverseSamples": 26,
+      "differentTimes": []
+    }
+  },
+  "visible_dom_geometry_tolerance_pixels": 0.01,
+  "inherited_assets_verified": 29,
+  "transition_midframes_reviewed": [
+    8.5,
+    15.7,
+    17.78,
+    20.1,
+    22.76,
+    26.9
+  ],
+  "preview": "http://localhost:3090/#project/coffee-buddy-ch8",
+  "mp4_exported": false
+}

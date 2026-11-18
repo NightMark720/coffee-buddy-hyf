@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en" data-dynamic><head><meta charset="utf-8"><meta name="viewport" content="width=1080,height=1920"><title>Coffee Buddy · Ch.8 · Name it. Keep it. Repeat it.</title><link rel="icon" href="assets/avatars/coffee-buddy-bean.svg"><style>@font-face{font-family:"SF Pro";src:url("assets/fonts/SF-Pro-ch1.woff2") format("woff2");font-weight:100 900;font-display:block}
+@font-face{font-family:Inter;src:url("assets/fonts/Inter-ch1.woff2") format("woff2");font-weight:100 900;font-display:block}
+:root{--bg:#fcfbf9;--card:#f5f3ee;--line:#e7e3da;--ink:#171715;--muted:#6f706a;--orange:#ff7e2e;--green:#2c7555}
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:var(--bg)}body{font-family:"SF Pro",sans-serif;color:var(--ink)}h1,h2,h3,p{margin:0}button{font:inherit;color:inherit;border:0;padding:0}#root{position:relative;width:100%;height:100%;overflow:hidden}.app{position:relative;width:393px;height:698.666667px;overflow:hidden;background:var(--bg);transform:scale(2.748091603);transform-origin:0 0}
+.statusbar{position:absolute;top:23px;left:54px;right:35px;z-index:9;height:21px;display:flex;align-items:center;justify-content:space-between;font-size:17px;font-weight:600}.statusbar img{width:81px;height:18px;object-fit:contain}.profile{position:absolute;top:60px;right:18px;z-index:9;width:48px;height:48px}.home-indicator{position:absolute;left:124.5px;bottom:9px;z-index:13;width:144px;height:5px;border-radius:999px;background:var(--ink)}
+.chat-viewport{position:absolute;top:128px;left:14px;right:14px;bottom:108px;overflow:hidden}.flow{width:365px;display:flex;flex-direction:column;gap:16px}.flow.inset-top{padding-top:28px}.flow.brew-position{padding-top:60px}.flow.done-position{padding-top:12px}.greeting{margin-left:6px;width:353px;font-family:Inter,sans-serif;font-size:32px;line-height:40px;font-weight:600}.greeting span{display:block}.row{width:365px;display:flex;align-items:flex-start;gap:12px}.avatar{display:block;flex:0 0 36px;width:36px;height:36px}.buddy-avatar{background:url("assets/avatars/coffee-buddy-bean.svg") center/contain no-repeat}.user-avatar{background:url("assets/avatars/user-cup-chat.svg") center/contain no-repeat}.user-row{align-items:flex-end;justify-content:flex-end}.bubble,.confirm-chip{max-width:305px;padding:12px 14px;border-radius:20px 20px 6px 20px;background:var(--ink);color:var(--bg);font-size:15px;line-height:22px}.assistant-card{width:317px;flex:0 0 317px;padding:13px 14px;border:1px solid var(--line);border-radius:20px 20px 20px 6px;background:var(--card);font-size:14px;line-height:20px}.content-column{width:317px;display:flex;flex-direction:column;gap:10px}.content-column .assistant-card{flex:auto}.drops{display:flex;align-items:center;gap:10px;height:22px;margin-bottom:6px;padding-left:4px}.drops i{display:block;width:11px;height:15px;border-radius:70% 30% 65% 35%/60% 35% 65% 40%;background:var(--orange);transform:rotate(45deg)}.taste-tags{display:flex;gap:7px;flex-wrap:wrap}.taste-tags span{font-size:12px;line-height:16px;padding:6px 11px;border:1px solid var(--line);border-radius:99px;background:var(--bg)}
+.composer{position:absolute;left:14px;right:14px;bottom:44px;z-index:12;min-height:58px;display:flex;align-items:center;gap:10px;padding:6px 6px 6px 17px;border:1px solid var(--line);border-radius:26px;background:#fffefa;box-shadow:0 8px 28px #28241c1f}.composer-copy{flex:1;min-width:0;display:flex;align-items:center;min-height:44px;font-size:12px;line-height:18px;color:var(--muted)}.voice-control{position:relative;flex:0 0 44px;width:44px;height:44px}.microphone,.waveform{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--orange)}.microphone img{width:19px;height:19px}.waveform{gap:3px}.waveform i{display:block;width:3px;background:#fff7ef;border-radius:3px}.waveform i:nth-child(1){height:10px}.waveform i:nth-child(2){height:22px}.waveform i:nth-child(3){height:16px}.waveform i:nth-child(4){height:26px}.waveform i:nth-child(5){height:12px}.composer.voice{height:100px;align-items:center}.voice .composer-copy{font-size:15px;line-height:22px;color:var(--ink);padding-right:4px}.caret{display:inline-block;height:17px;width:1px;background:var(--orange);vertical-align:-3px;margin-left:2px}
+.drink-card{position:relative;width:353px;min-height:226px;margin:0 6px;padding:20px 22px;background:var(--ink);color:var(--bg);border-radius:20px;overflow:hidden}.eyebrow{font-size:11px;line-height:16px;font-weight:650;letter-spacing:1.2px;color:var(--muted)}.drink-card .eyebrow{color:#c5c5bb;font-size:10px;line-height:14px;letter-spacing:.7px;font-weight:500}.drink-card h2{position:relative;z-index:2;font-family:Inter,sans-serif;font-size:24px;line-height:28px;letter-spacing:-.6px;font-weight:600;max-width:190px;margin-top:10px}.drink-card p{position:relative;z-index:2;margin-top:8px;font-size:11px;line-height:17px;color:#d1cdc3;max-width:185px}.drink-disc{position:absolute;right:16px;top:65px;width:103px;height:103px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#2d2c26}.drink-disc img{width:115px;height:115px}.drink-chips{position:relative;z-index:2;display:flex;gap:6px;flex-wrap:wrap;margin-top:20px}.drink-chips span{font-size:9px;line-height:13px;padding:5px 8px;border:1px solid #55544b;border-radius:99px;white-space:nowrap;color:#e2ded3}.confirm-row{display:flex;align-items:flex-end;justify-content:flex-end;gap:12px;width:365px}
+.place-card{padding:18px}.place-card h2{font-family:Inter,sans-serif;font-size:20px;line-height:25px;font-weight:600}.place-card p{font-size:13px;line-height:20px;color:var(--muted);margin-top:8px}.cta{height:42px;display:flex;align-items:center;justify-content:center;background:var(--orange);border-radius:22px;font-size:13px;line-height:18px;font-weight:650;width:100%;margin-top:14px}.secondary{height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:20px;font-size:12px;line-height:18px;color:var(--muted);background:var(--bg)}
+.task-card{width:317px;flex:0 0 317px;padding:17px;border:1px solid var(--line);border-radius:20px;background:var(--card)}.task-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.task-head .heading{min-width:0}.task-head h2{font-family:Inter,sans-serif;font-weight:600;font-size:19px;line-height:24px;letter-spacing:-.3px;max-width:205px}.machine{font-size:12px;line-height:18px;color:var(--muted);margin-top:3px}.state{flex:0 0 auto;font-size:10px;line-height:16px;font-weight:650;padding:4px 9px;border-radius:99px;background:var(--orange)}.state.done{color:var(--green);background:#dcece3}.task-steps{display:flex;justify-content:space-between;gap:6px;padding:26px 0 18px}.task-step{width:82px;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:10px;line-height:14px;color:var(--muted)}.node{width:29px;height:29px;display:flex;align-items:center;justify-content:center;border:1px solid #d4d0c6;border-radius:50%;font-size:11px;font-weight:650}.task-step.active{color:var(--ink);font-weight:650}.active .node{background:var(--orange);border-color:var(--orange)}.task-step.complete .node{background:var(--green);border-color:var(--green);color:var(--bg)}.milk-line{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;line-height:18px;margin:0 0 12px}.milk-line i{display:block;width:7px;height:13px;background:#d7c7a5;border-radius:4px}.progress{height:3px;background:#dedad0;border-radius:4px;overflow:hidden}.progress i{display:block;height:3px;width:63%;background:var(--orange)}.stop{height:38px;margin-top:16px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:20px;font-size:12px;color:var(--muted)}.done-summary{display:flex;align-items:center;gap:10px;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}.done-check{width:26px;height:26px;border-radius:50%;background:var(--green);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:17px;flex:0 0 26px}.done-summary p{font-size:13px;line-height:18px}.done-summary small{display:block;font-size:11px;line-height:16px;color:var(--muted);margin-top:2px}.rating-card{--rating-green:#38896b}.rating-card .task-head h2{font-size:16px;line-height:21px;letter-spacing:-.25px}.rating-card .machine{font-size:10px;line-height:14px;margin-top:2px}.rating-card .state.done{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border:1px solid #b2d2c4;background:#eaf3ef;color:var(--rating-green);font-size:10px;line-height:14px;font-weight:600}.rating-done-dot{display:block;width:5px;height:5px;border-radius:50%;background:var(--rating-green);flex:0 0 5px}.rating-card .feedback{width:100%;margin:0}.feedback-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:8px}.feedback-options span{height:23px;display:flex;align-items:center;justify-content:center;font-size:11px;line-height:15px;border:1px solid var(--line);border-radius:99px;white-space:nowrap;background:var(--bg)}.feedback-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:8px}.feedback .cta,.feedback .secondary{height:32px;margin:0;font-size:12px;line-height:17px;font-weight:400;border-radius:99px}.feedback .cta{background:var(--ink);color:var(--bg)}.feedback .secondary{background:#f0f0ee;color:var(--ink)}.feedback-saved{margin-top:8px;text-align:center;font-size:11px;line-height:16px;color:var(--rating-green);visibility:hidden}.feedback.rated .cta{background:var(--rating-green)}.feedback.rated .feedback-saved{visibility:visible}
+.naming-card{width:353px;margin:0 6px;padding:16px;border:1px solid #edc2a3;border-radius:20px;background:#fff8ef}.naming-card h3{font-family:Inter,sans-serif;font-size:18px;line-height:23px;font-weight:600;max-width:280px}.name-field{min-height:42px;display:flex;align-items:center;padding:10px 12px;font-size:15px;line-height:20px;background:var(--bg);border:1px solid #ddd4c6;border-radius:12px;margin-top:12px}.naming-card .cta{margin-top:12px}.saved-state{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;line-height:19px;color:#a54c18;font-weight:600}.view-library{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;margin-top:12px;padding:10px 12px;border:1px solid #eac8af;border-radius:12px;background:#fff8ef;font-size:13px;line-height:18px;font-weight:600}.view-library span:last-child{font-size:18px}.saved-preview{display:flex;align-items:center;gap:12px;width:353px;margin:0 6px;padding:13px 16px;border-radius:18px;background:var(--ink);color:var(--bg)}.saved-preview img{width:68px;height:68px;border-radius:50%;background:#2d2c26}.saved-preview p{font-family:Inter,sans-serif;font-size:17px;line-height:22px}.saved-preview small{display:block;color:#ccc9bf;font-size:11px;line-height:16px;margin-top:5px}
+.back-nav{position:absolute;left:20px;top:74px;display:flex;align-items:center;gap:9px;font-size:14px;line-height:20px}.back-nav .arrow{font-size:27px;line-height:24px}.library-main{position:absolute;top:128px;left:20px;right:20px}.library-main h1{font-family:Inter,sans-serif;font-size:26px;line-height:33px;letter-spacing:-.6px;font-weight:600}.library-sub{font-size:12px;line-height:18px;color:var(--muted);margin-top:5px}.library-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px}.library-tile{position:relative;min-width:0;height:190px;padding:15px 14px;background:var(--ink);border-radius:20px;color:var(--bg);overflow:hidden}.library-tile h2{position:relative;z-index:2;max-width:145px;font-family:Inter,sans-serif;font-size:17px;line-height:21px;font-weight:600;letter-spacing:-.3px}.library-tile .tile-disc{position:absolute;left:38px;top:65px;width:96px;height:96px;border-radius:50%;background:#2d2c26}.tile-disc img{width:105px;height:105px;position:absolute;left:-4px;top:-4px}.library-tile .tile-tag{position:absolute;left:14px;bottom:13px;border:1px solid #55544b;padding:3px 8px;border-radius:99px;font-size:9px;line-height:13px;color:#ddd8ce}.library-tile.new h2{margin-top:23px}.library-tile.new .tile-disc{top:74px;width:88px;height:88px;left:42px}.new .tile-disc img{width:98px;height:98px;left:-5px;top:-5px}.just-saved{position:absolute;top:13px;left:14px;display:inline-flex;padding:3px 8px;border-radius:99px;background:var(--orange);color:var(--ink);font-size:9px;line-height:13px;font-weight:650}.library-tile.empty{border:1px dashed #c7c0b2;background:transparent;color:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center}.empty .plus{font-size:28px;line-height:32px;font-weight:300}.empty p{font-size:14px;line-height:20px;max-width:115px}
+.detail-main{position:absolute;top:125px;left:20px;right:20px;display:flex;flex-direction:column;gap:11px}.detail-hero{position:relative;min-height:112px;padding:18px;background:var(--ink);border-radius:20px;color:var(--bg)}.detail-hero h1{font-family:Inter,sans-serif;font-size:22px;line-height:28px;letter-spacing:-.6px;font-weight:600;max-width:238px}.detail-hero p{font-size:11px;line-height:17px;color:#d1cdc3;max-width:210px;margin-top:7px}.detail-hero .hero-disc{position:absolute;right:12px;top:26px;width:77px;height:77px;border-radius:50%;background:#2d2c26}.hero-disc img{width:87px;height:87px;position:absolute;left:-5px;top:-5px}.data-card{padding:14px 16px 5px;border:1px solid var(--line);border-radius:20px;background:var(--card)}.data-card>.eyebrow{font-size:10px;line-height:15px;margin-bottom:5px}.data-row{display:grid;grid-template-columns:83px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:18px}.data-row:last-child{border-bottom:0}.data-label{color:var(--muted)}.data-value{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;overflow-wrap:normal}.manual-note{font-size:11px;line-height:16px;color:var(--muted);padding:0 4px}.detail-actions{display:flex;flex-direction:column;gap:7px}.detail-actions .cta{margin:0}.detail-actions .secondary{color:var(--ink)}
+.progress-reference .state{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border:1px solid #eda978;background:#fff6ef;color:#85421c;font-size:10px;line-height:14px;white-space:nowrap}.brewing-dot{display:block;width:5px;height:5px;border-radius:50%;background:var(--orange);flex:0 0 5px}.progress-reference .task-steps{position:relative;padding:26px 0 23px}.step-connector{position:absolute;left:40px;right:40px;top:40px;height:1px;background:#c7c6bf}.progress-reference .task-step{position:relative;font-size:11px;line-height:16px;font-weight:600;gap:14px}.progress-reference .task-step .node{background:var(--card);position:relative;font-weight:400}.progress-reference .task-step.complete{color:var(--ink)}.progress-reference .task-step.complete .node{background:var(--ink);border-color:var(--ink);color:var(--bg);font-size:16px}.progress-reference .task-step.active .node{background:var(--orange);border-color:var(--orange);color:var(--ink)}.progress-reference .progress{height:2px}.progress-reference .progress i{height:2px}.progress-reference .stop{background:#f0f0ee;color:var(--ink);font-size:13px;font-weight:600;gap:8px}.stop-dot{display:block;width:12px;height:12px;border-radius:50%;background:#338b69}.progress-reference .milk-line{font-size:11px;line-height:16px;margin-bottom:10px}
+
+/* Result pairs retain the black drink card above a matching full-width status card. */
+.full-task{width:353px;flex:0 0 auto;margin:0 6px;padding:16px}
+.stacked-drink{min-height:0;padding:16px 18px}
+.stacked-drink h2{font-size:22px;line-height:26px;max-width:195px;margin-top:8px}
+.stacked-drink p{margin-top:6px;max-width:195px}
+.stacked-drink .drink-disc{width:86px;height:86px;right:15px;top:51px}
+.stacked-drink .drink-disc>.drink-art{width:96px;height:96px;flex-basis:96px}
+.stacked-drink .drink-chips{margin-top:12px}
+.full-task.progress-reference .task-steps{padding:20px 0 16px}
+.full-task.progress-reference .step-connector{top:34px}
+.full-task.progress-reference .milk-line{margin-bottom:8px}
+.full-task.progress-reference .stop{margin-top:12px}
+.full-task.rating-card .task-head h2{font-size:19px;line-height:24px}
+.full-task.rating-card .machine{font-size:12px;line-height:18px}
+.flow.stack-position{gap:16px;padding-top:6px}
+
+.page,.page-view{position:absolute;inset:0;background:var(--bg);overflow:hidden}
+#chat-flow{position:relative;width:365px}
+.message{position:absolute;left:0;width:365px}
+.message>.message{top:0}
+#understanding,#first-result,#after-first,#repeat-confirm,#repeat-result{position:absolute;width:365px}
+.drink-art{display:block;width:100%;height:100%;background-position:center;background-size:contain;background-repeat:no-repeat}
+.art-latte{background-image:url('assets/drinks/latte.svg')}.art-espresso{background-image:url('assets/drinks/espresso.svg')}.art-americano{background-image:url('assets/drinks/americano.svg')}
+.drink-disc>.drink-art{width:115px;height:115px;flex:0 0 115px}
+.tile-disc>.drink-art{position:absolute;width:105px;height:105px;left:-4px;top:-4px}
+.new .tile-disc>.drink-art{width:98px;height:98px;left:-5px;top:-5px}
+.hero-disc>.drink-art{position:absolute;width:87px;height:87px;left:-5px;top:-5px}
+.saved-preview>.drink-art{width:68px;height:68px;flex:0 0 68px;border-radius:50%;background-color:#2d2c26}
+.input-transcript{display:none}.composer-copy{position:relative}.input-transcript{color:var(--ink);font-size:15px;line-height:22px;padding-right:4px}
+.ready-card{padding:18px}.ready-card h2{font:600 20px/25px Inter;margin-top:9px}.ready-card>p:last-child{font-size:13px;line-height:20px;color:var(--muted);margin-top:8px}
+.progress-reference .progress i{width:100%;transform-origin:left center}
+.shimmer-sweep-target{--shimmer-color:rgba(255,255,255,.24);--shimmer-width:24%;--shimmer-pos:-20%}
+.shimmer-mask{position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,transparent 0%,transparent calc(var(--shimmer-pos) - var(--shimmer-width)/2),var(--shimmer-color) var(--shimmer-pos),transparent calc(var(--shimmer-pos) + var(--shimmer-width)/2),transparent 100%);mix-blend-mode:overlay;z-index:3}
+</style></head>
+<body><div id="root" data-composition-id="coffee-buddy-ch8" data-width="1080" data-height="1920" data-duration="34.4" data-fps="30"><main id="app" class="app"><div class="statusbar"><span>9:41</span><img src="assets/figma/ios-status.png" alt=""></div><img class="profile" src="assets/avatars/user-cup.svg" alt="User coffee cup avatar"><div class="home-indicator"></div><div id="chat-page" class="page" data-layout-allow-overflow><div class="chat-viewport"><div id="chat-flow" data-layout-allow-overflow><div id="hello" class="message"><h1 class="greeting"><span>Hi, Alex</span><span>What would you like today?</span></h1></div><div id="request" class="message"><div class="row user-row"><div class="bubble">Make me something smooth and chocolatey — with oat milk.</div><span class="avatar user-avatar" role="img" aria-label="User"></span></div></div><div id="understanding" class="message"><div id="reading" class="message"><div class="row"><span class="avatar buddy-avatar" role="img" aria-label="Coffee Buddy"></span><div class="assistant-card"><div class="drops"><i></i><i></i><i></i></div>Yeema is reading your taste</div></div></div><div id="taste" class="message"><div class="row"><span class="avatar buddy-avatar" role="img" aria-label="Coffee Buddy"></span><div class="content-column"><div class="assistant-card">A smooth, chocolatey oat latte</div><div class="taste-tags"><span>Chocolatey</span><span>Silky</span><span>Oat milk</span></div></div></div></div></div><div id="match" class="message"><section class="drink-card"><div class="eyebrow">YOUR COFFEE MATCH</div><h2>Velvet Oat Latte</h2><p>Cocoa-soft espresso folded into steamed oat milk.</p><div class="drink-disc"><span class="drink-art art-latte" role="img" aria-label="Oat latte illustration"></span></div><div class="drink-chips"><span>Medium-dark roast</span><span>Cocoa</span><span>Oat milk</span></div></section></div><div id="brew-choice" class="message"><div class="confirm-row"><div class="confirm-chip">Brew it →</div><span class="avatar user-avatar" role="img" aria-label="User"></span></div></div><div id="place-first" class="message"><div class="row"><span class="avatar buddy-avatar" role="img" aria-label="Coffee Buddy"></span><section class="assistant-card place-card"><h2>Place your cup under the spout</h2><p>Once it's set, start brewing.</p><div class="cta">Cup is in place</div></section></div></div><div id="first-result" class="message"><div id="drink-first" class="message"><section class="drink-card stacked-drink"><div class="eyebrow">YOUR COFFEE MATCH</div><h2>Velvet Oat Latte</h2><p>Cocoa-soft espresso folded into steamed oat milk.</p><div class="drink-disc"><span class="drink-art art-latte" role="img" aria-label="Oat latte illustration"></span></div><div class="drink-chips"><span>Medium-dark roast</span><span>Cocoa</span><span>Oat milk</span></div></section></div><div id="brew-first" class="message"><section class="task-card full-task progress-reference"><div class="task-head"><div class="heading"><h2>Velvet Oat Latte</h2><p class="machine">Yeema One</p></div><span class="state "><i class="brewing-dot"></i><span class="status-copy">Brewing</span></span></div><div class="task-steps"><i class="step-connector"></i><div class="task-step complete"><span class="node">✓</span><span>Grinding</span></div><div class="task-step active"><span class="node">2</span><span>Extraction</span></div><div class="task-step"><span class="node">3</span><span>Disposing</span></div></div><div class="milk-line"><i></i><span>Steaming milk · venturi</span></div><div class="progress"><i></i></div><div class="stop"><i class="stop-dot"></i><span>Stop</span></div></section></div><div id="done-first" class="message"><section class="task-card full-task rating-card"><div class="task-head"><div class="heading"><h2>Velvet Oat Latte</h2><p class="machine">Yeema One</p></div><span class="state done"><i class="rating-done-dot"></i><span>Done</span></span></div><div id="feedback" class="feedback"><div class="feedback-options"><span>Too sour</span><span>Too bitter</span><span>Too strong</span><span>Too weak</span></div><div class="feedback-actions"><div class="cta">Just right</div><div class="secondary">Later</div></div><p class="feedback-saved">Saved to your creations.</p></div></section></div><div id="saved-first" class="message"><div class="row"><span class="avatar buddy-avatar" role="img" aria-label="Coffee Buddy"></span><section class="task-card "><div class="task-head"><div class="heading"><h2>Velvet Oat Latte</h2><p class="machine">Yeema One</p></div><span class="state done"><span class="status-copy">Done</span></span></div><div class="done-summary"><span class="done-check">✓</span><div><p>Velvet Oat Latte</p><small>Ground · Extracted · Reset</small></div></div><p class="saved-state">Midnight Cloud · in your library</p><div class="view-library"><span>View library</span><span>→</span></div></section></div></div></div><div id="after-first" class="message"><div id="naming" class="message"><section class="naming-card"><h3>Love it? Name it and keep it.</h3><div class="name-field"><span><span id="name-text">Midnight Cloud</span><i class="caret"></i></span></div><div class="cta">Save to library</div></section></div><div id="saved-preview" class="message"><div class="saved-preview"><span class="drink-art art-latte" role="img" aria-label="Oat latte"></span><div><p>Midnight Cloud</p><small>Velvet Oat Latte</small></div></div></div></div><div id="repeat-choice" class="message"><div class="row user-row"><div class="bubble">Re-brew Midnight Cloud →</div><span class="avatar user-avatar" role="img" aria-label="User"></span></div></div><div id="repeat-confirm" class="message"><div id="repeat-ready" class="message"><div class="row"><span class="avatar buddy-avatar" role="img" aria-label="Coffee Buddy"></span><section class="assistant-card ready-card"><p class="eyebrow">MIDNIGHT CLOUD</p><h2>Your recipe is ready.</h2><p>The same espresso base, ready to brew again.</p></section></div></div><div id="place-repeat" class="message"><div class="row"><span class="avatar buddy-avatar" role="img" aria-label="Coffee Buddy"></span><section class="assistant-card place-card"><p class="eyebrow" style="margin:0 0 9px">MIDNIGHT CLOUD</p><h2>Place your cup under the spout</h2><p>Once it's set, start brewing.</p><div class="cta">Cup is in place</div></section></div></div></div><div id="repeat-result" class="message"><div id="drink-repeat" class="message"><section class="drink-card stacked-drink"><div class="eyebrow">FROM YOUR DRINK LIBRARY</div><h2>Midnight Cloud</h2><p>Cocoa-soft espresso folded into steamed oat milk.</p><div class="drink-disc"><span class="drink-art art-latte" role="img" aria-label="Oat latte illustration"></span></div><div class="drink-chips"><span>Medium-dark roast</span><span>Cocoa</span><span>Oat milk</span></div></section></div><div id="brew-repeat" class="message"><section class="task-card full-task progress-reference"><div class="task-head"><div class="heading"><h2>Midnight Cloud</h2><p class="machine">Yeema One</p></div><span class="state "><i class="brewing-dot"></i><span class="status-copy">Brewing</span></span></div><div class="task-steps"><i class="step-connector"></i><div class="task-step complete"><span class="node">✓</span><span>Grinding</span></div><div class="task-step active"><span class="node">2</span><span>Extraction</span></div><div class="task-step"><span class="node">3</span><span>Disposing</span></div></div><div class="milk-line"><i></i><span>Steaming milk · venturi</span></div><div class="progress"><i></i></div><div class="stop"><i class="stop-dot"></i><span>Stop</span></div></section></div><div id="done-repeat" class="message"><section class="task-card full-task "><div class="task-head"><div class="heading"><h2>Midnight Cloud</h2><p class="machine">Yeema One</p></div><span class="state done"><span class="status-copy">Done</span></span></div><div class="done-summary"><span class="done-check">✓</span><div><p>Midnight Cloud</p><small>Ground · Extracted · Reset</small></div></div></section></div></div></div></div><div class="composer"><div class="composer-copy"><span class="input-placeholder">What would you like? Tell Yeema</span><span class="input-transcript"><span id="voice-text">Make me something smooth and chocolatey — with oat milk.</span><i class="caret"></i></span></div><div class="voice-control"><div class="microphone"><img src="assets/figma/13c65.svg" alt="Microphone"></div><div class="waveform"><i></i><i></i><i></i><i></i><i></i></div></div></div></div><div id="library-page" class="page" data-layout-allow-overflow><div id="library-grid-view" class="page-view" data-layout-allow-overflow><div class="back-nav"><span class="arrow">‹</span><span>Coffee Buddy</span></div><section class="library-main"><h1>Your drink library</h1><p class="library-sub">3 drinks · synced with your account</p><div class="library-grid"><article class="library-tile"><h2>Alex's Shot</h2><div class="tile-disc"><span class="drink-art art-espresso" role="img" aria-label="espresso"></span></div><span class="tile-tag">Espresso</span></article><article class="library-tile"><h2>Morning Americano</h2><div class="tile-disc"><span class="drink-art art-americano" role="img" aria-label="americano"></span></div><span class="tile-tag">Americano</span></article><article class="library-tile new shimmer-sweep-target"><div class="shimmer-mask" data-layout-ignore></div><span class="just-saved">Just saved</span><h2>Midnight Cloud</h2><div class="tile-disc"><span class="drink-art art-latte" role="img" aria-label="latte"></span></div><span class="tile-tag">Oat milk</span></article><article class="library-tile empty"><span class="plus">+</span><p>Brew something new</p></article></div></section></div><div id="detail-view" class="page-view" data-layout-allow-overflow><div class="back-nav"><span class="arrow">‹</span><span>Your drink library</span></div><section class="detail-main"><div class="detail-hero"><h1>Midnight Cloud</h1><p>Velvet Oat Latte base · Yeema One</p><div class="hero-disc"><span class="drink-art art-latte" role="img" aria-label="Oat latte"></span></div></div><div class="data-card"><div class="eyebrow">ESPRESSO BASE</div><div class="data-row"><span class="data-label">Dose</span><span class="data-value">18 g</span></div><div class="data-row"><span class="data-label">Grind level</span><span class="data-value">3</span></div><div class="data-row"><span class="data-label">Extraction</span><span class="data-value">low-pressure pre-infusion → 9 bar</span></div><div class="data-row"><span class="data-label">Yield</span><span class="data-value">36 g</span></div><div class="data-row"><span class="data-label">Stages</span><span class="data-value">2 · pre-infusion + extraction</span></div></div><p class="manual-note">Grind is set manually on the machine.</p><div class="detail-actions"><div class="cta">Re-brew →</div><div class="secondary">Adjust</div></div></section></div></div></main><audio id="sfx-0" src="assets/sfx/attention.wav" data-start="1.2" data-duration="0.3" data-media-start="0" data-volume="0.1" data-track-index="6"></audio>
+<audio id="sfx-1" src="assets/sfx/pop.wav" data-start="2.8" data-duration="0.3" data-media-start="0" data-volume="0.1" data-track-index="6"></audio>
+<audio id="sfx-2" src="assets/sfx/drop-high.wav" data-start="2.92" data-duration="0.2" data-media-start="0" data-volume="0.09" data-track-index="7"></audio>
+<audio id="sfx-3" src="assets/sfx/drop-mid.wav" data-start="3.12" data-duration="0.2" data-media-start="0" data-volume="0.09" data-track-index="7"></audio>
+<audio id="sfx-4" src="assets/sfx/drop-low.wav" data-start="3.34" data-duration="0.2" data-media-start="0" data-volume="0.09" data-track-index="7"></audio>
+<audio id="sfx-5" src="assets/sfx/key.wav" data-start="4.15" data-duration="0.1" data-media-start="0" data-volume="0.08" data-track-index="6"></audio>
+<audio id="sfx-6" src="assets/sfx/key.wav" data-start="4.3" data-duration="0.1" data-media-start="0" data-volume="0.08" data-track-index="6"></audio>
+<audio id="sfx-7" src="assets/sfx/key.wav" data-start="4.45" data-duration="0.1" data-media-start="0" data-volume="0.08" data-track-index="6"></audio>
+<audio id="sfx-8" src="assets/sfx/pop.wav" data-start="5.8" data-duration="0.3" data-media-start="0" data-volume="0.09" data-track-index="6"></audio>
+<audio id="sfx-9" src="assets/sfx/key.wav" data-start="8.15" data-duration="0.1" data-media-start="0" data-volume="0.1" data-track-index="6"></audio>
+<audio id="sfx-10" src="assets/sfx/pop.wav" data-start="10.08" data-duration="0.25" data-media-start="0" data-volume="0.1" data-track-index="6"></audio>
+<audio id="sfx-11" src="assets/sfx/extraction-demo.wav" data-start="11.3" data-duration="1.65" data-media-start="0" data-volume="0.09" data-track-index="8"></audio>
+<audio id="sfx-12" src="assets/sfx/steam-demo.wav" data-start="11.45" data-duration="0.68" data-media-start="0" data-volume="0.07" data-track-index="9"></audio>
+<audio id="sfx-13" src="assets/sfx/rinse-illustrative.wav" data-start="13.1" data-duration="1.15" data-media-start="0" data-volume="0.08" data-track-index="8"></audio>
+<audio id="sfx-14" src="assets/sfx/complete.wav" data-start="14.4" data-duration="0.5" data-media-start="0" data-volume="0.13" data-track-index="6"></audio>
+<audio id="sfx-15" src="assets/sfx/key.wav" data-start="15.43" data-duration="0.1" data-media-start="0" data-volume="0.09" data-track-index="6"></audio>
+<audio id="sfx-16" src="assets/sfx/summary-typing.wav" data-start="16.15" data-duration="0.8" data-media-start="0" data-volume="0.08" data-track-index="6"></audio>
+<audio id="sfx-17" src="assets/sfx/key.wav" data-start="17.4" data-duration="0.1" data-media-start="0" data-volume="0.09" data-track-index="6"></audio>
+<audio id="sfx-18" src="assets/sfx/brew-complete.wav" data-start="18.05" data-duration="0.42" data-media-start="0" data-volume="0.11" data-track-index="6"></audio>
+<audio id="sfx-19" src="assets/sfx/swipe.wav" data-start="19.8" data-duration="0.38" data-media-start="0" data-volume="0.1" data-track-index="6"></audio>
+<audio id="sfx-20" src="assets/sfx/key.wav" data-start="22.4" data-duration="0.1" data-media-start="0" data-volume="0.09" data-track-index="6"></audio>
+<audio id="sfx-21" src="assets/sfx/key.wav" data-start="26.42" data-duration="0.1" data-media-start="0" data-volume="0.09" data-track-index="6"></audio>
+<audio id="sfx-22" src="assets/sfx/swipe.wav" data-start="26.6" data-duration="0.38" data-media-start="0" data-volume="0.1" data-track-index="6"></audio>
+<audio id="sfx-23" src="assets/sfx/pop.wav" data-start="28.75" data-duration="0.2" data-media-start="0" data-volume="0.1" data-track-index="6"></audio>
+<audio id="sfx-24" src="assets/sfx/extraction-demo.wav" data-start="29.9" data-duration="1.65" data-media-start="0" data-volume="0.09" data-track-index="8"></audio>
+<audio id="sfx-25" src="assets/sfx/steam-demo.wav" data-start="30.05" data-duration="0.68" data-media-start="0" data-volume="0.07" data-track-index="9"></audio>
+<audio id="sfx-26" src="assets/sfx/rinse-illustrative.wav" data-start="31.7" data-duration="1.15" data-media-start="0" data-volume="0.08" data-track-index="8"></audio>
+<audio id="sfx-27" src="assets/sfx/brew-complete.wav" data-start="33" data-duration="0.4" data-media-start="0" data-volume="0.13" data-track-index="6"></audio></div><script src="assets/gsap.min.js"></script><script>/* One measured conversation and one deterministic paused timeline. No playback callbacks. */
+(async()=>{
+  await document.fonts.ready;
+  await Promise.all(Array.from(document.images).map(img=>img.decode()));
+  const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
+  const height=id=>q('#'+id).offsetHeight;
+  const put=(id,y)=>{q('#'+id).style.top=y+'px';return y;};
+  const Y={hello:0};
+  Y.request=put('request',height('hello')+28);
+  Y.understanding=put('understanding',Y.request+height('request')+16);
+  q('#understanding').style.height=Math.max(height('reading'),height('taste'))+'px';
+  Y.match=put('match',Y.understanding+height('understanding')+16);
+  Y.choice=put('brew-choice',Y.match+height('match')+16);
+  Y.place=put('place-first',Y.choice+height('brew-choice')+16);
+  Y.result=put('first-result',Y.place+height('place-first')+20);
+  const resultGap=16;
+  const firstStatus=height('drink-first')+resultGap;
+  put('brew-first',firstStatus);put('done-first',firstStatus);
+  q('#first-result').style.height=Math.max(firstStatus+height('brew-first'),height('saved-first'))+'px';
+  Y.after=put('after-first',Y.result+firstStatus+height('done-first')+16);
+  q('#after-first').style.height=Math.max(height('naming'),height('saved-preview'))+'px';
+  q('#saved-preview').style.top=(height('saved-first')-firstStatus-height('done-first'))+'px';
+  Y.repeat=put('repeat-choice',Y.result+height('saved-first')+height('naming')+80);
+  Y.repeatConfirm=put('repeat-confirm',Y.repeat+height('repeat-choice')+16);
+  q('#repeat-confirm').style.height=Math.max(height('repeat-ready'),height('place-repeat'))+'px';
+  Y.repeatResult=put('repeat-result',Y.repeatConfirm+height('repeat-confirm')+20);
+  const repeatStatus=height('drink-repeat')+resultGap;
+  put('brew-repeat',repeatStatus);put('done-repeat',repeatStatus);
+  q('#repeat-result').style.height=(repeatStatus+Math.max(height('brew-repeat'),height('done-repeat')))+'px';
+  q('#chat-flow').style.height=(Y.repeatResult+height('repeat-result'))+'px';
+  const tl=gsap.timeline({paused:true,defaults:{ease:'power2.out'}});
+  const reveal=(s,t,d=.28,dy=10)=>tl.fromTo(s,{autoAlpha:0,y:dy},{autoAlpha:1,y:0,duration:d,immediateRender:false},t);
+  const hide=(s,t,d=.18)=>tl.to(s,{autoAlpha:0,duration:d},t);
+  const scroll=(y,t,d=.4)=>tl.to('#chat-flow',{y,duration:d,ease:'power2.inOut'},t);
+  const press=(s,t)=>{tl.to(s,{scale:.96,duration:.09,ease:'power1.in'},t);tl.to(s,{scale:1,duration:.15,ease:'power2.out'},t+.09);};
+  const type=(s,text,t,d)=>{
+    gsap.set(s,{textContent:''});
+    for(let i=1;i<=text.length;i++)tl.fromTo(s,{textContent:text.slice(0,i-1)},{textContent:text.slice(0,i),duration:0,immediateRender:false},t+d*i/text.length);
+  };
+  const hidden=['#request','#reading','#taste','#match','#brew-choice','#place-first','#drink-first','#brew-first','#done-first','#saved-first','#feedback','#naming','#saved-preview','#repeat-choice','#repeat-ready','#place-repeat','#drink-repeat','#brew-repeat','#done-repeat'];
+  gsap.set([...hidden,'#hello'],{autoAlpha:0});
+  gsap.set('#brew-choice .confirm-chip',{scale:1});
+  gsap.set('#feedback .cta',{scale:1,backgroundColor:'#171715'});
+  gsap.set('#feedback .feedback-saved',{autoAlpha:0});
+  gsap.set('#chat-flow',{y:0});
+  gsap.set('#library-page',{xPercent:100,autoAlpha:0});
+  gsap.set('#detail-view',{xPercent:100,autoAlpha:0});
+  gsap.set('.waveform',{autoAlpha:0});
+  gsap.set('.taste-tags span',{autoAlpha:0});
+  gsap.set('#saved-first .saved-state,#saved-first .view-library',{autoAlpha:0});
+  gsap.set('.library-tile',{autoAlpha:0});
+  gsap.set('#detail-view .data-row',{autoAlpha:0});
+  gsap.set('#library-page .back-nav',{autoAlpha:0});
+  reveal('#hello',0,.38,8);
+  hide('.input-placeholder',1.2,.08);
+  tl.set('.input-placeholder',{display:'none'},1.3);
+  tl.set('.input-transcript',{display:'block'},1.3);
+  hide('.microphone',1.2,.1);reveal('.waveform',1.3,.15,0);
+  tl.to('.composer',{height:100,duration:.25},1.2);
+  type('#voice-text','Make me something smooth and chocolatey — with oat milk.',1.32,1.15);
+  // Explicit 30fps waveform poses avoid floating-point drift when seeking backward.
+  const levels=[.55,.62,.78,.96,1.1,1.02,.84,.66];
+  qa('.waveform i').forEach((el,i)=>{
+    gsap.set(el,{scaleY:.55});
+    for(let f=0;f<39;f++)tl.fromTo(el,{scaleY:f?levels[(f-1+i*2)%8]:.55},{scaleY:levels[(f+i*2)%8],duration:0,immediateRender:false},1.3+f/30);
+  });
+  hide('.input-transcript',2.65,.1);hide('.waveform',2.65,.1);
+  tl.set('.input-transcript',{display:'none'},2.77);tl.set('.input-placeholder',{display:'block'},2.77);
+  reveal('.input-placeholder',2.78,.12,0);reveal('.microphone',2.78,.12,0);
+  tl.to('.composer',{height:58,duration:.22},2.77);
+  hide('#hello',2.58,.12);scroll(28-Y.request,2.7,.28);reveal('#request',2.8);reveal('#reading',2.95);
+  qa('.drops i').forEach((el,i)=>{for(let j=0;j<3;j++)tl.fromTo(el,{y:j%2?0:-4,opacity:j%2?1:.45},{y:j%2?-4:0,opacity:j%2?.45:1,duration:.18,immediateRender:false},2.96+i*.14+j*.18);});
+  hide('#reading',3.86,.12);reveal('#taste',4,.28,8);
+  qa('.taste-tags span').forEach((el,i)=>tl.fromTo(el,{autoAlpha:0,y:7,scale:.96},{autoAlpha:1,y:0,scale:1,duration:.25,ease:'back.out(1.1)',immediateRender:false},4.15+i*.15));
+  hide('#request',5.38,.12);scroll(-Y.understanding,5.5,.3);reveal('#match',5.8,.36);
+  reveal('#brew-choice',7.4,.25,8);press('#brew-choice .confirm-chip',8.15);
+  hide('#taste',8.17,.16);tl.to('#match',{y:-8,duration:.16},8.17);tl.set('#match',{autoAlpha:0},8.33);scroll(28-Y.choice,8.33,.32);reveal('#place-first',8.65,.28);
+  press('#place-first .cta',10.08);
+  hide('#brew-choice',10.08,.12);hide('#place-first',10.2,.16);scroll(6-Y.result,10.15,.25);reveal('#drink-first',10.4,.25,0);reveal('#brew-first',10.4,.25);
+  const brew=(id,start,extract,dispose,reset,end)=>{
+    const nodes=qa(id+' .node'),labels=qa(id+' .task-step>span:last-child');
+    tl.set(id+' .progress i',{scaleX:.03},0);
+    nodes.forEach((el,i)=>{
+      tl.set(el,{backgroundColor:i===0?'#ff7e2e':'#f5f3ee',borderColor:i===0?'#ff7e2e':'#d4d0c6',color:i===0?'#171715':'#6f706a',textContent:String(i+1)},0);
+      tl.set(labels[i],{color:i===0?'#171715':'#6f706a'},0);
+    });
+    tl.set(id+' .milk-line',{autoAlpha:0},0);
+    tl.to(id+' .progress i',{scaleX:.25,duration:extract-start,ease:'none'},start);
+    const next=(idx,t)=>{
+      tl.set(nodes[idx-1],{backgroundColor:'#171715',borderColor:'#171715',color:'#fcfbf9',textContent:'✓'},t);
+      tl.set(nodes[idx],{backgroundColor:'#ff7e2e',borderColor:'#ff7e2e',color:'#171715'},t);
+      tl.set(labels[idx],{color:'#171715'},t);
+    };
+    next(1,extract);reveal(id+' .milk-line',extract+.05,.18,0);
+    tl.to(id+' .progress i',{scaleX:dispose?.78:.98,duration:(dispose||end)-extract,ease:'none'},extract);
+    if(dispose){
+      hide(id+' .milk-line',dispose-.1,.1);next(2,dispose);
+      tl.to(id+' .progress i',{scaleX:.92,duration:reset-dispose,ease:'none'},dispose);
+      tl.set(id+' .status-copy',{textContent:'Resetting'},reset);
+      tl.set(labels[2],{textContent:'Resetting'},reset);
+      tl.to(id+' .progress i',{scaleX:1,duration:end-reset,ease:'none'},reset);
+    }
+  };
+  brew('#brew-first',10.4,11.3,13.1,13.7,14.4);
+  hide('#brew-first',14.28,.12);reveal('#done-first',14.4,.25);
+  reveal('#feedback',14.65,.28);press('#feedback .cta',15.43);
+  tl.to('#feedback .cta',{backgroundColor:'#38896b',duration:.12},15.52);
+  reveal('#feedback .feedback-saved',15.58,.18,0);
+  scroll(12-Y.result-firstStatus,15.82,.28);reveal('#naming',16.1,.18);
+  type('#name-text','Midnight Cloud',16.15,1.05);hide('#naming .caret',17.28,.08);press('#naming .cta',17.4);
+  hide('#naming',17.6,.18);hide('#drink-first',17.6,.18);hide('#done-first',17.68,.12);scroll(12-Y.result,17.6,.22);reveal('#saved-first',17.82,.28,4);
+  reveal('#saved-first .saved-state',18,.23,4);reveal('#saved-first .view-library',18.18,.24,4);
+  reveal('#saved-preview',18.35,.28,0);
+  press('#saved-first .view-library',19.55);
+  hide('.composer',19.7,.1);
+  // Registry page-slide recipe, fitted to the app's 393px page stack.
+  tl.set('#library-page',{autoAlpha:1},19.8);
+  tl.to('#chat-page',{xPercent:-100,duration:.6,ease:'power3.inOut'},19.8);
+  tl.to('#library-page',{xPercent:0,duration:.6,ease:'power3.inOut'},19.8);
+  tl.set('#chat-page',{autoAlpha:0},20.4);
+  reveal('#library-grid-view .back-nav',20.4,.18,0);
+  qa('.library-tile').forEach((el,i)=>reveal(el,20.6+i*.08,.28,8));
+  // Registry shimmer-sweep: one restrained pass, then still.
+  tl.fromTo('.shimmer-sweep-target',{'--shimmer-pos':'-20%'},{'--shimmer-pos':'120%',duration:.7,ease:'power2.inOut',immediateRender:false},21.05);
+  press('.library-tile.new',22.4);
+  hide('#library-grid-view .back-nav',22.48,.12);
+  tl.set('#detail-view',{autoAlpha:1},22.6);
+  tl.to('#library-grid-view',{xPercent:-100,duration:.32,ease:'power2.inOut'},22.6);
+  tl.to('#detail-view',{xPercent:0,duration:.32,ease:'power2.inOut'},22.6);
+  tl.set('#library-grid-view',{autoAlpha:0},22.92);
+  reveal('#detail-view .back-nav',22.92,.18,0);
+  qa('#detail-view .data-row').forEach((el,i)=>reveal(el,22.72+i*.07,.2,4));
+  press('#detail-view .cta',26.42);
+  hide('#detail-view .back-nav',26.48,.12);
+  // Chat preparation happens while fully covered by the library page.
+  tl.set('#chat-flow',{y:28-Y.repeat},26.5);
+  tl.set('#saved-first,#saved-preview',{autoAlpha:0},26.5);
+  tl.set('#repeat-choice,#repeat-ready',{autoAlpha:1},26.5);
+  tl.set('#chat-page',{autoAlpha:1},26.6);
+  tl.to('#chat-page',{xPercent:0,duration:.6,ease:'power3.inOut'},26.6);
+  tl.to('#library-page',{xPercent:100,duration:.6,ease:'power3.inOut'},26.6);
+  tl.set('#library-page',{autoAlpha:0},27.2);
+  reveal('.composer',27.2,.2,0);
+  hide('#repeat-ready',27.66,.12);reveal('#place-repeat',27.8,.22,8);
+  hide('#repeat-choice',28.67,.12);press('#place-repeat .cta',28.75);hide('#place-repeat',28.87,.12);scroll(6-Y.repeatResult,28.8,.2);
+  reveal('#drink-repeat',29,.16,0);reveal('#brew-repeat',29,.16);brew('#brew-repeat',29,29.9,31.7,32.3,33);
+  hide('#brew-repeat',32.88,.12);reveal('#done-repeat',33,.16,6);
+  tl.fromTo('#done-repeat .done-check',{scale:.85},{scale:1,duration:.2,ease:'back.out(1.3)',immediateRender:false},33.02);
+  tl.pause(0);
+  window.__timelines=window.__timelines||{};
+  window.__timelines['coffee-buddy-ch8']=tl;
+  window.CoffeeBuddyMotion={positions:Y,duration:34.4,logicalScale:1080/393};
+  document.documentElement.dataset.motionReady='true';
+  if(window.__hfForceTimelineRebind)window.__hfForceTimelineRebind();
+})();
+</script></body></html>
